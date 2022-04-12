@@ -1,12 +1,11 @@
 package com.example.cabinetcomptable.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 @MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "PersonneType")
 public class Personne {
 
     @Id
@@ -38,6 +37,18 @@ public class Personne {
         this.site_web = site_web;
         this.data_de_transaction = data_de_transaction;
     }
+    public Personne( String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+        this.nom = nom;
+        this.image = image;
+        this.email = email;
+        this.tele_portable = tele_portable;
+        this.tele_fix = tele_fix;
+        this.adresse = adresse;
+        this.code_postale = code_postale;
+        this.site_web = site_web;
+        this.data_de_transaction = data_de_transaction;
+    }
+
 
     public long getId() {
         return id;

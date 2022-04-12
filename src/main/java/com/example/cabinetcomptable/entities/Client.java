@@ -1,10 +1,12 @@
 package com.example.cabinetcomptable.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
 
 @Entity
+@DiscriminatorValue("C")
 @Table(name = "clients")
 public class Client extends Personne{
 
@@ -20,6 +22,16 @@ public class Client extends Personne{
 
     public Client(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
         super(id, nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
+        this.bilan = bilan;
+        this.pv_bilan = pv_bilan;
+        this.tva_mensuel = tva_mensuel;
+        this.cnss_mensuel = cnss_mensuel;
+        this.tva_trimestriel = tva_trimestriel;
+        this.cnss_trimestriel = cnss_trimestriel;
+    }
+
+    public Client(String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
+        super(nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
         this.bilan = bilan;
         this.pv_bilan = pv_bilan;
         this.tva_mensuel = tva_mensuel;
