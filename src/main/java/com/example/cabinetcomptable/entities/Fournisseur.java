@@ -1,16 +1,17 @@
 package com.example.cabinetcomptable.entities;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @DiscriminatorValue("F")
 @Table(name = "fournisseurs")
 public class Fournisseur extends Personne{
 
+    @OneToMany(mappedBy="fournisseur")
+    private Set<BonAchat> bonsAchat = new HashSet<BonAchat>();
     public Fournisseur() {
       super();
     }
@@ -21,6 +22,7 @@ public class Fournisseur extends Personne{
     public Fournisseur( String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         super( nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
     }
+
 
 
 }

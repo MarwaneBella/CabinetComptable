@@ -1,9 +1,14 @@
 package com.example.cabinetcomptable.entities;
 
+
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @DiscriminatorValue("C")
@@ -16,6 +21,9 @@ public class Client extends Personne{
     private float cnss_mensuel;
     private float tva_trimestriel;
     private float cnss_trimestriel;
+
+    @OneToMany(mappedBy="client")
+    private Set<BonHonoraire> bonsHonoraire = new HashSet<BonHonoraire>();
 
     public Client(){
     }

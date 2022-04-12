@@ -20,6 +20,8 @@ public class Personne {
     private String adresse;
     private String code_postale;
     private String site_web;
+    @Basic
+    @Temporal(TemporalType.DATE)
     private Date data_de_transaction;
 
     public Personne() {
