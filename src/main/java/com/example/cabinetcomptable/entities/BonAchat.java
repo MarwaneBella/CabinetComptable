@@ -26,6 +26,9 @@ public class BonAchat {
     @OneToMany(mappedBy = "bonAchat")
     private Set<BonAReg> listBonAReg = new HashSet<BonAReg>();
 
+    @OneToMany(mappedBy = "bonAchat")
+    private Set<LignBA> listLignBA = new HashSet<LignBA>();
+
     public BonAchat() {
     }
 

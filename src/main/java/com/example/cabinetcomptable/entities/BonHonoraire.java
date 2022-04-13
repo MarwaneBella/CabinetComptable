@@ -31,6 +31,9 @@ public class BonHonoraire {
     @OneToMany(mappedBy = "bonHonoraire")
     private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
 
+    @OneToMany(mappedBy = "bonHonoraire")
+    private Set<LignBH>  listLignBh= new HashSet<LignBH>();
+
 
 
     public BonHonoraire() {
@@ -79,5 +82,29 @@ public class BonHonoraire {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Facture getFacture() {
+        return facture;
+    }
+
+    public void setFacture(Facture facture) {
+        this.facture = facture;
+    }
+
+    public Set<BonHReg> getListBonHReg() {
+        return listBonHReg;
+    }
+
+    public void setListBonHReg(Set<BonHReg> listBonHReg) {
+        this.listBonHReg = listBonHReg;
+    }
+
+    public Set<LignBH> getListLignBh() {
+        return listLignBh;
+    }
+
+    public void setListLignBh(Set<LignBH> listLignBh) {
+        this.listLignBh = listLignBh;
     }
 }
