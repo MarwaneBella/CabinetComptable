@@ -3,12 +3,15 @@ package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "bon_honoraire")
 public class BonHonoraire {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_bh;
 
     @Basic
@@ -20,6 +23,9 @@ public class BonHonoraire {
     @ManyToOne
     @JoinColumn( name = "id_c" )
     private Client client;
+
+    @OneToMany(mappedBy = "bonHonoraire")
+    private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
 
 
     public BonHonoraire() {

@@ -23,7 +23,7 @@ public class Client extends Personne{
     private float cnss_trimestriel;
 
     @OneToMany(mappedBy="client")
-    private Set<BonHonoraire> bonsHonoraire = new HashSet<BonHonoraire>();
+    private Set<BonHonoraire> listBonHonoraire = new HashSet<BonHonoraire>();
 
     public Client(){
     }
@@ -94,5 +94,13 @@ public class Client extends Personne{
 
     public void setCnss_trimestriel(float cnss_trimestriel) {
         this.cnss_trimestriel = cnss_trimestriel;
+    }
+
+    public Set<BonHonoraire> getListBonHonoraire() {
+        return listBonHonoraire;
+    }
+
+    public void setListBonHonoraire(Set<BonHonoraire> listBonHonoraire) {
+        this.listBonHonoraire = listBonHonoraire;
     }
 }
