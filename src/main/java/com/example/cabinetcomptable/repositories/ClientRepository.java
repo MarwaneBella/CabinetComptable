@@ -1,4 +1,4 @@
-package com.example.cabinetcomptable.repository;
+package com.example.cabinetcomptable.repositories;
 
 import com.example.cabinetcomptable.entities.Client;
 import org.springframework.data.jpa.repository.JpaRepository;

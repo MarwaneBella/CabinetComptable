@@ -14,6 +14,10 @@ public class LignBA {
     @JoinColumn( name = "id_ba" )
     private BonAchat bonAchat;
 
+    @ManyToOne
+    @JoinColumn(name ="reference")
+    private Produit produit;
+
 
     public LignBA() {
     }
@@ -53,5 +57,29 @@ public class LignBA {
 
     public void setMontant(float montant) {
         this.montant = montant;
+    }
+
+    public long getId_lign_a() {
+        return id_lign_a;
+    }
+
+    public void setId_lign_a(long id_lign_a) {
+        this.id_lign_a = id_lign_a;
+    }
+
+    public BonAchat getBonAchat() {
+        return bonAchat;
+    }
+
+    public void setBonAchat(BonAchat bonAchat) {
+        this.bonAchat = bonAchat;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 }

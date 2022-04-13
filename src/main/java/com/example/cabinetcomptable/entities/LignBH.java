@@ -16,6 +16,10 @@ public class LignBH {
     @JoinColumn( name = "id_bh" )
     private BonHonoraire bonHonoraire;
 
+    @ManyToOne
+    @JoinColumn(name ="reference")
+    private Produit produit;
+
     public LignBH() {
     }
 
@@ -62,5 +66,13 @@ public class LignBH {
 
     public void setBonHonoraire(BonHonoraire bonHonoraire) {
         this.bonHonoraire = bonHonoraire;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 }
