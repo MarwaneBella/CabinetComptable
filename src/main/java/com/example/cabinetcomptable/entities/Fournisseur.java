@@ -11,7 +11,8 @@ import java.util.Set;
 public class Fournisseur extends Personne{
 
     @OneToMany(mappedBy="fournisseur")
-    private Set<BonAchat> bonsAchat = new HashSet<BonAchat>();
+    private Set<BonAchat> listBonAchat = new HashSet<BonAchat>();
+
     public Fournisseur() {
       super();
     }
@@ -23,6 +24,13 @@ public class Fournisseur extends Personne{
         super( nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
     }
 
+    public Set<BonAchat> getListBonAchat() {
+        return listBonAchat;
+    }
+
+    public void setListBonAchat(Set<BonAchat> listBonAchat) {
+        this.listBonAchat = listBonAchat;
+    }
 
 
 }
