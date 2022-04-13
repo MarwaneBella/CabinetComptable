@@ -24,8 +24,13 @@ public class BonHonoraire {
     @JoinColumn( name = "id_c" )
     private Client client;
 
+    @ManyToOne
+    @JoinColumn( name = "id_fac" )
+    private Facture facture;
+
     @OneToMany(mappedBy = "bonHonoraire")
     private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
+
 
 
     public BonHonoraire() {

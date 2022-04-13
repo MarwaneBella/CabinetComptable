@@ -71,4 +71,12 @@ public class BonHReg {
     public void setBonHonoraire(BonHonoraire bonHonoraire) {
         this.bonHonoraire = bonHonoraire;
     }
+
+    public ReglementClient getReglementClient() {
+        return reglementClient;
+    }
+
+    public void setReglementClient(ReglementClient reglementClient) {
+        this.reglementClient = reglementClient;
+    }
 }
