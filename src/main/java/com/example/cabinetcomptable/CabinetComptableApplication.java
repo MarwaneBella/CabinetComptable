@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable;
 
+import com.example.cabinetcomptable.controllers.ComptableController;
+import com.example.cabinetcomptable.entities.Comptable;
 import com.example.cabinetcomptable.repositories.FournisseurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +17,7 @@ public class CabinetComptableApplication   {
 
     public static void main(String[] args) {
         SpringApplication.run(CabinetComptableApplication.class, args);
+
     }
 
 }

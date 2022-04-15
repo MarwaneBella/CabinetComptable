@@ -15,8 +15,14 @@ public class ComptableServiceImpl implements ComptableService {
     }
 
     @Override
-    public boolean check(Comptable c){
-        return comptableRepository.equals(c);
+    public boolean check(Comptable dataComptable){
+        Comptable comptable = comptableRepository.findByUsernameAndPassword(dataComptable.getUsername(),dataComptable.getPassword());
+
+        if(comptable != null){
+            return true;
+        }
+
+        return false;
     }
 
 }

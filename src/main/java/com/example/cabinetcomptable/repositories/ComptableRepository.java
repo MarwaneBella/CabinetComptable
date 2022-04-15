@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ComptableRepository extends JpaRepository<Comptable,String> {
+
+    Comptable findByUsernameAndPassword(String username, String password);
 }

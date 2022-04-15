@@ -4,5 +4,5 @@ import com.example.cabinetcomptable.entities.Comptable;
 
 public interface ComptableService {
 
-    boolean check(Comptable c);
+    boolean check(Comptable dataComptable);
 }
