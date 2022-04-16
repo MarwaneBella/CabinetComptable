@@ -17,8 +17,6 @@ public class ComptableController {
 
     @Autowired
     private ComptableService comptableService;
-    @Autowired
-    private ComptableRepository comptableRepository;
 
 
     @PostMapping("/login")
