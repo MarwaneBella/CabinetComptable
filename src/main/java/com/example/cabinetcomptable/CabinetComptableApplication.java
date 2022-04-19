@@ -27,7 +27,10 @@ public class CabinetComptableApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Client client =new Client();
-        client.setNom("ESSADIK");
+
+        client.setEmail("Email");
+        client.setTele_fix("0566889900");
+        client.setNom("BELLA");
         client.setAdresse("HWARA");
         clientRepository.save(client);
     }
