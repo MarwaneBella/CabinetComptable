@@ -12,6 +12,10 @@ public class ClientServiceImpl implements ClientService {
 
     private ClientRepository clientRepository;
 
+    public ClientServiceImpl(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
     @Override
     public List<Client> getAllClient() {
         return clientRepository.findAll();

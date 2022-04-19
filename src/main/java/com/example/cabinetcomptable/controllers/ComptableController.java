@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/comptable")
+@RequestMapping("/api/user")
 @RestController
 public class ComptableController {
 
