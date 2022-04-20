@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.services;
 
-import entities.Client;
+import com.example.cabinetcomptable.entities.Client;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 

@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable;
 
-import entities.Client;
+import com.example.cabinetcomptable.entities.Client;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

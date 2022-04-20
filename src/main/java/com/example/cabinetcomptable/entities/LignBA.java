@@ -1,4 +1,4 @@
-package entities;
+package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
 
@@ -35,13 +35,7 @@ public class LignBA {
         this.bonAchat = bonAchat;
     }
 
-    public long getid_lign_a() {
-        return id_lign_a;
-    }
 
-    public void setid_lign_a(long id_lign_a) {
-        this.id_lign_a = id_lign_a;
-    }
 
     public int getQuantite() {
         return quantite;

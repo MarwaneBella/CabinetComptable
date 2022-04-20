@@ -1,7 +1,7 @@
 package com.example.cabinetcomptable.controllers;
 
 
-import entities.Client;
+import com.example.cabinetcomptable.entities.Client;
 
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;
@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RestController
+
 @RequestMapping("/api/client")
+@RestController
 public class ClientController {
 
     @Autowired

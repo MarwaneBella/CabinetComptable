@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.controllers;
 
-import entities.User;
+import com.example.cabinetcomptable.entities.User;
 import com.example.cabinetcomptable.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

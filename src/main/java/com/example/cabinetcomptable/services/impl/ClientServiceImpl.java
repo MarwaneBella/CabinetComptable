@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.services.impl;
 
-import entities.Client;
+import com.example.cabinetcomptable.entities.Client;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;

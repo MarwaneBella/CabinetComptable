@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.repositories;
 
-import entities.ReglementClient;
+import com.example.cabinetcomptable.entities.ReglementClient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

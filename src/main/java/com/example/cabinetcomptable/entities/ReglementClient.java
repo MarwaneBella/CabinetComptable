@@ -1,4 +1,4 @@
-package entities;
+package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;

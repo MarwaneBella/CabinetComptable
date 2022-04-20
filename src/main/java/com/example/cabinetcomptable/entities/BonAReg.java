@@ -1,4 +1,4 @@
-package entities;
+package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -39,13 +39,6 @@ public class BonAReg {
         this.bonAreg = bonAreg;
     }
 
-    public long getid_ba_reg() {
-        return id_ba_reg;
-    }
-
-    public void setid_ba_reg(long id_ba_reg) {
-        this.id_ba_reg = id_ba_reg;
-    }
 
     public float getMontant() {
         return montant;
