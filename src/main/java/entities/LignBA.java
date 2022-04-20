@@ -1,4 +1,4 @@
-package com.example.cabinetcomptable.entities;
+package entities;
 
 import javax.persistence.*;
 

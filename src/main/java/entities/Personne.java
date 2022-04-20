@@ -1,4 +1,4 @@
-package com.example.cabinetcomptable.entities;
+package entities;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -50,7 +50,12 @@ public class Personne {
         this.site_web = site_web;
         this.data_de_transaction = data_de_transaction;
     }
-
+    // test :
+    public Personne(String nom, String email) {
+        this.nom =nom;
+        this.email=email;
+    }
+    // test end ;
 
     public long getId() {
         return id;

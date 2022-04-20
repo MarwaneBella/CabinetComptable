@@ -1,4 +1,4 @@
-package com.example.cabinetcomptable.entities;
+package entities;
 
 
 
@@ -47,6 +47,12 @@ public class Client extends Personne{
         this.tva_trimestriel = tva_trimestriel;
         this.cnss_trimestriel = cnss_trimestriel;
     }
+    //test :
+    public Client(String nom ,String email){
+        super(nom,email);
+    }
+
+    // end test ;
 
     public float getBilan() {
         return bilan;

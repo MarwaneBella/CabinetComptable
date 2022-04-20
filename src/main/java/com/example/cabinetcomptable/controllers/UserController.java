@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.controllers;
 
-import com.example.cabinetcomptable.entities.User;
+import entities.User;
 import com.example.cabinetcomptable.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginComptable(@RequestBody User user){
+    public ResponseEntity<?> login(@RequestBody User user){
 
         if(userService.check(user)){
             return ResponseEntity.ok(user);

@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.repositories;
 
-import com.example.cabinetcomptable.entities.BonHonoraire;
+import entities.BonHonoraire;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

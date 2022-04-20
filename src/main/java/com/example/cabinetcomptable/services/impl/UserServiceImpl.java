@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.services.impl;
 
-import com.example.cabinetcomptable.entities.User;
+import entities.User;
 import com.example.cabinetcomptable.repositories.UserRepository;
 import com.example.cabinetcomptable.services.UserService;
 import org.springframework.stereotype.Service;

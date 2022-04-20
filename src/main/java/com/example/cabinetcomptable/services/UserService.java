@@ -1,6 +1,6 @@
 package com.example.cabinetcomptable.services;
 
-import com.example.cabinetcomptable.entities.User;
+import entities.User;
 
 public interface UserService {
 
