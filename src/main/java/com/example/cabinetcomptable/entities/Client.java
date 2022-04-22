@@ -28,8 +28,8 @@ public class Client extends Personne{
     public Client(){
     }
 
-    public Client(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
-        super(id, nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
+    public Client(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
+        super(id, nom, image, email, tele_portable, tele_fix, ville,adresse, code_postale, site_web, data_de_transaction);
         this.bilan = bilan;
         this.pv_bilan = pv_bilan;
         this.tva_mensuel = tva_mensuel;
@@ -38,8 +38,8 @@ public class Client extends Personne{
         this.cnss_trimestriel = cnss_trimestriel;
     }
 
-    public Client(String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
-        super(nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
+    public Client(String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
+        super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
         this.bilan = bilan;
         this.pv_bilan = pv_bilan;
         this.tva_mensuel = tva_mensuel;

@@ -17,11 +17,11 @@ public class Fournisseur extends Personne{
       super();
     }
 
-    public Fournisseur(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
-        super(id, nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
+    public Fournisseur(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+        super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
     }
-    public Fournisseur( String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
-        super( nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
+    public Fournisseur( String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+        super( nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
     }
    // test :
 

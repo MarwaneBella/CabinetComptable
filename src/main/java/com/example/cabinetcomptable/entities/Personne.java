@@ -17,6 +17,7 @@ public class Personne {
     private String email;
     private String tele_portable;
     private String tele_fix;
+    private String ville;
     private String adresse;
     private String code_postale;
     private String site_web;
@@ -27,24 +28,26 @@ public class Personne {
     public Personne() {
     }
 
-    public Personne(long id, String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+    public Personne(long id, String nom, byte image, String email, String tele_portable, String tele_fix,String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         this.id = id;
         this.nom = nom;
         this.image = image;
         this.email = email;
         this.tele_portable = tele_portable;
         this.tele_fix = tele_fix;
+        this.ville = ville;
         this.adresse = adresse;
         this.code_postale = code_postale;
         this.site_web = site_web;
         this.data_de_transaction = data_de_transaction;
     }
-    public Personne( String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+    public Personne( String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         this.nom = nom;
         this.image = image;
         this.email = email;
         this.tele_portable = tele_portable;
         this.tele_fix = tele_fix;
+        this.ville = ville;
         this.adresse = adresse;
         this.code_postale = code_postale;
         this.site_web = site_web;
@@ -105,6 +108,14 @@ public class Personne {
         this.tele_fix = tele_fix;
     }
 
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
     public String getAdresse() {
         return adresse;
     }
@@ -136,4 +147,5 @@ public class Personne {
     public void setData_de_transaction(Date data_de_transaction) {
         this.data_de_transaction = data_de_transaction;
     }
+
 }
