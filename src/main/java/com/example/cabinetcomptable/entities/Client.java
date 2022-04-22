@@ -102,11 +102,5 @@ public class Client extends Personne{
         this.cnss_trimestriel = cnss_trimestriel;
     }
 
-    public Set<BonHonoraire> getListBonHonoraire() {
-        return listBonHonoraire;
-    }
 
-    public void setListBonHonoraire(Set<BonHonoraire> listBonHonoraire) {
-        this.listBonHonoraire = listBonHonoraire;
-    }
 }

@@ -23,7 +23,14 @@ public class Fournisseur extends Personne{
     public Fournisseur( String nom, byte image, String email, String tele_portable, String tele_fix, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         super( nom, image, email, tele_portable, tele_fix, adresse, code_postale, site_web, data_de_transaction);
     }
+   // test :
 
+
+    public Fournisseur(String nom, String email) {
+        super(nom, email);
+    }
+
+    // end test ;
     public Set<BonAchat> getListBonAchat() {
         return listBonAchat;
     }

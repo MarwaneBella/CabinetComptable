@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.Client;
+import com.example.cabinetcomptable.entities.Fournisseur;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;
@@ -38,10 +39,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ResponseEntity<Client> updateClient(Client clientDtails, long id) {
-        Client client =clientRepository.findById(id)
-                .orElseThrow(()-> new ResourceNotFoundException("Employee not exit with id :"+id));
-        client = new Client(clientDtails.getNom(),clientDtails.getEmail());
-        Client updateClient=clientRepository.save(client);
+        Client client =clientRepository.findById(id).orElseThrow();
+        client.setNom(clientDtails.getNom());
+        client.setEmail(clientDtails.getEmail());
+        Client updateClient =clientRepository.save(client);
         return ResponseEntity.ok(updateClient);
     }
 

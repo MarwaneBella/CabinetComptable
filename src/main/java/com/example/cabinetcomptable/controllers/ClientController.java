@@ -13,46 +13,38 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
-@RequestMapping("/api/client")
+@RequestMapping("/api")
 @RestController
 public class ClientController {
 
     @Autowired
     private ClientService clientService;
-    //test :
-    @Autowired
-    private ClientRepository clientRepository;
-    // end test ;
-
-
 
     // get client :
-    @GetMapping("/oneClient/{id}")
+    @GetMapping("/clients/{id}")
     public ResponseEntity<Client> getClient(@PathVariable long id){
         return  clientService.getClient(id);
     }
 
     // get clients :
-    @GetMapping("/listClient")
+    @GetMapping("/clients")
     public List<Client> getAllClients(){
-        System.out.println("hello");
         return clientService.getAllClients();
     }
+
     // add Client :
-    @RequestMapping(value = "/addClient", method = RequestMethod.POST)
+    @PostMapping( "/clients")
     public Client addClient(@RequestBody Client client){
-        // return clientService.addClient(client);
-        System.out.println("hello");
-        return clientRepository.save(client);
+         return clientService.addClient(client);
     }
 
     // update client :
-    @PutMapping("/updateClient/{id}")
-    public ResponseEntity<Client> updateClient(@RequestBody Client clientDtails , @PathVariable long id){
-        return  clientService.updateClient(clientDtails,id);
+    @PutMapping("/clients/{id}")
+    public void updateClient(@RequestBody Client clientDtails , @PathVariable long id){
+        clientService.updateClient(clientDtails,id);
     }
     // delete client :
-    @DeleteMapping("deleteClient/{id}")
+    @DeleteMapping("clients/{id}")
     public void deleteClient(@PathVariable long id){
         clientService.deleteClient(id);
     }
