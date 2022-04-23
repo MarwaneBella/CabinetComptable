@@ -13,7 +13,7 @@ public class Personne {
     private long id ;
 
     private String nom;
-    private byte image;
+    private String image;
     private String email;
     private String tele_portable;
     private String tele_fix;
@@ -28,7 +28,7 @@ public class Personne {
     public Personne() {
     }
 
-    public Personne(long id, String nom, byte image, String email, String tele_portable, String tele_fix,String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+    public Personne(long id, String nom, String image, String email, String tele_portable, String tele_fix,String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         this.id = id;
         this.nom = nom;
         this.image = image;
@@ -41,7 +41,7 @@ public class Personne {
         this.site_web = site_web;
         this.data_de_transaction = data_de_transaction;
     }
-    public Personne( String nom, byte image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+    public Personne( String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
         this.nom = nom;
         this.image = image;
         this.email = email;
@@ -76,11 +76,11 @@ public class Personne {
         this.nom = nom;
     }
 
-    public byte getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
