@@ -1,8 +1,6 @@
 package com.example.cabinetcomptable.services.impl;
 
-import com.example.cabinetcomptable.entities.Client;
 import com.example.cabinetcomptable.entities.Fournisseur;
-import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.FournisseurRepository;
 import com.example.cabinetcomptable.services.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;

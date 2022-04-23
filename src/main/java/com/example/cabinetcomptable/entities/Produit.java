@@ -187,27 +187,6 @@ public class Produit {
         this.quantitie_disponible = quantitie_disponible;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
 
-    public Set<LignBA> getListLignBA() {
-        return ListLignBA;
-    }
-
-    public void setListLignBA(Set<LignBA> listLignBA) {
-        ListLignBA = listLignBA;
-    }
-
-    public Set<LignBH> getListLignBH() {
-        return ListLignBH;
-    }
-
-    public void setListLignBH(Set<LignBH> listLignBH) {
-        ListLignBH = listLignBH;
-    }
 }
