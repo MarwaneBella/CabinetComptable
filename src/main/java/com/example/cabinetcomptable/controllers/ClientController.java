@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import java.io.File;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -55,8 +56,8 @@ public class ClientController {
 
     // get client :
     @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable long id){
-        return  clientService.getClient(id);
+    public ResponseEntity<Map> getClient(@PathVariable long id) throws Exception {
+        return clientService.getClient(id);
     }
 
     // get clients :
@@ -67,16 +68,17 @@ public class ClientController {
 
     // add Client :
     @PostMapping( "/clients")
-    public ResponseEntity<Client> addClient(@RequestParam("file") MultipartFile file,
-                                            @RequestParam("client") String clientData) throws Exception {
+    public ResponseEntity<Client> addClient(@RequestParam("file") MultipartFile file, @RequestParam("client") String clientData) throws Exception {
+
         return  clientService.addClient(file,clientData);
     }
 
     // update client :
     @PutMapping("/clients/{id}")
-    public void updateClient(@RequestBody Client clientDtails , @PathVariable long id){
-        clientService.updateClient(clientDtails,id);
+    public void updateClient(@PathVariable long id, @RequestParam("file") MultipartFile file, @RequestParam("client") String client) throws Exception{
+        clientService.updateClient(id,file,client);
     }
+
     // delete client :
     @DeleteMapping("clients/{id}")
     public void deleteClient(@PathVariable long id){

@@ -6,6 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,10 +18,9 @@ public class Client extends Personne{
 
     private float bilan;
     private float pv_bilan;
-    private float tva_mensuel;
-    private float cnss_mensuel;
-    private float tva_trimestriel;
-    private float cnss_trimestriel;
+    private String regime;
+    private float r_tva;
+    private float r_cnss;
 
     @OneToMany(mappedBy="client")
     private Set<BonHonoraire> listBonHonoraire = new HashSet<BonHonoraire>();
@@ -28,31 +28,23 @@ public class Client extends Personne{
     public Client(){
     }
 
-    public Client(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
-        super(id, nom, image, email, tele_portable, tele_fix, ville,adresse, code_postale, site_web, data_de_transaction);
+    public Client(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, float bilan, float pv_bilan, String regime, float r_tva, float r_cnss) {
+        super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
         this.bilan = bilan;
         this.pv_bilan = pv_bilan;
-        this.tva_mensuel = tva_mensuel;
-        this.cnss_mensuel = cnss_mensuel;
-        this.tva_trimestriel = tva_trimestriel;
-        this.cnss_trimestriel = cnss_trimestriel;
+        this.regime = regime;
+        this.r_tva = r_tva;
+        this.r_cnss = r_cnss;
     }
 
-    public Client(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction, float bilan, float pv_bilan, float tva_mensuel, float cnss_mensuel, float tva_trimestriel, float cnss_trimestriel) {
-        super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
+    public Client(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, float bilan, float pv_bilan, String regime, float r_tva, float r_cnss) {
+        super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
         this.bilan = bilan;
         this.pv_bilan = pv_bilan;
-        this.tva_mensuel = tva_mensuel;
-        this.cnss_mensuel = cnss_mensuel;
-        this.tva_trimestriel = tva_trimestriel;
-        this.cnss_trimestriel = cnss_trimestriel;
+        this.regime = regime;
+        this.r_tva = r_tva;
+        this.r_cnss = r_cnss;
     }
-    //test :
-    public Client(String nom ,String email){
-        super(nom,email);
-    }
-
-    // end test ;
 
     public float getBilan() {
         return bilan;
@@ -70,37 +62,27 @@ public class Client extends Personne{
         this.pv_bilan = pv_bilan;
     }
 
-    public float getTva_mensuel() {
-        return tva_mensuel;
+    public String getRegime() {
+        return regime;
     }
 
-    public void setTva_mensuel(float tva_mensuel) {
-        this.tva_mensuel = tva_mensuel;
+    public void setRegime(String regime) {
+        this.regime = regime;
     }
 
-    public float getCnss_mensuel() {
-        return cnss_mensuel;
+    public float getR_tva() {
+        return r_tva;
     }
 
-    public void setCnss_mensuel(float cnss_mensuel) {
-        this.cnss_mensuel = cnss_mensuel;
+    public void setR_tva(float r_tva) {
+        this.r_tva = r_tva;
     }
 
-    public float getTva_trimestriel() {
-        return tva_trimestriel;
+    public float getR_cnss() {
+        return r_cnss;
     }
 
-    public void setTva_trimestriel(float tva_trimestriel) {
-        this.tva_trimestriel = tva_trimestriel;
+    public void setR_cnss(float r_cnss) {
+        this.r_cnss = r_cnss;
     }
-
-    public float getCnss_trimestriel() {
-        return cnss_trimestriel;
-    }
-
-    public void setCnss_trimestriel(float cnss_trimestriel) {
-        this.cnss_trimestriel = cnss_trimestriel;
-    }
-
-
 }
