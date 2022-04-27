@@ -5,7 +5,9 @@ import com.example.cabinetcomptable.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -17,10 +19,12 @@ public class ProduitController {
     @Autowired
     private ProduitService produitService;
 
+    @Autowired
+    ServletContext context;
     // add produit :
     @PostMapping("/produits")
-    public Produit addProduit(@RequestBody Produit produit){
-        return produitService.addProduit(produit);
+    public ResponseEntity<Produit> addProduit(@RequestParam("file") MultipartFile file, @RequestParam("produit") String produitData) throws  Exception{
+        return produitService.addProduit(file,produitData);
     }
 
     // get Produit :

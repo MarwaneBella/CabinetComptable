@@ -10,12 +10,13 @@ public class Produit {
     
     @Id
     private String reference;
-    private byte image;
+    private String image;
     private String designation;
     private String description;
+    private String type;
     private String marque;
     private float longueur;
-    private float largueur;
+    private float largeur;
     private float hauteur;
     private float poids;
     private float surface;
@@ -39,14 +40,15 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(String reference, byte image, String designation, String description, String marque, float longueur, float largueur, float hauteur, float poids, float surface, float volume, float prix_achat, float prix_vente, float prix_revient, float tva, int quantitie_disponible, Categorie categorie) {
+    public Produit(String reference, String image, String designation, String description,String type ,String marque, float longueur, float largeur, float hauteur, float poids, float surface, float volume, float prix_achat, float prix_vente, float prix_revient, float tva, int quantitie_disponible, Categorie categorie) {
         this.reference = reference;
         this.image = image;
         this.designation = designation;
         this.description = description;
+        this.type =type;
         this.marque = marque;
         this.longueur = longueur;
-        this.largueur = largueur;
+        this.largeur = largeur;
         this.hauteur = hauteur;
         this.poids = poids;
         this.surface = surface;
@@ -67,11 +69,11 @@ public class Produit {
         this.reference = reference;
     }
 
-    public byte getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -107,12 +109,12 @@ public class Produit {
         this.longueur = longueur;
     }
 
-    public float getLargueur() {
-        return largueur;
+    public float getlargeur() {
+        return largeur;
     }
 
-    public void setLargueur(float largueur) {
-        this.largueur = largueur;
+    public void setlargeur(float largeur) {
+        this.largeur = largeur;
     }
 
     public float getHauteur() {
@@ -187,6 +189,11 @@ public class Produit {
         this.quantitie_disponible = quantitie_disponible;
     }
 
+    public String getType() {
+        return type;
+    }
 
-
+    public void setType(String type) {
+        this.type = type;
+    }
 }
