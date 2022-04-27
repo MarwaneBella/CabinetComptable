@@ -21,14 +21,21 @@ public class Personne {
     private String adresse;
     private String code_postale;
     private String site_web;
+    private String ifi ;
+    private String ice;
+    private String tp;
+    private String cnss;
+    private String rc;
     @Basic
     @Temporal(TemporalType.DATE)
     private Date data_de_transaction;
 
+
     public Personne() {
     }
 
-    public Personne(long id, String nom, String image, String email, String tele_portable, String tele_fix,String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+
+    public Personne(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
         this.id = id;
         this.nom = nom;
         this.image = image;
@@ -39,9 +46,15 @@ public class Personne {
         this.adresse = adresse;
         this.code_postale = code_postale;
         this.site_web = site_web;
+        this.ifi = ifi;
+        this.ice = ice;
+        this.tp = tp;
+        this.cnss = cnss;
+        this.rc = rc;
         this.data_de_transaction = data_de_transaction;
     }
-    public Personne( String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
+
+    public Personne(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
         this.nom = nom;
         this.image = image;
         this.email = email;
@@ -51,14 +64,13 @@ public class Personne {
         this.adresse = adresse;
         this.code_postale = code_postale;
         this.site_web = site_web;
+        this.ifi = ifi;
+        this.ice = ice;
+        this.tp = tp;
+        this.cnss = cnss;
+        this.rc = rc;
         this.data_de_transaction = data_de_transaction;
     }
-    // test :
-    public Personne(String nom, String email) {
-        this.nom =nom;
-        this.email=email;
-    }
-    // test end ;
 
     public long getId() {
         return id;
@@ -140,6 +152,46 @@ public class Personne {
         this.site_web = site_web;
     }
 
+    public String getIfi() {
+        return ifi;
+    }
+
+    public void setIfi(String ifi) {
+        this.ifi = ifi;
+    }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        this.ice = ice;
+    }
+
+    public String getTp() {
+        return tp;
+    }
+
+    public void setTp(String tp) {
+        this.tp = tp;
+    }
+
+    public String getCnss() {
+        return cnss;
+    }
+
+    public void setCnss(String cnss) {
+        this.cnss = cnss;
+    }
+
+    public String getRc() {
+        return rc;
+    }
+
+    public void setRc(String rc) {
+        this.rc = rc;
+    }
+
     public Date getData_de_transaction() {
         return data_de_transaction;
     }
@@ -147,5 +199,6 @@ public class Personne {
     public void setData_de_transaction(Date data_de_transaction) {
         this.data_de_transaction = data_de_transaction;
     }
+
 
 }

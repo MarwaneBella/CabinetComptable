@@ -17,20 +17,14 @@ public class Fournisseur extends Personne{
       super();
     }
 
-    public Fournisseur(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
-        super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
-    }
-    public Fournisseur( String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, Date data_de_transaction) {
-        super( nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, data_de_transaction);
-    }
-   // test :
-
-
-    public Fournisseur(String nom, String email) {
-        super(nom, email);
+    public Fournisseur(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+        super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
     }
 
-    // end test ;
+    public Fournisseur(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+        super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
+    }
+
     public Set<BonAchat> getListBonAchat() {
         return listBonAchat;
     }
