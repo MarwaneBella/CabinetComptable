@@ -32,8 +32,6 @@ public class ProduitServiceImpl implements ProduitService {
             new File (path).mkdir();
             System.out.println("mk dir.............");
         }
-
-
         String filename = file.getOriginalFilename();
         String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
         File serverFile = new File (path+File.separator+newFileName);
