@@ -3,8 +3,10 @@ package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.entities.Client;
 
+import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;
+import com.example.cabinetcomptable.services.FileStorageService;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,9 +39,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
-
-
-
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -48,15 +47,14 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @Autowired
-    private ClientRepository clientRepository;
+
 
     @Autowired
     ServletContext context;
 
     // get client :
     @GetMapping("/clients/{id}")
-    public ResponseEntity<Map> getClient(@PathVariable long id) throws Exception {
+    public ResponseEntity<Client> getClient(@PathVariable long id) {
         return clientService.getClient(id);
     }
 
@@ -68,15 +66,14 @@ public class ClientController {
 
     // add Client :
     @PostMapping( "/clients")
-    public ResponseEntity<Client> addClient(@RequestParam("file") MultipartFile file, @RequestParam("client") String clientData) throws Exception {
-
-        return  clientService.addClient(file,clientData);
+    public ResponseEntity<Client> addClient(@RequestBody Client client) {
+        return  clientService.addClient(client);
     }
 
     // update client :
     @PutMapping("/clients/{id}")
-    public void updateClient(@PathVariable long id, @RequestParam("file") MultipartFile file, @RequestParam("client") String client) throws Exception{
-        clientService.updateClient(id,file,client);
+    public void updateClient(@PathVariable long id, @RequestBody Client client) throws Exception{
+        clientService.updateClient(id,client);
     }
 
     // delete client :
@@ -86,7 +83,14 @@ public class ClientController {
     }
 
 
+    @GetMapping("/image")
+    public ResponseEntity<String> getImage(){
+        return ResponseEntity.ok(clientService.getFile());
+    }
 
-
+    @PutMapping("/image")
+    public void addFile(@RequestParam("file") MultipartFile file) {
+        clientService.addFile(file);
+    }
 
 }

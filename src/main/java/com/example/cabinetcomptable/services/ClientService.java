@@ -14,10 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface ClientService {
-    ResponseEntity<Client> addClient(MultipartFile file,String clientData) throws JsonParseException, JsonMappingException, Exception;
-    ResponseEntity<Map> getClient(long id) throws ResourceNotFoundException,Exception ;
+    ResponseEntity<Client> addClient(Client client) ;
+    ResponseEntity<Client> getClient(long id);
     List<Client> getAllClients();
-    ResponseEntity<Client> updateClient(long id, MultipartFile file,String client) throws JsonParseException, JsonMappingException, Exception;
+    ResponseEntity<Client> updateClient(long id, Client client);
+    String getFile();
+    void addFile(MultipartFile file);
     void deleteClient(long id);
 
 }
