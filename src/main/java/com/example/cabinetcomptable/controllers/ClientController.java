@@ -47,8 +47,6 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-
-
     @Autowired
     ServletContext context;
 
@@ -82,7 +80,6 @@ public class ClientController {
         clientService.deleteClient(id);
     }
 
-
     @GetMapping("/image")
     public ResponseEntity<String> getImage(){
         return ResponseEntity.ok(clientService.getFile());
@@ -92,5 +89,4 @@ public class ClientController {
     public void addFile(@RequestParam("file") MultipartFile file) {
         clientService.addFile(file);
     }
-
 }

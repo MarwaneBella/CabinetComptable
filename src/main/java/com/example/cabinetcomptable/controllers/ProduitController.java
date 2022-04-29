@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import javax.servlet.ServletContext;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
-
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ProduitController {
 
@@ -23,8 +23,8 @@ public class ProduitController {
     ServletContext context;
     // add produit :
     @PostMapping("/produits")
-    public ResponseEntity<Produit> addProduit(@RequestParam("file") MultipartFile file, @RequestParam("produit") String produitData) throws  Exception{
-        return produitService.addProduit(file,produitData);
+    public ResponseEntity<Produit> addProduit(@RequestBody Produit produit) {
+        return produitService.addProduit(produit);
     }
 
     // get Produit :
@@ -50,8 +50,14 @@ public class ProduitController {
     public  void deleteProduit(@PathVariable String reference){
         produitService.deleteProduit(reference);
     }
+    @GetMapping("/imageproduit")
+    public ResponseEntity<String> getImage(){
+        return ResponseEntity.ok(produitService.getFile());
+    }
 
-
-
+    @PutMapping("/imageproduit")
+    public void addFile(@RequestParam("file") MultipartFile file) {
+        produitService.addFile(file);
+    }
 
 }

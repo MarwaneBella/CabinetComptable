@@ -1,7 +1,10 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,7 +17,7 @@ public class Categorie {
     private String nom_cat;
 
     @OneToMany(mappedBy = "categorie")
-    private Set<Produit> listProduit = new HashSet<>();
+    private List<Produit> listProduit ;
 
 
     public Categorie() {
@@ -45,11 +48,12 @@ public class Categorie {
         this.nom_cat = nom_cat;
     }
 
-    public Set<Produit> getListProduit() {
+
+    public List<Produit> getListProduit() {
         return listProduit;
     }
 
-    public void setListProduit(Set<Produit> listProduit) {
+    public void setListProduit(List<Produit> listProduit) {
         this.listProduit = listProduit;
     }
 }

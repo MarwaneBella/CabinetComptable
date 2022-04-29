@@ -11,12 +11,13 @@ import java.util.List;
 
 public interface ProduitService {
 
-    ResponseEntity<Produit> addProduit(@RequestParam("file") MultipartFile file, @RequestParam("produit") String produitData) throws JsonParseException, JsonMappingException, Exception;
-
+    ResponseEntity<Produit> addProduit(Produit produit);
     ResponseEntity<Produit> getProduit(String reference);
     List<Produit> getAllProduits();
     ResponseEntity<Produit> updateProduit(Produit produitDtails , String reference);
     void deleteProduit(String reference);
+    String getFile();
+    void addFile(MultipartFile file);
 
 
 }

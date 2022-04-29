@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +31,7 @@ public class Produit {
     
     @ManyToOne
     @JoinColumn(name = "id_cat")
-    private Categorie categorie;
+    private Categorie categorie ;
     
     @OneToMany(mappedBy = "produit")
     private Set<LignBA> ListLignBA = new HashSet<LignBA>();
@@ -195,5 +197,15 @@ public class Produit {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+    @JsonIgnore
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 }
