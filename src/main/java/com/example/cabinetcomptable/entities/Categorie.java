@@ -48,7 +48,7 @@ public class Categorie {
         this.nom_cat = nom_cat;
     }
 
-
+    @JsonIgnore
     public List<Produit> getListProduit() {
         return listProduit;
     }
@@ -56,4 +56,6 @@ public class Categorie {
     public void setListProduit(List<Produit> listProduit) {
         this.listProduit = listProduit;
     }
+
+
 }
