@@ -3,14 +3,17 @@ package com.example.cabinetcomptable.services;
 import com.example.cabinetcomptable.entities.Fournisseur;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface FournisseurService {
 
-    Fournisseur addFournisseur(@RequestBody Fournisseur fournisseur);
+    ResponseEntity<Fournisseur> addFournisseur(Fournisseur fournisseur);
     ResponseEntity<Fournisseur> getFournisseur(long id);
     List<Fournisseur> getAllFournisseurs();
-    ResponseEntity<Fournisseur> updateCFournisseur(Fournisseur fournisseur ,long id);
+    ResponseEntity<Fournisseur> updateFournisseur(Fournisseur fournisseur ,long id);
+    String getFile();
+    void addFile(MultipartFile file);
     void deleteFournisseur(long id);
 }

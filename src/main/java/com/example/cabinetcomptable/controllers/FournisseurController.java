@@ -6,47 +6,60 @@ import com.example.cabinetcomptable.services.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
-@RequestMapping("/api/fournisseur")
+@RequestMapping("/api")
 @RestController
 public class FournisseurController {
 
     @Autowired
     FournisseurService fournisseurService;
 
+    @Autowired
+    ServletContext context;
+
     // get fournisseur :
-    @GetMapping("/Fournisseur/{id}")
+    @GetMapping("/fournisseurs/{id}")
     public ResponseEntity<Fournisseur> getFournisseurs(@PathVariable long id){
         return fournisseurService.getFournisseur(id);
     }
 
     // get All fournisseur :
-    @GetMapping("listFournisseur")
+    @GetMapping("fournisseurs")
     public List<Fournisseur> getAllFournisseur(){
         return fournisseurService.getAllFournisseurs();
     }
 
     // add fournisseur :
-    @PostMapping("/addFournisseur")
-    public Fournisseur addFournisseur(@RequestBody Fournisseur fournisseur){
+    @PostMapping("/fournisseurs")
+    public ResponseEntity<Fournisseur> addFournisseur(@RequestBody Fournisseur fournisseur){
         return fournisseurService.addFournisseur(fournisseur);
     }
 
     // update fournisseur :
-    @PutMapping("/updateFournisseur/{id}")
+    @PutMapping("/fournisseurs/{id}")
     public ResponseEntity<Fournisseur> updateFournisseur(@RequestBody Fournisseur fournisseur ,@PathVariable long id){
-        return fournisseurService.updateCFournisseur(fournisseur,id);
+        return fournisseurService.updateFournisseur(fournisseur,id);
     }
 
     // delete fournisseur :
-    @DeleteMapping("/deleteFournisseur/{id}")
+    @DeleteMapping("/fournisseurs/{id}")
     public void  deleteFournisseur(@PathVariable long id){
         fournisseurService.deleteFournisseur(id);
     }
 
+    @GetMapping("/imagefournisseur")
+    public ResponseEntity<String> getImage(){
+        return ResponseEntity.ok(fournisseurService.getFile());
+    }
 
+    @PutMapping("/imagefournisseur")
+    public void addFile(@RequestParam("file") MultipartFile file) {
+        fournisseurService.addFile(file);
+    }
 }
