@@ -80,12 +80,12 @@ public class ClientController {
         clientService.deleteClient(id);
     }
 
-    @GetMapping("/image")
+    @GetMapping("/imageclient")
     public ResponseEntity<String> getImage(){
         return ResponseEntity.ok(clientService.getFile());
     }
 
-    @PutMapping("/image")
+    @PutMapping("/imageclient")
     public void addFile(@RequestParam("file") MultipartFile file) {
         clientService.addFile(file);
     }
