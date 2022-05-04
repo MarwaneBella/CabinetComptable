@@ -18,8 +18,8 @@ public class CategorieController {
 
     // add categorie :
     @PostMapping("categories")
-    public Categorie addCategorie(Categorie categorie){
-        return categorieService.addCategorie(categorie);
+    public ResponseEntity<Categorie> addCategorie(@RequestBody Categorie categorie){
+        return ResponseEntity.ok(categorieService.addCategorie(categorie));
     }
     // get categorie :
     @GetMapping("categories/{id}")
@@ -33,8 +33,8 @@ public class CategorieController {
     }
     // update categorie :
     @PutMapping("categories/{id}")
-    public Categorie updateCategorie(@RequestBody Categorie categorie ,@PathVariable long id){
-        return categorieService.updateCategorie(categorie,id);
+    public ResponseEntity<Categorie> updateCategorie(@PathVariable long id, @RequestBody Categorie categorie ){
+        return ResponseEntity.ok(categorieService.updateCategorie(categorie,id));
     }
     // delete categorie :
     @DeleteMapping("categories/{id}")

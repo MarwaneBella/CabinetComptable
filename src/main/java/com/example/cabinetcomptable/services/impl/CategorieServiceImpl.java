@@ -32,6 +32,7 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public Categorie updateCategorie(Categorie categorie, long id) {
+        categorieRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Categorie not found for this id :: " + id));
         categorie.setId_cat(id);
         return categorieRepository.save(categorie);
     }
