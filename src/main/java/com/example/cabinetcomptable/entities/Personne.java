@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "PersonneType")
 public class Personne {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
 
     private String nom;

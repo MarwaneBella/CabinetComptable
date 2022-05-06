@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@DiscriminatorValue("C")
 @Table(name = "clients")
 public class Client extends Personne{
 

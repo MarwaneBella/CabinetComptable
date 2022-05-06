@@ -10,14 +10,15 @@ import java.util.Set;
 public class BonAchat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_ba;
-
+    private String id_bon_fac;
     @Basic
     @Temporal(TemporalType.DATE)
     private Date date_ba;
 
     private float total_general;
+
 
     @ManyToOne
     @JoinColumn( name = "id_f" )
@@ -32,17 +33,24 @@ public class BonAchat {
     public BonAchat() {
     }
 
-    public BonAchat(long id_ba, Date date_ba, float total_general) {
+    public BonAchat(String id_bon_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
+        this.id_bon_fac = id_bon_fac;
+        this.date_ba = date_ba;
+        this.total_general = total_general;
+        this.fournisseur = fournisseur;
+        this.listBonAReg = listBonAReg;
+        this.listLignBA = listLignBA;
+    }
+
+    public BonAchat(long id_ba, String id_bon_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
         this.id_ba = id_ba;
+        this.id_bon_fac = id_bon_fac;
         this.date_ba = date_ba;
         this.total_general = total_general;
+        this.fournisseur = fournisseur;
+        this.listBonAReg = listBonAReg;
+        this.listLignBA = listLignBA;
     }
-
-    public BonAchat(Date date_ba, float total_general) {
-        this.date_ba = date_ba;
-        this.total_general = total_general;
-    }
-
 
     public long getId_ba() {
         return id_ba;
@@ -50,6 +58,14 @@ public class BonAchat {
 
     public void setId_ba(long id_ba) {
         this.id_ba = id_ba;
+    }
+
+    public String getId_bon_fac() {
+        return id_bon_fac;
+    }
+
+    public void setId_bon_fac(String id_bon_fac) {
+        this.id_bon_fac = id_bon_fac;
     }
 
     public Date getDate_ba() {

@@ -6,7 +6,7 @@ import java.util.Date;
 @Table(name="bon_Ach_Reg")
 public class BonAReg {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_ba_reg;
     private float montant;
     @Basic

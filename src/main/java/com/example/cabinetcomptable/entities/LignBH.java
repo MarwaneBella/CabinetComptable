@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class LignBH {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_lign_h;
     private int quantite;
     private float montant;

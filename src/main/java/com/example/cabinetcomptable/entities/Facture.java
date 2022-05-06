@@ -10,7 +10,7 @@ import java.util.Set;
 public class Facture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_fac;
 
     @Basic

@@ -18,31 +18,31 @@ public class BonAchatController {
 
 
     // add bonAchat :
-    @PostMapping("/bon-achat")
+    @PostMapping("/bonAchat")
     public ResponseEntity<BonAchat> addBonAchat(@RequestBody BonAchat bonAchat) {
         return bonAchatService.addBonAchat(bonAchat);
     }
 
     // get BonAchat :
-    @GetMapping("/bon-achat/{id_ba}")
+    @GetMapping("/bonAchat/{id_ba}")
     public ResponseEntity<BonAchat> getBonAchat(@PathVariable Long id_ba){
         return bonAchatService.getBonAchat(id_ba);
     }
 
     // get All BonAchat :
-    @GetMapping("/bon-achat")
+    @GetMapping("/bonAchat")
     public List<BonAchat> getAllBonAchats(){
         return bonAchatService.getAllBonAchats();
     }
 
     // update BonAchat :
-    @PutMapping("/bon-achat/{id_ba}")
+    @PutMapping("/bonAchat/{id_ba}")
     public  ResponseEntity<BonAchat> updateBonAchat(@RequestBody BonAchat bonAchat , @PathVariable Long id_ba){
         return  bonAchatService.updateBonAchat(bonAchat ,id_ba);
     }
 
     // delete BonAchat :
-    @DeleteMapping("/bon-achat/{id_ba}")
+    @DeleteMapping("/bonAchat/{id_ba}")
     public  void deleteBonAchat(@PathVariable Long id_ba){
         bonAchatService.deleteBonAchat(id_ba);
     }

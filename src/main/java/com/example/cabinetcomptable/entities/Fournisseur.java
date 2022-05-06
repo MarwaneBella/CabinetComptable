@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@DiscriminatorValue("F")
 @Table(name = "fournisseurs")
 public class Fournisseur extends Personne{
 

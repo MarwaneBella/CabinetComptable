@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "reglement_fournisseur")
 public class ReglementFournisseur {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_reg_f;
     private float avance ;
     private float reste;

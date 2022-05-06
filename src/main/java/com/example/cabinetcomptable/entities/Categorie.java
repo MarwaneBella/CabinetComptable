@@ -12,7 +12,7 @@ import java.util.Set;
 public class Categorie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_cat;
     private String nom_cat;
 
