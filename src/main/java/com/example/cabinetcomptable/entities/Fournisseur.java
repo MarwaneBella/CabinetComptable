@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -25,10 +27,12 @@ public class Fournisseur extends Personne{
         super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
     }
 
+
     public Set<BonAchat> getListBonAchat() {
         return listBonAchat;
     }
 
+    @JsonIgnore
     public void setListBonAchat(Set<BonAchat> listBonAchat) {
         this.listBonAchat = listBonAchat;
     }
