@@ -1,21 +1,18 @@
 package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.Client;
-
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;
 import com.example.cabinetcomptable.services.FileStorageService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
-
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -93,6 +90,10 @@ public class ClientServiceImpl implements ClientService {
     public String getFile(){
         return fileStorageService.loadFile(pathFolder+"/"+currentClient.getImage());
     }
+
+
+
+
 
 
 }
