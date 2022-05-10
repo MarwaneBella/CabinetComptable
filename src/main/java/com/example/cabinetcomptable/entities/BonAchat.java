@@ -12,7 +12,7 @@ public class BonAchat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_ba;
-    private String id_bon_fac;
+    private String num_fac;
     @Basic
     @Temporal(TemporalType.DATE)
     private Date date_ba;
@@ -33,8 +33,8 @@ public class BonAchat {
     public BonAchat() {
     }
 
-    public BonAchat(String id_bon_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
-        this.id_bon_fac = id_bon_fac;
+    public BonAchat(String num_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
+        this.num_fac = num_fac;
         this.date_ba = date_ba;
         this.total_general = total_general;
         this.fournisseur = fournisseur;
@@ -42,9 +42,9 @@ public class BonAchat {
         this.listLignBA = listLignBA;
     }
 
-    public BonAchat(long id_ba, String id_bon_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
+    public BonAchat(long id_ba, String num_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
         this.id_ba = id_ba;
-        this.id_bon_fac = id_bon_fac;
+        this.num_fac = num_fac;
         this.date_ba = date_ba;
         this.total_general = total_general;
         this.fournisseur = fournisseur;
@@ -60,12 +60,12 @@ public class BonAchat {
         this.id_ba = id_ba;
     }
 
-    public String getId_bon_fac() {
-        return id_bon_fac;
+    public String getNum_fac() {
+        return num_fac;
     }
 
-    public void setId_bon_fac(String id_bon_fac) {
-        this.id_bon_fac = id_bon_fac;
+    public void setNum_fac(String num_fac) {
+        this.num_fac = num_fac;
     }
 
     public Date getDate_ba() {
