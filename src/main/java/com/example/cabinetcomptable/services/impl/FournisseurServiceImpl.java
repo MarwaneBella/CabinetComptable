@@ -5,9 +5,11 @@ import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.FournisseurRepository;
 import com.example.cabinetcomptable.services.FileStorageService;
 import com.example.cabinetcomptable.services.FournisseurService;
+import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -15,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class FournisseurServiceImpl implements FournisseurService {
 
     @Autowired
@@ -26,6 +29,9 @@ public class FournisseurServiceImpl implements FournisseurService {
     @Autowired
     ServletContext context;
 
+    @Autowired
+    private GenerateFormatService generateFormatService ;
+
     private String pathFolder = "fournisseurImages";
 
     private static Fournisseur currentFournisseur  =null;
@@ -36,8 +42,9 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
     public ResponseEntity<Fournisseur> addFournisseur(Fournisseur fournisseur) {
-        fournisseur.setDateTransaction(new Date());
+
         currentFournisseur = fournisseurRepository.save(fournisseur);
+        currentFournisseur.setCodeF(generateFormatService.formatCodeFournisseur(currentFournisseur.getId()));
         return  ResponseEntity.ok(fournisseur);
     }
 

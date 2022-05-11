@@ -2,6 +2,8 @@ package com.example.cabinetcomptable.entities;
 
 
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.Null;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "clients")
+@EntityListeners(AuditingEntityListener.class)
 public class Client extends Personne{
 
     @Column(unique = true)

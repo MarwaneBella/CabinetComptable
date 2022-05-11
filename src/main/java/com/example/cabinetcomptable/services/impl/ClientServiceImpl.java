@@ -5,9 +5,11 @@ import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.services.ClientService;
 import com.example.cabinetcomptable.services.FileStorageService;
+import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -16,6 +18,7 @@ import java.util.List;
 
 
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
@@ -25,6 +28,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     ServletContext context;
+
+    @Autowired
+    private GenerateFormatService generateFormatService;
 
     private String pathFolder = "clientImages";
 
@@ -36,12 +42,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
 
-
     @Override
     public ResponseEntity<Client> addClient(Client client){
 
-        client.setDateTransaction(new Date());
         currentClient = clientRepository.save(client);
+        currentClient.setCodeC(generateFormatService.formatCodeClient(currentClient.getId()));
         return ResponseEntity.ok(client);
 
     }

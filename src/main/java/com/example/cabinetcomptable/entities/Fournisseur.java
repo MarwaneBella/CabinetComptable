@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "fournisseurs")
+
 public class Fournisseur extends Personne{
 
     @Column(unique = true)

@@ -5,6 +5,7 @@ import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
 import com.example.cabinetcomptable.services.BonAchatService;
 import com.example.cabinetcomptable.services.FileStorageService;
+import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class BonAchatServiceImpl implements BonAchatService {
     @Autowired
     BonAchatRepository bonAchatRepository;
 
+    @Autowired
+    GenerateFormatService generateFormatService;
+
 
     private static BonAchat currentBonAchat  =null;
 
@@ -26,7 +30,7 @@ public class BonAchatServiceImpl implements BonAchatService {
     }
     @Override
     public ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat) {
-
+        bonAchat.setBonANum(generateFormatService.formatNumeroBonAchat(bonAchat.getDateBa()));
         currentBonAchat=bonAchatRepository.save(bonAchat);
         return ResponseEntity.ok(bonAchat);
     }

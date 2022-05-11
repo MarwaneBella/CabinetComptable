@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BonAchatRepository extends JpaRepository<BonAchat,Long> {
 
-
+    BonAchat findTopByOrderByIdBaDesc();
 }

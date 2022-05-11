@@ -6,21 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Calendar;
 import java.util.Date;
 
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class CabinetComptableApplication implements CommandLineRunner {
 
-    @Autowired
-    private GenerateFormatService g ;
 
-    @Autowired
-    private BonAchatRepository bonAchatRepository;
-
-    @Autowired
-    private ClientRepository clientRepository;
 
     public static void main(String[] args){
         SpringApplication.run(CabinetComptableApplication.class, args);
@@ -29,10 +31,6 @@ public class CabinetComptableApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //System.out.println(clientRepository.findTopByOrderByIdDesc().getId());
-        //System.out.println(bonAchatRepository.findTopByOrderById_baDesc());
-        System.out.println(g.formatCodeClient(1));
-        System.out.println(g.formatCodeFournisseur(23));
-        System.out.println(g.formatNumeroBonAchat(12,new Date()));
+
     }
 }

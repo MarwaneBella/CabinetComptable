@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,6 +27,7 @@ public class Personne {
     private String tp;
     private String cnss;
     private String rc;
+    @CreatedDate
     @Basic
     @Temporal(TemporalType.DATE)
     private Date dateTransaction;
