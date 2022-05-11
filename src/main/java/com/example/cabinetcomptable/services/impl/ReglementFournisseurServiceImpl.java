@@ -40,7 +40,7 @@ public class ReglementFournisseurServiceImpl implements ReglementFournisseurServ
     @Override
     public ResponseEntity<ReglementFournisseur> updateReglementFournisseur(long id_reg_f, ReglementFournisseur reglementFournisseur) {
         currentreglementFournisseur = reglementFournisseurRepository.findById(id_reg_f).orElseThrow();
-        reglementFournisseur.setId_reg_f(id_reg_f);
+        reglementFournisseur.setIdRegF(id_reg_f);
         currentreglementFournisseur =reglementFournisseurRepository.save(reglementFournisseur);
 
         return ResponseEntity.ok(reglementFournisseur);
