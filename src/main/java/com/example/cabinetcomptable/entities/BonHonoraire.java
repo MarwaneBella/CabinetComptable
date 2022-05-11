@@ -12,13 +12,16 @@ public class BonHonoraire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_bh;
+    private long idBh;
+
+    @Column(unique = true)
+    private String bonHNum;
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date date_bh;
+    private Date dateBh;
 
-    private float total_general;
+    private float totalGeneral;
 
     @ManyToOne
     @JoinColumn( name = "id_c" )
@@ -39,41 +42,43 @@ public class BonHonoraire {
     public BonHonoraire() {
     }
 
-    public BonHonoraire(long id_bh, Date date_bh, float total_general, Client client) {
-        this.id_bh = id_bh;
-        this.date_bh = date_bh;
-        this.total_general = total_general;
-        this.client = client;
+    public BonHonoraire(long idBh, String bonHNum, Date dateBh, float totalGeneral) {
+        this.idBh = idBh;
+        this.bonHNum = bonHNum;
+        this.dateBh = dateBh;
+        this.totalGeneral = totalGeneral;
     }
 
-    public BonHonoraire(Date date_bh, float total_general, Client client) {
-        this.date_bh = date_bh;
-        this.total_general = total_general;
-        this.client = client;
+    public long getIdBh() {
+        return idBh;
     }
 
-    public long getId_bh() {
-        return id_bh;
+    public void setIdBh(long idBh) {
+        this.idBh = idBh;
     }
 
-    public void setId_bh(long id_bh) {
-        this.id_bh = id_bh;
+    public String getBonHNum() {
+        return bonHNum;
     }
 
-    public Date getDate_bh() {
-        return date_bh;
+    public void setBonHNum(String bonHNum) {
+        this.bonHNum = bonHNum;
     }
 
-    public void setDate_bh(Date date_bh) {
-        this.date_bh = date_bh;
+    public Date getDateBh() {
+        return dateBh;
     }
 
-    public float getTotal_general() {
-        return total_general;
+    public void setDateBh(Date dateBh) {
+        this.dateBh = dateBh;
     }
 
-    public void setTotal_general(float total_general) {
-        this.total_general = total_general;
+    public float getTotalGeneral() {
+        return totalGeneral;
+    }
+
+    public void setTotalGeneral(float totalGeneral) {
+        this.totalGeneral = totalGeneral;
     }
 
     public Client getClient() {

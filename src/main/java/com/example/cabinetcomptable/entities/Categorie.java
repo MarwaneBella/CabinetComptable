@@ -13,8 +13,8 @@ public class Categorie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_cat;
-    private String nom_cat;
+    private long idCat;
+    private String nomCat;
 
     @OneToMany(mappedBy = "categorie")
     private List<Produit> listProduit ;
@@ -23,29 +23,29 @@ public class Categorie {
     public Categorie() {
     }
 
-    public Categorie(long id_cat, String nom_cat) {
-        this.id_cat = id_cat;
-        this.nom_cat = nom_cat;
+    public Categorie(long idCat, String nomCat) {
+        this.idCat = idCat;
+        this.nomCat = nomCat;
     }
 
-    public Categorie(String nom_cat) {
-        this.nom_cat = nom_cat;
+    public Categorie(String nomCat) {
+        this.nomCat = nomCat;
     }
 
-    public long getId_cat() {
-        return id_cat;
+    public long getIdCat() {
+        return idCat;
     }
 
-    public void setId_cat(long id_cat) {
-        this.id_cat = id_cat;
+    public void setIdCat(long idCat) {
+        this.idCat = idCat;
     }
 
-    public String getNom_cat() {
-        return nom_cat;
+    public String getNomCat() {
+        return nomCat;
     }
 
-    public void setNom_cat(String nom_cat) {
-        this.nom_cat = nom_cat;
+    public void setNomCat(String nomCat) {
+        this.nomCat = nomCat;
     }
 
     @JsonIgnore

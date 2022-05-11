@@ -11,15 +11,18 @@ public class Facture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_fac;
+    private long idFac;
+
+    @Column(unique = true)
+    private String facNum;
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date date_fac;
+    private Date dateFac;
 
-    private float total_ht;
-    private float total_tva;
-    private float total_ttc;
+    private float totalHt;
+    private float totalTva;
+    private float totalTtc;
 
     @OneToMany(mappedBy = "facture")
     private Set<BonHonoraire> ListbonHonoraire = new HashSet<BonHonoraire>();
@@ -27,59 +30,69 @@ public class Facture {
     public Facture() {
     }
 
-    public Facture(long id_fac, Date date_fac, float total_ht, float total_tva, float total_ttc) {
-        this.id_fac = id_fac;
-        this.date_fac = date_fac;
-        this.total_ht = total_ht;
-        this.total_tva = total_tva;
-        this.total_ttc = total_ttc;
+    public Facture(long idFac, String facNum, Date dateFac, float totalHt, float totalTva, float totalTtc) {
+        this.idFac = idFac;
+        this.facNum = facNum;
+        this.dateFac = dateFac;
+        this.totalHt = totalHt;
+        this.totalTva = totalTva;
+        this.totalTtc = totalTtc;
     }
 
-    public Facture(Date date_fac, float total_ht, float total_tva, float total_ttc) {
-        this.date_fac = date_fac;
-        this.total_ht = total_ht;
-        this.total_tva = total_tva;
-        this.total_ttc = total_ttc;
+    public Facture(String facNum, Date dateFac, float totalHt, float totalTva, float totalTtc) {
+        this.facNum = facNum;
+        this.dateFac = dateFac;
+        this.totalHt = totalHt;
+        this.totalTva = totalTva;
+        this.totalTtc = totalTtc;
     }
 
-    public long getId_fac() {
-        return id_fac;
+    public long getIdFac() {
+        return idFac;
     }
 
-    public void setId_fac(long id_fac) {
-        this.id_fac = id_fac;
+    public void setIdFac(long idFac) {
+        this.idFac = idFac;
     }
 
-    public Date getDate_fac() {
-        return date_fac;
+    public String getFacNum() {
+        return facNum;
     }
 
-    public void setDate_fac(Date date_fac) {
-        this.date_fac = date_fac;
+    public void setFacNum(String facNum) {
+        this.facNum = facNum;
     }
 
-    public float getTotal_ht() {
-        return total_ht;
+    public Date getDateFac() {
+        return dateFac;
     }
 
-    public void setTotal_ht(float total_ht) {
-        this.total_ht = total_ht;
+    public void setDateFac(Date dateFac) {
+        this.dateFac = dateFac;
     }
 
-    public float getTotal_tva() {
-        return total_tva;
+    public float getTotalHt() {
+        return totalHt;
     }
 
-    public void setTotal_tva(float total_tva) {
-        this.total_tva = total_tva;
+    public void setTotalHt(float totalHt) {
+        this.totalHt = totalHt;
     }
 
-    public float getTotal_ttc() {
-        return total_ttc;
+    public float getTotalTva() {
+        return totalTva;
     }
 
-    public void setTotal_ttc(float total_ttc) {
-        this.total_ttc = total_ttc;
+    public void setTotalTva(float totalTva) {
+        this.totalTva = totalTva;
+    }
+
+    public float getTotalTtc() {
+        return totalTtc;
+    }
+
+    public void setTotalTtc(float totalTtc) {
+        this.totalTtc = totalTtc;
     }
 
     public Set<BonHonoraire> getListbonHonoraire() {

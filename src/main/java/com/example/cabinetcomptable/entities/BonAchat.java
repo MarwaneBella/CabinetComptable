@@ -11,13 +11,17 @@ public class BonAchat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ba;
-    private String num_fac;
+    private long idBa;
+
+    @Column(unique = true)
+    private String bonANum;
+
+    private String facBonNum;
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date date_ba;
+    private Date dateBa;
 
-    private float total_general;
+    private float totalGeneral;
 
 
     @ManyToOne
@@ -33,55 +37,59 @@ public class BonAchat {
     public BonAchat() {
     }
 
-    public BonAchat(String num_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
-        this.num_fac = num_fac;
-        this.date_ba = date_ba;
-        this.total_general = total_general;
-        this.fournisseur = fournisseur;
-        this.listBonAReg = listBonAReg;
-        this.listLignBA = listLignBA;
+    public BonAchat(long idBa, String bonANum, String facBonNum, Date dateBa, float totalGeneral) {
+        this.idBa = idBa;
+        this.bonANum = bonANum;
+        this.facBonNum = facBonNum;
+        this.dateBa = dateBa;
+        this.totalGeneral = totalGeneral;
     }
 
-    public BonAchat(long id_ba, String num_fac, Date date_ba, float total_general, Fournisseur fournisseur, Set<BonAReg> listBonAReg, Set<LignBA> listLignBA) {
-        this.id_ba = id_ba;
-        this.num_fac = num_fac;
-        this.date_ba = date_ba;
-        this.total_general = total_general;
-        this.fournisseur = fournisseur;
-        this.listBonAReg = listBonAReg;
-        this.listLignBA = listLignBA;
+    public BonAchat(String bonANum, String facBonNum, Date dateBa, float totalGeneral) {
+        this.bonANum = bonANum;
+        this.facBonNum = facBonNum;
+        this.dateBa = dateBa;
+        this.totalGeneral = totalGeneral;
     }
 
-    public long getId_ba() {
-        return id_ba;
+    public long getIdBa() {
+        return idBa;
     }
 
-    public void setId_ba(long id_ba) {
-        this.id_ba = id_ba;
+    public void setIdBa(long idBa) {
+        this.idBa = idBa;
     }
 
-    public String getNum_fac() {
-        return num_fac;
+    public String getBonANum() {
+        return bonANum;
     }
 
-    public void setNum_fac(String num_fac) {
-        this.num_fac = num_fac;
+    public void setBonANum(String bonANum) {
+        this.bonANum = bonANum;
     }
 
-    public Date getDate_ba() {
-        return date_ba;
+    public String getFacBonNum() {
+        return facBonNum;
     }
 
-    public void setDate_ba(Date date_ba) {
-        this.date_ba = date_ba;
+    public void setFacBonNum(String facBonNum) {
+        this.facBonNum = facBonNum;
     }
 
-    public float getTotal_general() {
-        return total_general;
+    public Date getDateBa() {
+        return dateBa;
     }
 
-    public void setTotal_general(float total_general) {
-        this.total_general = total_general;
+    public void setDateBa(Date dateBa) {
+        this.dateBa = dateBa;
+    }
+
+    public float getTotalGeneral() {
+        return totalGeneral;
+    }
+
+    public void setTotalGeneral(float totalGeneral) {
+        this.totalGeneral = totalGeneral;
     }
 
     public Fournisseur getFournisseur() {

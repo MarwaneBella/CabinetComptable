@@ -36,7 +36,7 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
     public ResponseEntity<Fournisseur> addFournisseur(Fournisseur fournisseur) {
-        fournisseur.setData_de_transaction(new Date());
+        fournisseur.setDateTransaction(new Date());
         currentFournisseur = fournisseurRepository.save(fournisseur);
         return  ResponseEntity.ok(fournisseur);
     }

@@ -45,7 +45,7 @@ public class BonAchatServiceImpl implements BonAchatService {
     @Override
     public ResponseEntity<BonAchat> updateBonAchat(BonAchat bonAchat, long id_ba) {
         currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + id_ba));
-        bonAchat.setId_ba(id_ba);
+        bonAchat.setIdBa(id_ba);
 
         currentBonAchat = bonAchatRepository.save(bonAchat);
         return ResponseEntity.ok(bonAchat);

@@ -8,12 +8,12 @@ import java.util.Date;
 public class BonHReg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_bh_reg;
+    private long idBhReg;
     private float montant;
 
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date date_payment;
+    private Date datePayment;
 
     @ManyToOne
     @JoinColumn(name = "id_bh")
@@ -27,25 +27,18 @@ public class BonHReg {
     public BonHReg() {
     }
 
-    public BonHReg(long id_bh_reg, float montant, Date date_payment, BonHonoraire bonHonoraire) {
-        this.id_bh_reg = id_bh_reg;
+    public BonHReg(long idBhReg, float montant, Date datePayment) {
+        this.idBhReg = idBhReg;
         this.montant = montant;
-        this.date_payment = date_payment;
-        this.bonHonoraire = bonHonoraire;
+        this.datePayment = datePayment;
     }
 
-    public BonHReg(float montant, Date date_payment, BonHonoraire bonHonoraire) {
-        this.montant = montant;
-        this.date_payment = date_payment;
-        this.bonHonoraire = bonHonoraire;
+    public long getIdBhReg() {
+        return idBhReg;
     }
 
-    public long getId_bh_reg() {
-        return id_bh_reg;
-    }
-
-    public void setId_bh_reg(long id_bh_reg) {
-        this.id_bh_reg = id_bh_reg;
+    public void setIdBhReg(long idBhReg) {
+        this.idBhReg = idBhReg;
     }
 
     public float getMontant() {
@@ -56,12 +49,12 @@ public class BonHReg {
         this.montant = montant;
     }
 
-    public Date getDate_payment() {
-        return date_payment;
+    public Date getDatePayment() {
+        return datePayment;
     }
 
-    public void setDate_payment(Date date_payment) {
-        this.date_payment = date_payment;
+    public void setDatePayment(Date datePayment) {
+        this.datePayment = datePayment;
     }
 
     public BonHonoraire getBonHonoraire() {

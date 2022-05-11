@@ -9,7 +9,7 @@ import java.util.Set;
 public class ReglementFournisseur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_reg_f;
+    private long idRegF;
     private float avance ;
     private float reste;
 
@@ -19,8 +19,8 @@ public class ReglementFournisseur {
     public ReglementFournisseur() {
     }
 
-    public ReglementFournisseur(long id_reg_f, float avance, float reste) {
-        this.id_reg_f = id_reg_f;
+    public ReglementFournisseur(long idRegF, float avance, float reste) {
+        this.idRegF = idRegF;
         this.avance = avance;
         this.reste = reste;
     }
@@ -30,13 +30,12 @@ public class ReglementFournisseur {
         this.reste = reste;
     }
 
-
-    public long getId_reg_f() {
-        return id_reg_f;
+    public long getIdRegF() {
+        return idRegF;
     }
 
-    public void setId_reg_f(long id_reg_f) {
-        this.id_reg_f = id_reg_f;
+    public void setIdRegF(long idRegF) {
+        this.idRegF = idRegF;
     }
 
     public float getAvance() {

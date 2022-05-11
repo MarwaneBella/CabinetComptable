@@ -11,6 +11,9 @@ import java.util.Set;
 @Table(name = "fournisseurs")
 public class Fournisseur extends Personne{
 
+    @Column(unique = true)
+    private String codeF;
+
     @OneToMany(mappedBy="fournisseur")
     private Set<BonAchat> listBonAchat = new HashSet<BonAchat>();
 
@@ -18,14 +21,23 @@ public class Fournisseur extends Personne{
       super();
     }
 
-    public Fournisseur(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+    public Fournisseur(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, String codeF) {
         super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
+        this.codeF = codeF;
     }
 
-    public Fournisseur(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+    public Fournisseur(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, String codeF) {
         super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
+        this.codeF = codeF;
     }
 
+    public String getCodeF() {
+        return codeF;
+    }
+
+    public void setCodeF(String codeF) {
+        this.codeF = codeF;
+    }
 
     public Set<BonAchat> getListBonAchat() {
         return listBonAchat;

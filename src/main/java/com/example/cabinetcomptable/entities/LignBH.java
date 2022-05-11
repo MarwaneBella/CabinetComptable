@@ -8,7 +8,7 @@ public class LignBH {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_lign_h;
+    private long idLignH;
     private int quantite;
     private float montant;
 
@@ -23,25 +23,18 @@ public class LignBH {
     public LignBH() {
     }
 
-    public LignBH(long id_lign_h, int quantite, float montant, BonHonoraire bonHonoraire) {
-        this.id_lign_h = id_lign_h;
+    public LignBH(long idLignH, int quantite, float montant) {
+        this.idLignH = idLignH;
         this.quantite = quantite;
         this.montant = montant;
-        this.bonHonoraire = bonHonoraire;
     }
 
-    public LignBH(int quantite, float montant, BonHonoraire bonHonoraire) {
-        this.quantite = quantite;
-        this.montant = montant;
-        this.bonHonoraire = bonHonoraire;
+    public long getIdLignH() {
+        return idLignH;
     }
 
-    public long getId_lign_h() {
-        return id_lign_h;
-    }
-
-    public void setId_lign_h(long id_lign_h) {
-        this.id_lign_h = id_lign_h;
+    public void setIdLignH(long idLignH) {
+        this.idLignH = idLignH;
     }
 
     public int getQuantite() {

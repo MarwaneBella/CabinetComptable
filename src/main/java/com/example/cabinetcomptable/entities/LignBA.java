@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class LignBA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_lign_a;
+    private long idLignA;
     private int quantite;
-    private float montant_ttc;
-    private float prix_unitaire;
+    private float montantTtc;
+    private float prixUnitaire;
     @ManyToOne
     @JoinColumn( name = "id_ba" )
     private BonAchat bonAchat;
@@ -23,21 +23,25 @@ public class LignBA {
     public LignBA() {
     }
 
-    public LignBA(long id_lign_a, int quantite, float montant_ttc, float prix_unitaire, BonAchat bonAchat, Produit produit) {
-        this.id_lign_a = id_lign_a;
+    public LignBA(long idLignA, int quantite, float montantTtc, float prixUnitaire) {
+        this.idLignA = idLignA;
         this.quantite = quantite;
-        this.montant_ttc = montant_ttc;
-        this.prix_unitaire = prix_unitaire;
-        this.bonAchat = bonAchat;
-        this.produit = produit;
+        this.montantTtc = montantTtc;
+        this.prixUnitaire = prixUnitaire;
     }
 
-    public LignBA(int quantite, float montant_ttc, float prix_unitaire, BonAchat bonAchat, Produit produit) {
+    public LignBA(int quantite, float montantTtc, float prixUnitaire) {
         this.quantite = quantite;
-        this.montant_ttc = montant_ttc;
-        this.prix_unitaire = prix_unitaire;
-        this.bonAchat = bonAchat;
-        this.produit = produit;
+        this.montantTtc = montantTtc;
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    public long getIdLignA() {
+        return idLignA;
+    }
+
+    public void setIdLignA(long idLignA) {
+        this.idLignA = idLignA;
     }
 
     public int getQuantite() {
@@ -48,28 +52,20 @@ public class LignBA {
         this.quantite = quantite;
     }
 
-    public float getMontant_ttc() {
-        return montant_ttc;
+    public float getMontantTtc() {
+        return montantTtc;
     }
 
-    public void setMontant_ttc(float montant_ttc) {
-        this.montant_ttc = montant_ttc;
+    public void setMontantTtc(float montantTtc) {
+        this.montantTtc = montantTtc;
     }
 
-    public float getPrix_unitaire() {
-        return prix_unitaire;
+    public float getPrixUnitaire() {
+        return prixUnitaire;
     }
 
-    public void setPrix_unitaire(float prix_unitaire) {
-        this.prix_unitaire = prix_unitaire;
-    }
-
-    public long getId_lign_a() {
-        return id_lign_a;
-    }
-
-    public void setId_lign_a(long id_lign_a) {
-        this.id_lign_a = id_lign_a;
+    public void setPrixUnitaire(float prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
     public BonAchat getBonAchat() {

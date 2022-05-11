@@ -2,10 +2,7 @@ package com.example.cabinetcomptable.entities;
 
 
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,11 +12,14 @@ import java.util.Set;
 @Table(name = "clients")
 public class Client extends Personne{
 
+    @Column(unique = true)
+    private String codeC;
+
     private float bilan;
-    private float pv_bilan;
+    private float pvBilan;
     private String regime;
-    private float r_tva;
-    private float r_cnss;
+    private float rTva;
+    private float rCnss;
 
     @OneToMany(mappedBy="client")
     private Set<BonHonoraire> listBonHonoraire = new HashSet<BonHonoraire>();
@@ -27,22 +27,32 @@ public class Client extends Personne{
     public Client(){
     }
 
-    public Client(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, float bilan, float pv_bilan, String regime, float r_tva, float r_cnss) {
-        super(id, nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
+    public Client(long id, String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, float bilan, float pvBilan, String regime, float rTva, float rCnss) {
+        super(id, nom, image, email, telePortable, teleFix, ville, adresse, codePostale, siteWeb, ifi, ice, tp, cnss, rc, dateTransaction);
+        this.codeC = codeC;
         this.bilan = bilan;
-        this.pv_bilan = pv_bilan;
+        this.pvBilan = pvBilan;
         this.regime = regime;
-        this.r_tva = r_tva;
-        this.r_cnss = r_cnss;
+        this.rTva = rTva;
+        this.rCnss = rCnss;
     }
 
-    public Client(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction, float bilan, float pv_bilan, String regime, float r_tva, float r_cnss) {
-        super(nom, image, email, tele_portable, tele_fix, ville, adresse, code_postale, site_web, ifi, ice, tp, cnss, rc, data_de_transaction);
+    public Client(String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, float bilan, float pvBilan, String regime, float rTva, float rCnss) {
+        super(nom, image, email, telePortable, teleFix, ville, adresse, codePostale, siteWeb, ifi, ice, tp, cnss, rc, dateTransaction);
+        this.codeC = codeC;
         this.bilan = bilan;
-        this.pv_bilan = pv_bilan;
+        this.pvBilan = pvBilan;
         this.regime = regime;
-        this.r_tva = r_tva;
-        this.r_cnss = r_cnss;
+        this.rTva = rTva;
+        this.rCnss = rCnss;
+    }
+
+    public String getCodeC() {
+        return codeC;
+    }
+
+    public void setCodeC(String codeC) {
+        this.codeC = codeC;
     }
 
     public float getBilan() {
@@ -53,12 +63,12 @@ public class Client extends Personne{
         this.bilan = bilan;
     }
 
-    public float getPv_bilan() {
-        return pv_bilan;
+    public float getPvBilan() {
+        return pvBilan;
     }
 
-    public void setPv_bilan(float pv_bilan) {
-        this.pv_bilan = pv_bilan;
+    public void setPvBilan(float pvBilan) {
+        this.pvBilan = pvBilan;
     }
 
     public String getRegime() {
@@ -69,19 +79,19 @@ public class Client extends Personne{
         this.regime = regime;
     }
 
-    public float getR_tva() {
-        return r_tva;
+    public float getrTva() {
+        return rTva;
     }
 
-    public void setR_tva(float r_tva) {
-        this.r_tva = r_tva;
+    public void setrTva(float rTva) {
+        this.rTva = rTva;
     }
 
-    public float getR_cnss() {
-        return r_cnss;
+    public float getrCnss() {
+        return rCnss;
     }
 
-    public void setR_cnss(float r_cnss) {
-        this.r_cnss = r_cnss;
+    public void setrCnss(float rCnss) {
+        this.rCnss = rCnss;
     }
 }

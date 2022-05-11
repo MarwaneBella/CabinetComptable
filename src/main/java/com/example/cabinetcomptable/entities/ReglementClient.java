@@ -9,10 +9,10 @@ import java.util.Set;
 public class ReglementClient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_reg_c;
+    private long idRegC;
 
     private float avance;
-    private float rest;
+    private float reste;
 
     @OneToMany (mappedBy = "reglementClient")
     private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
@@ -20,39 +20,15 @@ public class ReglementClient {
     public ReglementClient() {
     }
 
-    public ReglementClient(float avance, float rest) {
+    public ReglementClient(long idRegC, float avance, float reste) {
+        this.idRegC = idRegC;
         this.avance = avance;
-        this.rest = rest;
+        this.reste = reste;
     }
 
-    public ReglementClient(long id_reg_c, float avance, float rest) {
-        this.id_reg_c = id_reg_c;
+    public ReglementClient(float avance, float reste) {
         this.avance = avance;
-        this.rest = rest;
-    }
-
-    public long getId_reg_c() {
-        return id_reg_c;
-    }
-
-    public void setId_reg_c(long id_reg_c) {
-        this.id_reg_c = id_reg_c;
-    }
-
-    public float getAvance() {
-        return avance;
-    }
-
-    public void setAvance(float avance) {
-        this.avance = avance;
-    }
-
-    public float getRest() {
-        return rest;
-    }
-
-    public void setRest(float rest) {
-        this.rest = rest;
+        this.reste = reste;
     }
 
     public Set<BonHReg> getListBonHReg() {

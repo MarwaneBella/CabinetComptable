@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ResponseEntity<Client> addClient(Client client){
 
-        client.setData_de_transaction(new Date());
+        client.setDateTransaction(new Date());
         currentClient = clientRepository.save(client);
         return ResponseEntity.ok(client);
 

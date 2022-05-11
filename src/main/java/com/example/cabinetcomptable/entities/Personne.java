@@ -14,12 +14,12 @@ public class Personne {
     private String nom;
     private String image;
     private String email;
-    private String tele_portable;
-    private String tele_fix;
+    private String telePortable;
+    private String teleFix;
     private String ville;
     private String adresse;
-    private String code_postale;
-    private String site_web;
+    private String codePostale;
+    private String siteWeb;
     private String ifi ;
     private String ice;
     private String tp;
@@ -27,48 +27,47 @@ public class Personne {
     private String rc;
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date data_de_transaction;
+    private Date dateTransaction;
 
 
     public Personne() {
     }
 
-
-    public Personne(long id, String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+    public Personne(long id, String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction) {
         this.id = id;
         this.nom = nom;
         this.image = image;
         this.email = email;
-        this.tele_portable = tele_portable;
-        this.tele_fix = tele_fix;
+        this.telePortable = telePortable;
+        this.teleFix = teleFix;
         this.ville = ville;
         this.adresse = adresse;
-        this.code_postale = code_postale;
-        this.site_web = site_web;
+        this.codePostale = codePostale;
+        this.siteWeb = siteWeb;
         this.ifi = ifi;
         this.ice = ice;
         this.tp = tp;
         this.cnss = cnss;
         this.rc = rc;
-        this.data_de_transaction = data_de_transaction;
+        this.dateTransaction = dateTransaction;
     }
 
-    public Personne(String nom, String image, String email, String tele_portable, String tele_fix, String ville, String adresse, String code_postale, String site_web, String ifi, String ice, String tp, String cnss, String rc, Date data_de_transaction) {
+    public Personne(String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction) {
         this.nom = nom;
         this.image = image;
         this.email = email;
-        this.tele_portable = tele_portable;
-        this.tele_fix = tele_fix;
+        this.telePortable = telePortable;
+        this.teleFix = teleFix;
         this.ville = ville;
         this.adresse = adresse;
-        this.code_postale = code_postale;
-        this.site_web = site_web;
+        this.codePostale = codePostale;
+        this.siteWeb = siteWeb;
         this.ifi = ifi;
         this.ice = ice;
         this.tp = tp;
         this.cnss = cnss;
         this.rc = rc;
-        this.data_de_transaction = data_de_transaction;
+        this.dateTransaction = dateTransaction;
     }
 
     public long getId() {
@@ -103,20 +102,20 @@ public class Personne {
         this.email = email;
     }
 
-    public String getTele_portable() {
-        return tele_portable;
+    public String getTelePortable() {
+        return telePortable;
     }
 
-    public void setTele_portable(String tele_portable) {
-        this.tele_portable = tele_portable;
+    public void setTelePortable(String telePortable) {
+        this.telePortable = telePortable;
     }
 
-    public String getTele_fix() {
-        return tele_fix;
+    public String getTeleFix() {
+        return teleFix;
     }
 
-    public void setTele_fix(String tele_fix) {
-        this.tele_fix = tele_fix;
+    public void setTeleFix(String teleFix) {
+        this.teleFix = teleFix;
     }
 
     public String getVille() {
@@ -135,20 +134,20 @@ public class Personne {
         this.adresse = adresse;
     }
 
-    public String getCode_postale() {
-        return code_postale;
+    public String getCodePostale() {
+        return codePostale;
     }
 
-    public void setCode_postale(String code_postale) {
-        this.code_postale = code_postale;
+    public void setCodePostale(String codePostale) {
+        this.codePostale = codePostale;
     }
 
-    public String getSite_web() {
-        return site_web;
+    public String getSiteWeb() {
+        return siteWeb;
     }
 
-    public void setSite_web(String site_web) {
-        this.site_web = site_web;
+    public void setSiteWeb(String siteWeb) {
+        this.siteWeb = siteWeb;
     }
 
     public String getIfi() {
@@ -191,13 +190,11 @@ public class Personne {
         this.rc = rc;
     }
 
-    public Date getData_de_transaction() {
-        return data_de_transaction;
+    public Date getDateTransaction() {
+        return dateTransaction;
     }
 
-    public void setData_de_transaction(Date data_de_transaction) {
-        this.data_de_transaction = data_de_transaction;
+    public void setDateTransaction(Date dateTransaction) {
+        this.dateTransaction = dateTransaction;
     }
-
-
 }

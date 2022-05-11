@@ -7,11 +7,11 @@ import java.util.Date;
 public class BonAReg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ba_reg;
+    private long idBaReg;
     private float montant;
     @Basic
     @Temporal(TemporalType.DATE)
-    private Date date_payment;
+    private Date datePayment;
 
     @ManyToOne
     @JoinColumn( name = "id_ba" )
@@ -24,21 +24,24 @@ public class BonAReg {
     public BonAReg() {
     }
 
-    public BonAReg(long id_ba_reg, float montant, Date date_payment, BonAchat bonAchat, BonAchat bonAreg) {
-        this.id_ba_reg = id_ba_reg;
+    public BonAReg(long idBaReg, float montant, Date datePayment) {
+        this.idBaReg = idBaReg;
         this.montant = montant;
-        this.date_payment = date_payment;
-        this.bonAchat = bonAchat;
-        this.bonAreg = bonAreg;
+        this.datePayment = datePayment;
     }
 
-    public BonAReg(float montant, Date date_payment, BonAchat bonAchat, BonAchat bonAreg) {
+    public BonAReg(float montant, Date datePayment) {
         this.montant = montant;
-        this.date_payment = date_payment;
-        this.bonAchat = bonAchat;
-        this.bonAreg = bonAreg;
+        this.datePayment = datePayment;
     }
 
+    public long getIdBaReg() {
+        return idBaReg;
+    }
+
+    public void setIdBaReg(long idBaReg) {
+        this.idBaReg = idBaReg;
+    }
 
     public float getMontant() {
         return montant;
@@ -48,28 +51,12 @@ public class BonAReg {
         this.montant = montant;
     }
 
-    public Date getDate_payment() {
-        return date_payment;
+    public Date getDatePayment() {
+        return datePayment;
     }
 
-    public void setDate_payment(Date date_payment) {
-        this.date_payment = date_payment;
-    }
-
-    public BonAchat getBonAchat() {
-        return bonAchat;
-    }
-
-    public void setBonAchat(BonAchat bonAchat) {
-        this.bonAchat = bonAchat;
-    }
-
-    public long getId_ba_reg() {
-        return id_ba_reg;
-    }
-
-    public void setId_ba_reg(long id_ba_reg) {
-        this.id_ba_reg = id_ba_reg;
+    public void setDatePayment(Date datePayment) {
+        this.datePayment = datePayment;
     }
 
     public BonAchat getBonAreg() {

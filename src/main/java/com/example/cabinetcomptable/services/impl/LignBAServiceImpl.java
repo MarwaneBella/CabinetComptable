@@ -42,7 +42,7 @@ public class LignBAServiceImpl implements LignBAService {
     @Override
     public ResponseEntity<LignBA> updateLignBA(LignBA lignBA, long id_lign_a) {
         currentLignBA = lignBARepository.findById(id_lign_a).orElseThrow(() -> new ResourceNotFoundException("LignBA not found for this reference :: " + id_lign_a));
-        lignBA.setId_lign_a(id_lign_a);
+        lignBA.setIdLignA(id_lign_a);
 
         currentLignBA = lignBARepository.save(lignBA) ;
 

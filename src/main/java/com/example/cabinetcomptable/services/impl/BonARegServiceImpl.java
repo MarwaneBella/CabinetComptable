@@ -41,7 +41,7 @@ public class BonARegServiceImpl implements BonARegService {
     @Override
     public ResponseEntity<BonAReg> updateBonAReg(long id_ba_reg, BonAReg bonAReg) {
         currenetBonAReg = bonARegRepository.findById(id_ba_reg).orElseThrow();
-        bonAReg.setId_ba_reg(id_ba_reg);
+        bonAReg.setIdBaReg(id_ba_reg);
 
         currenetBonAReg =bonARegRepository.save(bonAReg) ;
 

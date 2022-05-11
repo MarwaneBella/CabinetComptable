@@ -23,11 +23,11 @@ public class Produit {
     private float poids;
     private float surface;
     private float volume;
-    private float prix_achat;
-    private float prix_vente;
-    private float prix_revient;
+    private float prixAchat;
+    private float prixVente;
+    private float prixRevient;
     private float tva;
-    private int quantitie_disponible;
+    private int quantitieDisponible;
     
     @ManyToOne
     @JoinColumn(name = "id_cat")
@@ -42,12 +42,12 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(String reference, String image, String designation, String description,String type ,String marque, float longueur, float largeur, float hauteur, float poids, float surface, float volume, float prix_achat, float prix_vente, float prix_revient, float tva, int quantitie_disponible, Categorie categorie) {
+    public Produit(String reference, String image, String designation, String description, String type, String marque, float longueur, float largeur, float hauteur, float poids, float surface, float volume, float prixAchat, float prixVente, float prixRevient, float tva, int quantitieDisponible) {
         this.reference = reference;
         this.image = image;
         this.designation = designation;
         this.description = description;
-        this.type =type;
+        this.type = type;
         this.marque = marque;
         this.longueur = longueur;
         this.largeur = largeur;
@@ -55,12 +55,11 @@ public class Produit {
         this.poids = poids;
         this.surface = surface;
         this.volume = volume;
-        this.prix_achat = prix_achat;
-        this.prix_vente = prix_vente;
-        this.prix_revient = prix_revient;
+        this.prixAchat = prixAchat;
+        this.prixVente = prixVente;
+        this.prixRevient = prixRevient;
         this.tva = tva;
-        this.quantitie_disponible = quantitie_disponible;
-        this.categorie = categorie;
+        this.quantitieDisponible = quantitieDisponible;
     }
 
     public String getReference() {
@@ -95,6 +94,14 @@ public class Produit {
         this.description = description;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getMarque() {
         return marque;
     }
@@ -111,11 +118,11 @@ public class Produit {
         this.longueur = longueur;
     }
 
-    public float getlargeur() {
+    public float getLargeur() {
         return largeur;
     }
 
-    public void setlargeur(float largeur) {
+    public void setLargeur(float largeur) {
         this.largeur = largeur;
     }
 
@@ -151,28 +158,28 @@ public class Produit {
         this.volume = volume;
     }
 
-    public float getPrix_achat() {
-        return prix_achat;
+    public float getPrixAchat() {
+        return prixAchat;
     }
 
-    public void setPrix_achat(float prix_achat) {
-        this.prix_achat = prix_achat;
+    public void setPrixAchat(float prixAchat) {
+        this.prixAchat = prixAchat;
     }
 
-    public float getPrix_vente() {
-        return prix_vente;
+    public float getPrixVente() {
+        return prixVente;
     }
 
-    public void setPrix_vente(float prix_vente) {
-        this.prix_vente = prix_vente;
+    public void setPrixVente(float prixVente) {
+        this.prixVente = prixVente;
     }
 
-    public float getPrix_revient() {
-        return prix_revient;
+    public float getPrixRevient() {
+        return prixRevient;
     }
 
-    public void setPrix_revient(float prix_revient) {
-        this.prix_revient = prix_revient;
+    public void setPrixRevient(float prixRevient) {
+        this.prixRevient = prixRevient;
     }
 
     public float getTva() {
@@ -183,20 +190,12 @@ public class Produit {
         this.tva = tva;
     }
 
-    public int getQuantitie_disponible() {
-        return quantitie_disponible;
+    public int getQuantitieDisponible() {
+        return quantitieDisponible;
     }
 
-    public void setQuantitie_disponible(int quantitie_disponible) {
-        this.quantitie_disponible = quantitie_disponible;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setQuantitieDisponible(int quantitieDisponible) {
+        this.quantitieDisponible = quantitieDisponible;
     }
 
     public void setCategorie(Categorie categorie) {
