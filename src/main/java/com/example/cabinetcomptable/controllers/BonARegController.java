@@ -37,10 +37,11 @@ public class BonARegController {
     @PutMapping("/bonARegs/{id_ba_reg}")
         public void updateBonReg(@PathVariable long id_ba_reg , @RequestBody BonAReg bonAReg){
             bonARegService.updateBonAReg(id_ba_reg,bonAReg);
-        }
+    }
+
+    // Delete BonAReg :
     @DeleteMapping("/bonARegs/{id_ba_reg}")
         public  void deleteBonReg(@PathVariable long id_ba_reg){
         bonARegService.deleteBonAReg(id_ba_reg);
     }
-
 }
