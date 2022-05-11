@@ -4,13 +4,12 @@ import com.example.cabinetcomptable.entities.BonAchat;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
 import com.example.cabinetcomptable.services.BonAchatService;
-import com.example.cabinetcomptable.services.FileStorageService;
 import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 @Service
 //@Transactional
@@ -28,6 +27,12 @@ public class BonAchatServiceImpl implements BonAchatService {
     public  BonAchatServiceImpl(BonAchatRepository bonAchatRepository){
         this.bonAchatRepository=bonAchatRepository ;
     }
+
+    @Override
+    public String getNextBonANum(Date date){
+        return generateFormatService.formatNumeroBonAchat(date);
+    }
+
     @Override
     public ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat) {
         bonAchat.setBonANum(generateFormatService.formatNumeroBonAchat(bonAchat.getDateBa()));

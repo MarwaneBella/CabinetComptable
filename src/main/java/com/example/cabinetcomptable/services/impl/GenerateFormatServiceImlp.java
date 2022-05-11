@@ -43,7 +43,6 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        System.out.println(yearMonth);
         BonAchat lastBonAchat = bonAchatRepository.findTopByOrderByIdBaDesc();
 
         if (lastBonAchat == null) {
@@ -72,7 +71,6 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        System.out.println(yearMonth);
         BonHonoraire lastBonHonoraire = bonHonoraireRepository.findTopByOrderByIdBhDesc();
 
         if (lastBonHonoraire == null) {
@@ -99,7 +97,6 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        System.out.println(yearMonth);
         Facture lastFacture = factureRepository.findTopByOrderByIdFacDesc();
 
         if (lastFacture == null) {

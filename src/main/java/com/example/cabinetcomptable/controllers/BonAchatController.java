@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/api")
@@ -16,6 +17,10 @@ public class BonAchatController {
     @Autowired
     private BonAchatService bonAchatService;
 
+    @PostMapping("/bonAchat/next")
+    public ResponseEntity<String> getNextBonANum(@RequestBody Date date){
+        return ResponseEntity.ok(bonAchatService.getNextBonANum(date));
+    }
 
     // add bonAchat :
     @PostMapping("/bonAchat")
