@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -68,6 +70,7 @@ public class LignBA {
         this.prixUnitaire = prixUnitaire;
     }
 
+    @JsonIgnore
     public BonAchat getBonAchat() {
         return bonAchat;
     }
@@ -83,4 +86,6 @@ public class LignBA {
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
+
+
 }

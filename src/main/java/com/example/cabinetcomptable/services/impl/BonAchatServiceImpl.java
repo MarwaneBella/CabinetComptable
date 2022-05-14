@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.BonAchat;
+import com.example.cabinetcomptable.entities.LignBA;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
 import com.example.cabinetcomptable.services.BonAchatService;
@@ -9,14 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Service
-//@Transactional
+@Transactional
 public class BonAchatServiceImpl implements BonAchatService {
 
     @Autowired
     BonAchatRepository bonAchatRepository;
+
+
+
 
     @Autowired
     GenerateFormatService generateFormatService;
@@ -35,8 +43,19 @@ public class BonAchatServiceImpl implements BonAchatService {
 
     @Override
     public ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat) {
+
+
         bonAchat.setBonANum(generateFormatService.formatNumeroBonAchat(bonAchat.getDateBa()));
+        Set<LignBA> list = new HashSet<LignBA>(bonAchat.getListLignBA());
+        bonAchat.setListLignBA(null);
         currentBonAchat=bonAchatRepository.save(bonAchat);
+
+        for (LignBA currentvalue : list) {
+            currentvalue.setBonAchat(currentBonAchat);
+        }
+
+        currentBonAchat.setListLignBA(list);
+
         return ResponseEntity.ok(bonAchat);
     }
 

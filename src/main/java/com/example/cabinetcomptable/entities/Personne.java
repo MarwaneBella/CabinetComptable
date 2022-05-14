@@ -15,6 +15,7 @@ public class Personne {
 
     private String nom;
     private String image;
+   // @NotBlank(message = "is empty")
     private String email;
     private String telePortable;
     private String teleFix;

@@ -31,7 +31,7 @@ public class BonAchat {
     @OneToMany(mappedBy = "bonAchat")
     private Set<BonAReg> listBonAReg = new HashSet<BonAReg>();
 
-    @OneToMany(mappedBy = "bonAchat")
+    @OneToMany(mappedBy = "bonAchat",cascade = CascadeType.ALL)
     private Set<LignBA> listLignBA = new HashSet<LignBA>();
 
     public BonAchat() {
@@ -100,11 +100,12 @@ public class BonAchat {
         this.fournisseur = fournisseur;
     }
 
-    public Set<BonAReg> getBonsAReg() {
-        return listBonAReg;
+
+    public Set<LignBA> getListLignBA() {
+        return listLignBA;
     }
 
-    public void setBonsAReg(Set<BonAReg> listBonAReg) {
-        this.listBonAReg = listBonAReg;
+    public void setListLignBA(Set<LignBA> listLignBA) {
+        this.listLignBA = listLignBA;
     }
 }
