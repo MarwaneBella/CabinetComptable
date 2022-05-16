@@ -27,6 +27,11 @@ public class LignBAServiceImpl implements LignBAService {
         currentLignBA =lignBARepository.save(lignBA);
         return  ResponseEntity.ok(lignBA);
     }
+    @Override
+    public List<LignBA> addListLignBA(List<LignBA> listLignBA){
+        lignBARepository.saveAll(listLignBA);
+        return listLignBA;
+    }
 
     @Override
     public ResponseEntity<LignBA> getLignBA(long id_lign_a) {

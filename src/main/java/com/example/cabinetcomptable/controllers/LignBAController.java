@@ -26,6 +26,11 @@ public class LignBAController {
         return lignBAService.addLignBA(lignBA);
     }
 
+    @PostMapping("/lignBA/list")
+    public ResponseEntity<List<LignBA>>  addListLignBA(@RequestBody List<LignBA> listLignBA){
+        return  ResponseEntity.ok(lignBAService.addListLignBA(listLignBA));
+    }
+
     // getLignBA :
     @GetMapping("/lignBA/{id_ba}")
     public ResponseEntity<LignBA> getLignBA(@PathVariable Long id_ba){
