@@ -4,6 +4,7 @@ import com.example.cabinetcomptable.entities.BonAchat;
 import com.example.cabinetcomptable.entities.LignBA;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
+import com.example.cabinetcomptable.repositories.LignBARepository;
 import com.example.cabinetcomptable.services.BonAchatService;
 import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +18,21 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-@Transactional
+
 public class BonAchatServiceImpl implements BonAchatService {
 
     @Autowired
     BonAchatRepository bonAchatRepository;
 
-
-
+    @Autowired
+    LignBARepository lignBARepository;
 
     @Autowired
     GenerateFormatService generateFormatService;
 
 
     private static BonAchat currentBonAchat  =null;
+    private static Set<LignBA> currentListLignBA  = null;
 
     public  BonAchatServiceImpl(BonAchatRepository bonAchatRepository){
         this.bonAchatRepository=bonAchatRepository ;
@@ -42,19 +44,20 @@ public class BonAchatServiceImpl implements BonAchatService {
     }
 
     @Override
+    @Transactional
     public ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat) {
 
 
         bonAchat.setBonANum(generateFormatService.formatNumeroBonAchat(bonAchat.getDateBa()));
-        Set<LignBA> list = new HashSet<LignBA>(bonAchat.getListLignBA());
+        currentListLignBA = bonAchat.getListLignBA();
         bonAchat.setListLignBA(null);
         currentBonAchat=bonAchatRepository.save(bonAchat);
 
-        for (LignBA currentvalue : list) {
+        for (LignBA currentvalue : currentListLignBA) {
             currentvalue.setBonAchat(currentBonAchat);
         }
 
-        currentBonAchat.setListLignBA(list);
+        currentBonAchat.setListLignBA(currentListLignBA);
 
         return ResponseEntity.ok(bonAchat);
     }
@@ -72,10 +75,31 @@ public class BonAchatServiceImpl implements BonAchatService {
 
     @Override
     public ResponseEntity<BonAchat> updateBonAchat(BonAchat bonAchat, long id_ba) {
+
         currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + id_ba));
+
+
+
+        currentListLignBA = currentBonAchat.getListLignBA();
+
+        currentBonAchat.setListLignBA(null);
+        lignBARepository.deleteAll(currentListLignBA);
+
         bonAchat.setIdBa(id_ba);
+        currentListLignBA = bonAchat.getListLignBA();
+        bonAchat.setListLignBA(null);
 
         currentBonAchat = bonAchatRepository.save(bonAchat);
+
+
+        for (LignBA currentvalue : currentListLignBA) {
+            currentvalue.setBonAchat(currentBonAchat);
+        }
+
+        currentBonAchat.setListLignBA(currentListLignBA);
+
+        bonAchatRepository.save(currentBonAchat);
+
         return ResponseEntity.ok(bonAchat);
     }
 

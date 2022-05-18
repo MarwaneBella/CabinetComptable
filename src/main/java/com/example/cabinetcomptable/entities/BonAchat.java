@@ -21,6 +21,8 @@ public class BonAchat {
     @Temporal(TemporalType.DATE)
     private Date dateBa;
 
+    private  boolean valide;
+
     private float totalGeneral;
 
 
@@ -37,18 +39,21 @@ public class BonAchat {
     public BonAchat() {
     }
 
-    public BonAchat(long idBa, String bonANum, String facBonNum, Date dateBa, float totalGeneral) {
+    public BonAchat(long idBa, String bonANum, String facBonNum, Date dateBa, boolean valide, float totalGeneral, Fournisseur fournisseur) {
         this.idBa = idBa;
         this.bonANum = bonANum;
         this.facBonNum = facBonNum;
         this.dateBa = dateBa;
+        this.valide = valide;
         this.totalGeneral = totalGeneral;
+        this.fournisseur = fournisseur;
     }
 
-    public BonAchat(String bonANum, String facBonNum, Date dateBa, float totalGeneral) {
+    public BonAchat(String bonANum, String facBonNum, Date dateBa, boolean valide, float totalGeneral) {
         this.bonANum = bonANum;
         this.facBonNum = facBonNum;
         this.dateBa = dateBa;
+        this.valide = valide;
         this.totalGeneral = totalGeneral;
     }
 
@@ -82,6 +87,14 @@ public class BonAchat {
 
     public void setDateBa(Date dateBa) {
         this.dateBa = dateBa;
+    }
+
+    public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
     }
 
     public float getTotalGeneral() {
