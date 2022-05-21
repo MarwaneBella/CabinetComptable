@@ -9,7 +9,7 @@ import java.util.Set;
 @Data
 
 public class FournisseurDto implements Serializable {
-   private  long id;
+    private  long id;
     private  String nom;
     private  String image;
     private  String email;
@@ -24,9 +24,9 @@ public class FournisseurDto implements Serializable {
     private  String tp;
     private  String cnss;
     private  String rc;
-    private Date dateTransaction;
+    private  Date dateTransaction;
 
     private  String codeF;
-    private Set<BonAchatDto> listBonAchat;
+    private  Set<BonAchatDto> listBonAchat;
     //    private Set<BonAchat> listBonAchat;
 }

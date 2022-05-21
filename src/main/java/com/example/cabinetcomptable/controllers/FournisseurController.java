@@ -69,13 +69,10 @@ public class FournisseurController {
 
     //
     @GetMapping("fournisseurDto/{id}")
-    public ResponseEntity<FournisseurDto> getPostById(@PathVariable(name = "id") long id) {
-        Fournisseur fournisseur = fournisseurService.getFournisseurWithListBonAchat(id);
+    public ResponseEntity<FournisseurDto> getFournisseurWithListBonAchat(@PathVariable(name = "id") long id) {
 
-        System.out.println(fournisseur.getCodeF());
-        // convert entity to DTO
+        Fournisseur fournisseur = fournisseurService.getFournisseurWithListBonAchat(id);
         FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
-        System.out.println(fournisseurDto.getCodeF());
-        return ResponseEntity.ok().body(fournisseurDto);
+        return ResponseEntity.ok(fournisseurDto);
     }
 }

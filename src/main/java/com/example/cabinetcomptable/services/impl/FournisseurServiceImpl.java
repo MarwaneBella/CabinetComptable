@@ -91,15 +91,10 @@ public class FournisseurServiceImpl implements FournisseurService {
     //
     @Override
     public Fournisseur getFournisseurWithListBonAchat(long id){
-        Optional<Fournisseur> result = fournisseurRepository.findById(id);
-        if(result.isPresent()) {
-            return result.get();
-        }else {
-            throw new ResourceNotFoundException("walllllllllllllllo ");
-        }
 
-        //Fournisseur fournisseur = fournisseurRepository.findById(id).orElseThrow();//.orElseThrow(() -> new ResourceNotFoundException("Post"));
-      //  return fournisseur;
+        Fournisseur fournisseur = fournisseurRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("fournisseur not found for this id :: " + id));
+
+        return fournisseur;
     }
 
 
