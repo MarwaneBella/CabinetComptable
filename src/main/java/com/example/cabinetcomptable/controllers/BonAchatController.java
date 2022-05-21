@@ -1,7 +1,6 @@
 package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.entities.BonAchat;
-import com.example.cabinetcomptable.entities.dto.BonAchatDto;
 import com.example.cabinetcomptable.services.BonAchatService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -63,24 +61,5 @@ public class BonAchatController {
     }
 
     //
-    @GetMapping("bonAchatDto/{id}")
-    public ResponseEntity<BonAchatDto> getBonAchatById(@PathVariable(name = "id") Long id) {
-        BonAchat bonAchat = bonAchatService.getB(id);
 
-        System.out.println(bonAchat.getBonANum());
-        // convert entity to DTO
-        BonAchatDto bonAchatDto = modelMapper.map(bonAchat, BonAchatDto.class);
-        System.out.println(bonAchatDto.getBonANum());
-        return ResponseEntity.ok().body(bonAchatDto);
-    }
-
-    @GetMapping("bonAchatDto")
-    public List<BonAchatDto> getAllBonAchatsDto() {
-      //  List<BonAchat> bonAchat = bonAchatService.getAllBonAchats();
-
-      //  System.out.println(bonAchat.get(1).getBonANum());
-        // convert entity to DTOList<BonAchatDto> bonAchatDto = modelMapper.map(bonAchat, BonAchatDto.class);
-      //  System.out.println(bonAchatDto.getBonANum());
-        return bonAchatService.getAllBonAchats().stream().map(b ->modelMapper.map(b,BonAchatDto.class)).collect(Collectors.toList());
-    }
 }
