@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "bon_achat")
+
 public class BonAchat {
 
     @Id

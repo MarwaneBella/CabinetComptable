@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -87,6 +87,19 @@ public class FournisseurServiceImpl implements FournisseurService {
     public String getFile() {
         return fileStorageService.loadFile(pathFolder+"/"+currentFournisseur.getImage());
 
+    }
+    //
+    @Override
+    public Fournisseur getFournisseurWithListBonAchat(long id){
+        Optional<Fournisseur> result = fournisseurRepository.findById(id);
+        if(result.isPresent()) {
+            return result.get();
+        }else {
+            throw new ResourceNotFoundException("walllllllllllllllo ");
+        }
+
+        //Fournisseur fournisseur = fournisseurRepository.findById(id).orElseThrow();//.orElseThrow(() -> new ResourceNotFoundException("Post"));
+      //  return fournisseur;
     }
 
 
