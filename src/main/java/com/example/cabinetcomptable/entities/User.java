@@ -1,11 +1,12 @@
 package com.example.cabinetcomptable.entities;
 
+import lombok.Builder;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
-
+@Builder(toBuilder = true)
 @Table(name = "comptable")
 public class User {
 

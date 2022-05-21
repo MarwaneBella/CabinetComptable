@@ -2,7 +2,9 @@ package com.example.cabinetcomptable.controllers;
 
 
 import com.example.cabinetcomptable.entities.Fournisseur;
+import com.example.cabinetcomptable.entities.dto.FournisseurDto;
 import com.example.cabinetcomptable.services.FournisseurService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ import java.util.List;
 @RequestMapping("/api")
 @RestController
 public class FournisseurController {
+    //@Autowired
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     FournisseurService fournisseurService;
@@ -61,5 +65,17 @@ public class FournisseurController {
     @PutMapping("/imagefournisseur")
     public void addFile(@RequestParam("file") MultipartFile file) {
         fournisseurService.addFile(file);
+    }
+
+    //
+    @GetMapping("fournisseurDto/{id}")
+    public ResponseEntity<FournisseurDto> getPostById(@PathVariable(name = "id") long id) {
+        Fournisseur fournisseur = fournisseurService.getFournisseurWithListBonAchat(id);
+
+        System.out.println(fournisseur.getCodeF());
+        // convert entity to DTO
+        FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
+        System.out.println(fournisseurDto.getCodeF());
+        return ResponseEntity.ok().body(fournisseurDto);
     }
 }

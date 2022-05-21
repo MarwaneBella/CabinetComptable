@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -113,5 +114,18 @@ public class BonAchatServiceImpl implements BonAchatService {
 
         bonAchatRepository.deleteById(id_ba);
     }
+
+
+    //
+    @Override
+    public  BonAchat getB(long id){
+        Optional<BonAchat> result = bonAchatRepository.findById(id);
+        if(result.isPresent()) {
+            return result.get();
+        }else {
+            throw new ResourceNotFoundException("walllllllllllllllo ");
+        }
+    }
+
 
 }
