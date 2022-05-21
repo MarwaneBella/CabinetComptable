@@ -10,7 +10,7 @@ public class LignBH {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idLignH;
     private int quantite;
-    private float montant;
+    private double montant;
 
     @ManyToOne
     @JoinColumn( name = "id_bh" )
@@ -23,7 +23,7 @@ public class LignBH {
     public LignBH() {
     }
 
-    public LignBH(long idLignH, int quantite, float montant) {
+    public LignBH(long idLignH, int quantite, double montant) {
         this.idLignH = idLignH;
         this.quantite = quantite;
         this.montant = montant;
@@ -45,11 +45,11 @@ public class LignBH {
         this.quantite = quantite;
     }
 
-    public float getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(float montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 

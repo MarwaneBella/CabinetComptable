@@ -21,7 +21,7 @@ public class BonHonoraire {
     @Temporal(TemporalType.DATE)
     private Date dateBh;
 
-    private float totalGeneral;
+    private double totalGeneral;
 
     @ManyToOne
     @JoinColumn( name = "id_c" )
@@ -42,7 +42,7 @@ public class BonHonoraire {
     public BonHonoraire() {
     }
 
-    public BonHonoraire(long idBh, String bonHNum, Date dateBh, float totalGeneral) {
+    public BonHonoraire(long idBh, String bonHNum, Date dateBh, double totalGeneral) {
         this.idBh = idBh;
         this.bonHNum = bonHNum;
         this.dateBh = dateBh;
@@ -73,11 +73,11 @@ public class BonHonoraire {
         this.dateBh = dateBh;
     }
 
-    public float getTotalGeneral() {
+    public double getTotalGeneral() {
         return totalGeneral;
     }
 
-    public void setTotalGeneral(float totalGeneral) {
+    public void setTotalGeneral(double totalGeneral) {
         this.totalGeneral = totalGeneral;
     }
 

@@ -22,6 +22,10 @@ public class BonAchatController {
     public ResponseEntity<String> getNextBonANum(@RequestBody Date date){
         return ResponseEntity.ok(bonAchatService.getNextBonANum(date));
     }
+    @PostMapping("/bonAchat/current/{id_ba}")
+    public ResponseEntity<String> getcurrentBonANum(@PathVariable long id_ba,@RequestBody Date date){
+        return ResponseEntity.ok(bonAchatService.getCurrentBonANum(id_ba,date));
+    }
 
     // add bonAchat :
     @PostMapping("/bonAchat")

@@ -8,7 +8,7 @@ public class BonAReg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBaReg;
-    private float montant;
+    private double montant;
     @Basic
     @Temporal(TemporalType.DATE)
     private Date datePayment;
@@ -24,13 +24,13 @@ public class BonAReg {
     public BonAReg() {
     }
 
-    public BonAReg(long idBaReg, float montant, Date datePayment) {
+    public BonAReg(long idBaReg, double montant, Date datePayment) {
         this.idBaReg = idBaReg;
         this.montant = montant;
         this.datePayment = datePayment;
     }
 
-    public BonAReg(float montant, Date datePayment) {
+    public BonAReg(double montant, Date datePayment) {
         this.montant = montant;
         this.datePayment = datePayment;
     }
@@ -43,11 +43,11 @@ public class BonAReg {
         this.idBaReg = idBaReg;
     }
 
-    public float getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(float montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 

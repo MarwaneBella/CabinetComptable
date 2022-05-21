@@ -17,16 +17,16 @@ public class Produit {
     private String description;
     private String type;
     private String marque;
-    private float longueur;
-    private float largeur;
-    private float hauteur;
-    private float poids;
-    private float surface;
-    private float volume;
-    private float prixAchat;
-    private float prixVente;
-    private float prixRevient;
-    private float tva;
+    private double longueur;
+    private double largeur;
+    private double hauteur;
+    private double poids;
+    private double surface;
+    private double volume;
+    private double prixAchat;
+    private double prixVente;
+    private double prixRevient;
+    private double tva;
     private int quantitieDisponible;
     
     @ManyToOne
@@ -42,7 +42,7 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(String reference, String image, String designation, String description, String type, String marque, float longueur, float largeur, float hauteur, float poids, float surface, float volume, float prixAchat, float prixVente, float prixRevient, float tva, int quantitieDisponible) {
+    public Produit(String reference, String image, String designation, String description, String type, String marque, double longueur, double largeur, double hauteur, double poids, double surface, double volume, double prixAchat, double prixVente, double prixRevient, double tva, int quantitieDisponible) {
         this.reference = reference;
         this.image = image;
         this.designation = designation;
@@ -110,83 +110,83 @@ public class Produit {
         this.marque = marque;
     }
 
-    public float getLongueur() {
+    public double getLongueur() {
         return longueur;
     }
 
-    public void setLongueur(float longueur) {
+    public void setLongueur(double longueur) {
         this.longueur = longueur;
     }
 
-    public float getLargeur() {
+    public double getLargeur() {
         return largeur;
     }
 
-    public void setLargeur(float largeur) {
+    public void setLargeur(double largeur) {
         this.largeur = largeur;
     }
 
-    public float getHauteur() {
+    public double getHauteur() {
         return hauteur;
     }
 
-    public void setHauteur(float hauteur) {
+    public void setHauteur(double hauteur) {
         this.hauteur = hauteur;
     }
 
-    public float getPoids() {
+    public double getPoids() {
         return poids;
     }
 
-    public void setPoids(float poids) {
+    public void setPoids(double poids) {
         this.poids = poids;
     }
 
-    public float getSurface() {
+    public double getSurface() {
         return surface;
     }
 
-    public void setSurface(float surface) {
+    public void setSurface(double surface) {
         this.surface = surface;
     }
 
-    public float getVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public void setVolume(float volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public float getPrixAchat() {
+    public double getPrixAchat() {
         return prixAchat;
     }
 
-    public void setPrixAchat(float prixAchat) {
+    public void setPrixAchat(double prixAchat) {
         this.prixAchat = prixAchat;
     }
 
-    public float getPrixVente() {
+    public double getPrixVente() {
         return prixVente;
     }
 
-    public void setPrixVente(float prixVente) {
+    public void setPrixVente(double prixVente) {
         this.prixVente = prixVente;
     }
 
-    public float getPrixRevient() {
+    public double getPrixRevient() {
         return prixRevient;
     }
 
-    public void setPrixRevient(float prixRevient) {
+    public void setPrixRevient(double prixRevient) {
         this.prixRevient = prixRevient;
     }
 
-    public float getTva() {
+    public double getTva() {
         return tva;
     }
 
-    public void setTva(float tva) {
+    public void setTva(double tva) {
         this.tva = tva;
     }
 

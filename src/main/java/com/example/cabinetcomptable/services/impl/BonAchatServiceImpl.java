@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +39,12 @@ public class BonAchatServiceImpl implements BonAchatService {
 
     @Override
     public String getNextBonANum(Date date){
-        return generateFormatService.formatNumeroBonAchat(date);
+        return generateFormatService.formatNextNumeroBonAchat(date);
+    }
+
+    @Override
+    public String getCurrentBonANum(long id, Date date){
+        return generateFormatService.formatCurrentNumeroBonAchat(id,date);
     }
 
     @Override
@@ -48,7 +52,7 @@ public class BonAchatServiceImpl implements BonAchatService {
     public ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat) {
 
 
-        bonAchat.setBonANum(generateFormatService.formatNumeroBonAchat(bonAchat.getDateBa()));
+        bonAchat.setBonANum(generateFormatService.formatNextNumeroBonAchat(bonAchat.getDateBa()));
         currentListLignBA = bonAchat.getListLignBA();
         bonAchat.setListLignBA(null);
         currentBonAchat=bonAchatRepository.save(bonAchat);
@@ -76,7 +80,7 @@ public class BonAchatServiceImpl implements BonAchatService {
     @Override
     public ResponseEntity<BonAchat> updateBonAchat(BonAchat bonAchat, long id_ba) {
 
-        currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + id_ba));
+        currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_ba));
 
 
 
@@ -98,9 +102,9 @@ public class BonAchatServiceImpl implements BonAchatService {
 
         currentBonAchat.setListLignBA(currentListLignBA);
 
-        bonAchatRepository.save(currentBonAchat);
+        currentBonAchat = bonAchatRepository.save(currentBonAchat);
 
-        return ResponseEntity.ok(bonAchat);
+        return ResponseEntity.ok(currentBonAchat);
     }
 
     @Override

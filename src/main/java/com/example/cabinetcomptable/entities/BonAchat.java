@@ -23,7 +23,7 @@ public class BonAchat {
 
     private  boolean valide;
 
-    private float totalGeneral;
+    private double totalGeneral;
 
 
     @ManyToOne
@@ -97,11 +97,11 @@ public class BonAchat {
         this.valide = valide;
     }
 
-    public float getTotalGeneral() {
+    public double getTotalGeneral() {
         return totalGeneral;
     }
 
-    public void setTotalGeneral(float totalGeneral) {
+    public void setTotalGeneral(double totalGeneral) {
         this.totalGeneral = totalGeneral;
     }
 

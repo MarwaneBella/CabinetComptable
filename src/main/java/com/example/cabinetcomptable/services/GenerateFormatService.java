@@ -5,7 +5,8 @@ import java.util.Date;
 public interface GenerateFormatService {
     String formatCodeClient(long id);
     String formatCodeFournisseur(long id);
-    String formatNumeroBonAchat(Date date);
-    String formatNumeroBonHonoraire(Date date);
+    String formatNextNumeroBonAchat(Date date);
+    String formatCurrentNumeroBonAchat(long id,Date date);
+    String formatNextNumeroBonHonoraire(Date date);
     String formatNumeroFacture(Date date);
 }

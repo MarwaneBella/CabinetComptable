@@ -18,11 +18,11 @@ public class Client extends Personne{
     @Column(unique = true)
     private String codeC;
 
-    private float bilan;
-    private float pvBilan;
+    private double bilan;
+    private double pvBilan;
     private String regime;
-    private float rTva;
-    private float rCnss;
+    private double rTva;
+    private double rCnss;
 
     @OneToMany(mappedBy="client")
     private Set<BonHonoraire> listBonHonoraire = new HashSet<BonHonoraire>();
@@ -30,7 +30,7 @@ public class Client extends Personne{
     public Client(){
     }
 
-    public Client(long id, String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, float bilan, float pvBilan, String regime, float rTva, float rCnss) {
+    public Client(long id, String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, double bilan, double pvBilan, String regime, double rTva, double rCnss) {
         super(id, nom, image, email, telePortable, teleFix, ville, adresse, codePostale, siteWeb, ifi, ice, tp, cnss, rc, dateTransaction);
         this.codeC = codeC;
         this.bilan = bilan;
@@ -40,7 +40,7 @@ public class Client extends Personne{
         this.rCnss = rCnss;
     }
 
-    public Client(String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, float bilan, float pvBilan, String regime, float rTva, float rCnss) {
+    public Client(String nom, String image, String email, String telePortable, String teleFix, String ville, String adresse, String codePostale, String siteWeb, String ifi, String ice, String tp, String cnss, String rc, Date dateTransaction, String codeC, double bilan, double pvBilan, String regime, double rTva, double rCnss) {
         super(nom, image, email, telePortable, teleFix, ville, adresse, codePostale, siteWeb, ifi, ice, tp, cnss, rc, dateTransaction);
         this.codeC = codeC;
         this.bilan = bilan;
@@ -58,19 +58,19 @@ public class Client extends Personne{
         this.codeC = codeC;
     }
 
-    public float getBilan() {
+    public double getBilan() {
         return bilan;
     }
 
-    public void setBilan(float bilan) {
+    public void setBilan(double bilan) {
         this.bilan = bilan;
     }
 
-    public float getPvBilan() {
+    public double getPvBilan() {
         return pvBilan;
     }
 
-    public void setPvBilan(float pvBilan) {
+    public void setPvBilan(double pvBilan) {
         this.pvBilan = pvBilan;
     }
 
@@ -82,19 +82,19 @@ public class Client extends Personne{
         this.regime = regime;
     }
 
-    public float getrTva() {
+    public double getrTva() {
         return rTva;
     }
 
-    public void setrTva(float rTva) {
+    public void setrTva(double rTva) {
         this.rTva = rTva;
     }
 
-    public float getrCnss() {
+    public double getrCnss() {
         return rCnss;
     }
 
-    public void setrCnss(float rCnss) {
+    public void setrCnss(double rCnss) {
         this.rCnss = rCnss;
     }
 }

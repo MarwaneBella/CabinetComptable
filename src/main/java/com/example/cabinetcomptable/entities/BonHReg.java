@@ -9,7 +9,7 @@ public class BonHReg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBhReg;
-    private float montant;
+    private double montant;
 
     @Basic
     @Temporal(TemporalType.DATE)
@@ -27,7 +27,7 @@ public class BonHReg {
     public BonHReg() {
     }
 
-    public BonHReg(long idBhReg, float montant, Date datePayment) {
+    public BonHReg(long idBhReg, double montant, Date datePayment) {
         this.idBhReg = idBhReg;
         this.montant = montant;
         this.datePayment = datePayment;
@@ -41,11 +41,11 @@ public class BonHReg {
         this.idBhReg = idBhReg;
     }
 
-    public float getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(float montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 

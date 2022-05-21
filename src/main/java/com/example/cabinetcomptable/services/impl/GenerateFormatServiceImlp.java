@@ -3,6 +3,7 @@ package com.example.cabinetcomptable.services.impl;
 import com.example.cabinetcomptable.entities.BonAchat;
 import com.example.cabinetcomptable.entities.BonHonoraire;
 import com.example.cabinetcomptable.entities.Facture;
+import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
 import com.example.cabinetcomptable.repositories.BonHonoraireRepository;
 import com.example.cabinetcomptable.repositories.FactureRepository;
@@ -38,12 +39,13 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
     }
 
     @Override
-    public String formatNumeroBonAchat(Date date) {
+    public String formatNextNumeroBonAchat(Date date) {
 
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        BonAchat lastBonAchat = bonAchatRepository.findTopByOrderByIdBaDesc();
+        BonAchat lastBonAchat = bonAchatRepository.selectLastBonAchat(date);
+
 
         if (lastBonAchat == null) {
             return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
@@ -63,11 +65,40 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
             }
         }
 
+    }
+
+    @Override
+    public String formatCurrentNumeroBonAchat(long id_ba,Date date) {
+
+        LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
+        String yearMonth = newDate.format(formatYearMonth);
+        BonAchat currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_ba));
+        BonAchat lastBonAchat = bonAchatRepository.selectLastBonAchat(date);
+        LocalDate oldDate = LocalDate.parse(currentBonAchat.getDateBa().toString());
+
+        if(newDate.getYear() == oldDate.getYear()){
+
+            String currentIdString  = currentBonAchat.getBonANum();
+            int id = Integer.parseInt(currentIdString.substring(currentIdString.lastIndexOf("-") + 1));
+            return "BA-"+yearMonth+"-"+ String.format("%04d" , id );
+        }
+        else{
+            if(lastBonAchat == null){
+                return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+            }else{
+                String lastIdString  = lastBonAchat.getBonANum();
+                int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
+                return "BA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+            }
+
+        }
+
 
     }
 
     @Override
-    public String formatNumeroBonHonoraire(Date date) {
+    public String formatNextNumeroBonHonoraire(Date date) {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);

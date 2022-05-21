@@ -11,8 +11,8 @@ public class ReglementClient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idRegC;
 
-    private float avance;
-    private float reste;
+    private double avance;
+    private double reste;
 
     @OneToMany (mappedBy = "reglementClient")
     private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
@@ -20,13 +20,13 @@ public class ReglementClient {
     public ReglementClient() {
     }
 
-    public ReglementClient(long idRegC, float avance, float reste) {
+    public ReglementClient(long idRegC, double avance, double reste) {
         this.idRegC = idRegC;
         this.avance = avance;
         this.reste = reste;
     }
 
-    public ReglementClient(float avance, float reste) {
+    public ReglementClient(double avance, double reste) {
         this.avance = avance;
         this.reste = reste;
     }

@@ -11,8 +11,8 @@ public class LignBA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idLignA;
     private int quantite;
-    private float montantTtc;
-    private float prixUnitaire;
+    private double montantTtc;
+    private double prixUnitaire;
     @ManyToOne
     @JoinColumn( name = "id_ba" )
     private BonAchat bonAchat;
@@ -25,14 +25,14 @@ public class LignBA {
     public LignBA() {
     }
 
-    public LignBA(long idLignA, int quantite, float montantTtc, float prixUnitaire) {
+    public LignBA(long idLignA, int quantite, double montantTtc, double prixUnitaire) {
         this.idLignA = idLignA;
         this.quantite = quantite;
         this.montantTtc = montantTtc;
         this.prixUnitaire = prixUnitaire;
     }
 
-    public LignBA(int quantite, float montantTtc, float prixUnitaire) {
+    public LignBA(int quantite, double montantTtc, double prixUnitaire) {
         this.quantite = quantite;
         this.montantTtc = montantTtc;
         this.prixUnitaire = prixUnitaire;
@@ -54,19 +54,19 @@ public class LignBA {
         this.quantite = quantite;
     }
 
-    public float getMontantTtc() {
+    public double getMontantTtc() {
         return montantTtc;
     }
 
-    public void setMontantTtc(float montantTtc) {
+    public void setMontantTtc(double montantTtc) {
         this.montantTtc = montantTtc;
     }
 
-    public float getPrixUnitaire() {
+    public double getPrixUnitaire() {
         return prixUnitaire;
     }
 
-    public void setPrixUnitaire(float prixUnitaire) {
+    public void setPrixUnitaire(double prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 

@@ -10,8 +10,8 @@ public class ReglementFournisseur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idRegF;
-    private float avance ;
-    private float reste;
+    private double avance ;
+    private double reste;
 
     @OneToMany(mappedBy = "bonAreg")
     private Set<BonAReg> listbonAReg = new HashSet<BonAReg>();
@@ -19,13 +19,13 @@ public class ReglementFournisseur {
     public ReglementFournisseur() {
     }
 
-    public ReglementFournisseur(long idRegF, float avance, float reste) {
+    public ReglementFournisseur(long idRegF, double avance, double reste) {
         this.idRegF = idRegF;
         this.avance = avance;
         this.reste = reste;
     }
 
-    public ReglementFournisseur(float avance, float reste) {
+    public ReglementFournisseur(double avance, double reste) {
         this.avance = avance;
         this.reste = reste;
     }
@@ -38,19 +38,19 @@ public class ReglementFournisseur {
         this.idRegF = idRegF;
     }
 
-    public float getAvance() {
+    public double getAvance() {
         return avance;
     }
 
-    public void setAvance(float avance) {
+    public void setAvance(double avance) {
         this.avance = avance;
     }
 
-    public float getReste() {
+    public double getReste() {
         return reste;
     }
 
-    public void setReste(float reste) {
+    public void setReste(double reste) {
         this.reste = reste;
     }
 

@@ -9,6 +9,9 @@ import java.util.List;
 public interface BonAchatService {
 
     String getNextBonANum(Date date);
+
+    String getCurrentBonANum(long id, Date date);
+
     ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat);
     ResponseEntity<BonAchat> getBonAchat(long id_ba);
     List<BonAchat> getAllBonAchats();

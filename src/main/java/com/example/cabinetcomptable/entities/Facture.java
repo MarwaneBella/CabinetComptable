@@ -20,9 +20,9 @@ public class Facture {
     @Temporal(TemporalType.DATE)
     private Date dateFac;
 
-    private float totalHt;
-    private float totalTva;
-    private float totalTtc;
+    private double totalHt;
+    private double totalTva;
+    private double totalTtc;
 
     @OneToMany(mappedBy = "facture")
     private Set<BonHonoraire> ListbonHonoraire = new HashSet<BonHonoraire>();
@@ -30,7 +30,7 @@ public class Facture {
     public Facture() {
     }
 
-    public Facture(long idFac, String facNum, Date dateFac, float totalHt, float totalTva, float totalTtc) {
+    public Facture(long idFac, String facNum, Date dateFac, double totalHt, double totalTva, double totalTtc) {
         this.idFac = idFac;
         this.facNum = facNum;
         this.dateFac = dateFac;
@@ -39,7 +39,7 @@ public class Facture {
         this.totalTtc = totalTtc;
     }
 
-    public Facture(String facNum, Date dateFac, float totalHt, float totalTva, float totalTtc) {
+    public Facture(String facNum, Date dateFac, double totalHt, double totalTva, double totalTtc) {
         this.facNum = facNum;
         this.dateFac = dateFac;
         this.totalHt = totalHt;
@@ -71,27 +71,27 @@ public class Facture {
         this.dateFac = dateFac;
     }
 
-    public float getTotalHt() {
+    public double getTotalHt() {
         return totalHt;
     }
 
-    public void setTotalHt(float totalHt) {
+    public void setTotalHt(double totalHt) {
         this.totalHt = totalHt;
     }
 
-    public float getTotalTva() {
+    public double getTotalTva() {
         return totalTva;
     }
 
-    public void setTotalTva(float totalTva) {
+    public void setTotalTva(double totalTva) {
         this.totalTva = totalTva;
     }
 
-    public float getTotalTtc() {
+    public double getTotalTtc() {
         return totalTtc;
     }
 
-    public void setTotalTtc(float totalTtc) {
+    public void setTotalTtc(double totalTtc) {
         this.totalTtc = totalTtc;
     }
 
