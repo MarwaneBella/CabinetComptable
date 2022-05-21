@@ -9,7 +9,11 @@ import java.util.Date;
 
 @Repository
 public interface BonAchatRepository extends JpaRepository<BonAchat,Long> {
-    //where year(b.dateBa) = year(?1)
+
     @Query("select b from BonAchat b  where b.idBa =( select max(c.idBa) from BonAchat c where year(c.dateBa) = year(?1) ) ")
     BonAchat selectLastBonAchat(Date date);
+
+    @Query(" select sum(b.montantPayer) from BonAchat b where year(b.dateBa) = year(?1) ")
+    Double selectSumofDepensePerYear(Date date);
+
 }

@@ -1,6 +1,8 @@
 package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.services.StatistiqueService;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +22,11 @@ public class StatistiqueController {
         return ResponseEntity.ok(statistiqueService.countNumberOfAll());
 
     }
+
+    @GetMapping("/dataBarChart")
+    public ResponseEntity<String>  getDataBarChart(){
+        return ResponseEntity.ok( statistiqueService.getDataDepenseAndRecettePerYear() );
+    }
+
 
 }

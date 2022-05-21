@@ -1,6 +1,10 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,24 +14,42 @@ public class ReglementFournisseur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idRegF;
-    private double avance ;
+
+    @Column(unique = true)
+    private String codeRF;
+    private String modePaymant;
+    private boolean status;
+    private double avance;
     private double reste;
 
-    @OneToMany(mappedBy = "bonAreg")
-    private Set<BonAReg> listbonAReg = new HashSet<BonAReg>();
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date datePayment;
+
+    @ManyToOne
+    @JoinColumn( name = "id_ba" )
+    private BonAchat bonAchat;
 
     public ReglementFournisseur() {
     }
 
-    public ReglementFournisseur(long idRegF, double avance, double reste) {
+    public ReglementFournisseur(long idRegF, String codeRF, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
         this.idRegF = idRegF;
+        this.codeRF = codeRF;
+        this.modePaymant = modePaymant;
+        this.status = status;
         this.avance = avance;
         this.reste = reste;
+        this.datePayment = datePayment;
     }
 
-    public ReglementFournisseur(double avance, double reste) {
+    public ReglementFournisseur(String codeRF, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
+        this.codeRF = codeRF;
+        this.modePaymant = modePaymant;
+        this.status = status;
         this.avance = avance;
         this.reste = reste;
+        this.datePayment = datePayment;
     }
 
     public long getIdRegF() {
@@ -36,6 +58,30 @@ public class ReglementFournisseur {
 
     public void setIdRegF(long idRegF) {
         this.idRegF = idRegF;
+    }
+
+    public String getCodeRF() {
+        return codeRF;
+    }
+
+    public void setCodeRF(String codeRF) {
+        this.codeRF = codeRF;
+    }
+
+    public String getModePaymant() {
+        return modePaymant;
+    }
+
+    public void setModePaymant(String modePaymant) {
+        this.modePaymant = modePaymant;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public double getAvance() {
@@ -54,11 +100,20 @@ public class ReglementFournisseur {
         this.reste = reste;
     }
 
-    public Set<BonAReg> getListbonAReg() {
-        return listbonAReg;
+    public Date getDatePayment() {
+        return datePayment;
     }
 
-    public void setListbonAReg(Set<BonAReg> listbonAReg) {
-        this.listbonAReg = listbonAReg;
+    public void setDatePayment(Date datePayment) {
+        this.datePayment = datePayment;
+    }
+
+    @JsonIgnore
+    public BonAchat getBonAchat() {
+        return bonAchat;
+    }
+
+    public void setBonAchat(BonAchat bonAchat) {
+        this.bonAchat = bonAchat;
     }
 }

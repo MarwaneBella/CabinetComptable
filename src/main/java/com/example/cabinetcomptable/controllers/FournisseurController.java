@@ -73,6 +73,7 @@ public class FournisseurController {
 
         Fournisseur fournisseur = fournisseurService.getFournisseurWithListBonAchat(id);
         FournisseurDto fournisseurDto = modelMapper.map(fournisseur, FournisseurDto.class);
+
         return ResponseEntity.ok(fournisseurDto);
     }
 }

@@ -28,5 +28,5 @@ public class FournisseurDto implements Serializable {
 
     private  String codeF;
     private  Set<BonAchatDto> listBonAchat;
-    //    private Set<BonAchat> listBonAchat;
+
 }

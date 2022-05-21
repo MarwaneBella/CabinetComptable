@@ -21,7 +21,12 @@ public class BonHonoraire {
     @Temporal(TemporalType.DATE)
     private Date dateBh;
 
-    private double totalGeneral;
+    private  boolean valide;
+    private  boolean status;
+
+    private double montantTotal;
+
+    private double montantPayer;
 
     @ManyToOne
     @JoinColumn( name = "id_c" )
@@ -32,7 +37,7 @@ public class BonHonoraire {
     private Facture facture;
 
     @OneToMany(mappedBy = "bonHonoraire")
-    private Set<BonHReg> listBonHReg = new HashSet<BonHReg>();
+    private Set<ReglementClient> listReglementClient = new HashSet<ReglementClient>();
 
     @OneToMany(mappedBy = "bonHonoraire")
     private Set<LignBH>  listLignBh= new HashSet<LignBH>();
@@ -42,11 +47,23 @@ public class BonHonoraire {
     public BonHonoraire() {
     }
 
-    public BonHonoraire(long idBh, String bonHNum, Date dateBh, double totalGeneral) {
+    public BonHonoraire(long idBh, String bonHNum, Date dateBh, boolean valide, boolean status, double montantTotal, double montantPayer) {
         this.idBh = idBh;
         this.bonHNum = bonHNum;
         this.dateBh = dateBh;
-        this.totalGeneral = totalGeneral;
+        this.valide = valide;
+        this.status = status;
+        this.montantTotal = montantTotal;
+        this.montantPayer = montantPayer;
+    }
+
+    public BonHonoraire(String bonHNum, Date dateBh, boolean valide, boolean status, double montantTotal, double montantPayer) {
+        this.bonHNum = bonHNum;
+        this.dateBh = dateBh;
+        this.valide = valide;
+        this.status = status;
+        this.montantTotal = montantTotal;
+        this.montantPayer = montantPayer;
     }
 
     public long getIdBh() {
@@ -73,12 +90,36 @@ public class BonHonoraire {
         this.dateBh = dateBh;
     }
 
-    public double getTotalGeneral() {
-        return totalGeneral;
+    public boolean isValide() {
+        return valide;
     }
 
-    public void setTotalGeneral(double totalGeneral) {
-        this.totalGeneral = totalGeneral;
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public double getMontantTotal() {
+        return montantTotal;
+    }
+
+    public void setMontantTotal(double montantTotal) {
+        this.montantTotal = montantTotal;
+    }
+
+    public double getMontantPayer() {
+        return montantPayer;
+    }
+
+    public void setMontantPayer(double montantPayer) {
+        this.montantPayer = montantPayer;
     }
 
     public Client getClient() {
@@ -97,12 +138,12 @@ public class BonHonoraire {
         this.facture = facture;
     }
 
-    public Set<BonHReg> getListBonHReg() {
-        return listBonHReg;
+    public Set<ReglementClient> getListReglementClient() {
+        return listReglementClient;
     }
 
-    public void setListBonHReg(Set<BonHReg> listBonHReg) {
-        this.listBonHReg = listBonHReg;
+    public void setListReglementClient(Set<ReglementClient> listReglementClient) {
+        this.listReglementClient = listReglementClient;
     }
 
     public Set<LignBH> getListLignBh() {

@@ -23,8 +23,11 @@ public class BonAchat {
     private Date dateBa;
 
     private  boolean valide;
+    private  boolean status;
 
-    private double totalGeneral;
+    private double montantTotal;
+
+    private double montantPayer;
 
 
     @ManyToOne
@@ -32,7 +35,7 @@ public class BonAchat {
     private Fournisseur fournisseur;
 
     @OneToMany(mappedBy = "bonAchat")
-    private Set<BonAReg> listBonAReg = new HashSet<BonAReg>();
+    private Set<ReglementFournisseur> listReglementFournisseur = new HashSet<ReglementFournisseur>();
 
     @OneToMany(mappedBy = "bonAchat",cascade = CascadeType.ALL)
     private Set<LignBA> listLignBA = new HashSet<LignBA>();
@@ -40,22 +43,25 @@ public class BonAchat {
     public BonAchat() {
     }
 
-    public BonAchat(long idBa, String bonANum, String facBonNum, Date dateBa, boolean valide, float totalGeneral, Fournisseur fournisseur) {
+    public BonAchat(long idBa, String bonANum, String facBonNum, Date dateBa, boolean valide, boolean status, double montantTotal, double montantPayer) {
         this.idBa = idBa;
         this.bonANum = bonANum;
         this.facBonNum = facBonNum;
         this.dateBa = dateBa;
         this.valide = valide;
-        this.totalGeneral = totalGeneral;
-        this.fournisseur = fournisseur;
+        this.status = status;
+        this.montantTotal = montantTotal;
+        this.montantPayer = montantPayer;
     }
 
-    public BonAchat(String bonANum, String facBonNum, Date dateBa, boolean valide, float totalGeneral) {
+    public BonAchat(String bonANum, String facBonNum, Date dateBa, boolean valide, boolean status, double montantTotal, double montantPayer) {
         this.bonANum = bonANum;
         this.facBonNum = facBonNum;
         this.dateBa = dateBa;
         this.valide = valide;
-        this.totalGeneral = totalGeneral;
+        this.status = status;
+        this.montantTotal = montantTotal;
+        this.montantPayer = montantPayer;
     }
 
     public long getIdBa() {
@@ -98,12 +104,28 @@ public class BonAchat {
         this.valide = valide;
     }
 
-    public double getTotalGeneral() {
-        return totalGeneral;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setTotalGeneral(double totalGeneral) {
-        this.totalGeneral = totalGeneral;
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public double getMontantTotal() {
+        return montantTotal;
+    }
+
+    public void setMontantTotal(double montantTotal) {
+        this.montantTotal = montantTotal;
+    }
+
+    public double getMontantPayer() {
+        return montantPayer;
+    }
+
+    public void setMontantPayer(double montantPayer) {
+        this.montantPayer = montantPayer;
     }
 
     public Fournisseur getFournisseur() {
@@ -114,6 +136,13 @@ public class BonAchat {
         this.fournisseur = fournisseur;
     }
 
+    public Set<ReglementFournisseur> getListReglementFournisseur() {
+        return listReglementFournisseur;
+    }
+
+    public void setListReglementFournisseur(Set<ReglementFournisseur> listReglementFournisseur) {
+        this.listReglementFournisseur = listReglementFournisseur;
+    }
 
     public Set<LignBA> getListLignBA() {
         return listLignBA;

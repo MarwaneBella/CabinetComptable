@@ -1,5 +1,6 @@
 package com.example.cabinetcomptable.services.impl;
 
+import com.example.cabinetcomptable.entities.BonAchat;
 import com.example.cabinetcomptable.entities.Fournisseur;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.FournisseurRepository;
@@ -17,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class FournisseurServiceImpl implements FournisseurService {
 
     @Autowired
@@ -35,11 +35,13 @@ public class FournisseurServiceImpl implements FournisseurService {
     private String pathFolder = "fournisseurImages";
 
     private static Fournisseur currentFournisseur  =null;
+
+
     public  FournisseurServiceImpl(FournisseurRepository fournisseurRepository){
         this.fournisseurRepository = fournisseurRepository;
     }
 
-
+    @Transactional
     @Override
     public ResponseEntity<Fournisseur> addFournisseur(Fournisseur fournisseur) {
 
@@ -74,6 +76,7 @@ public class FournisseurServiceImpl implements FournisseurService {
         fournisseurRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
     public void addFile(MultipartFile file) {
         if(currentFournisseur.getImage() !=null){
@@ -93,6 +96,12 @@ public class FournisseurServiceImpl implements FournisseurService {
     public Fournisseur getFournisseurWithListBonAchat(long id){
 
         Fournisseur fournisseur = fournisseurRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("fournisseur not found for this id :: " + id));
+
+        for(BonAchat currentValue: fournisseur.getListBonAchat() ){
+            if(!currentValue.isValide()){
+                fournisseur.getListBonAchat().remove(currentValue);
+            }
+        }
 
         return fournisseur;
     }
