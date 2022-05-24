@@ -52,7 +52,7 @@ public class BonAchatController {
     // update BonAchat :
     @PutMapping("/bonAchat/{id_ba}")
     public  ResponseEntity<BonAchat> updateBonAchat(@RequestBody BonAchat bonAchat , @PathVariable Long id_ba){
-        return  bonAchatService.updateBonAchat(bonAchat ,id_ba);
+        return  ResponseEntity.ok( bonAchatService.updateBonAchat(bonAchat ,id_ba) );
     }
 
     // delete BonAchat :

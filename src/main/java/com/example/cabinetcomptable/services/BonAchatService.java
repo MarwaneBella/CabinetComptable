@@ -16,7 +16,7 @@ public interface BonAchatService {
     ResponseEntity<BonAchat> addBonAchat(BonAchat bonAchat);
     ResponseEntity<BonAchat> getBonAchat(long id_ba);
     List<BonAchat> getAllBonAchats();
-    ResponseEntity<BonAchat> updateBonAchat(BonAchat BonAchatDtails , long id_ba);
+    BonAchat updateBonAchat(BonAchat BonAchatDtails , long id_ba);
     void deleteBonAchat(long id_ba);
 
     //
