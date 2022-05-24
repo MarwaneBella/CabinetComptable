@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.BonAchat;
+import com.example.cabinetcomptable.entities.Fournisseur;
 import com.example.cabinetcomptable.entities.LignBA;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
@@ -83,8 +84,6 @@ public class BonAchatServiceImpl implements BonAchatService {
 
         currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_ba));
 
-
-
         currentListLignBA = currentBonAchat.getListLignBA();
 
         currentBonAchat.setListLignBA(null);
@@ -95,7 +94,6 @@ public class BonAchatServiceImpl implements BonAchatService {
         bonAchat.setListLignBA(null);
 
         currentBonAchat = bonAchatRepository.save(bonAchat);
-
 
         for (LignBA currentvalue : currentListLignBA) {
             currentvalue.setBonAchat(currentBonAchat);
@@ -125,6 +123,12 @@ public class BonAchatServiceImpl implements BonAchatService {
         }else {
             throw new ResourceNotFoundException("walllllllllllllllo ");
         }
+    }
+
+    @Override
+
+    public List<BonAchat> getAllBonAchatsByFournisseur(Fournisseur fournisseur){
+        return bonAchatRepository.selectListBonAchatByFournisseur(fournisseur);
     }
 
 

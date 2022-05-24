@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.services;
 
 import com.example.cabinetcomptable.entities.BonAchat;
+import com.example.cabinetcomptable.entities.Fournisseur;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
@@ -20,6 +21,8 @@ public interface BonAchatService {
 
     //
     BonAchat getB(long id);
+
+    List<BonAchat> getAllBonAchatsByFournisseur(Fournisseur fournisseur);
 
 
 }

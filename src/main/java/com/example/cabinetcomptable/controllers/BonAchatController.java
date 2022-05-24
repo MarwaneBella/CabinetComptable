@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.entities.BonAchat;
+import com.example.cabinetcomptable.entities.Fournisseur;
 import com.example.cabinetcomptable.services.BonAchatService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,14 @@ public class BonAchatController {
     @DeleteMapping("/bonAchat/{id_ba}")
     public  void deleteBonAchat(@PathVariable Long id_ba){
         bonAchatService.deleteBonAchat(id_ba);
+    }
+
+
+    // test :
+    // get All BonAchat :
+    @PostMapping ("/bonAchat/fournisseur")
+    public ResponseEntity<List<BonAchat>>  getAllBonAchatsByFournisseur(@RequestBody Fournisseur fournisseur){
+        return ResponseEntity.ok(bonAchatService.getAllBonAchatsByFournisseur(fournisseur));
     }
 
 

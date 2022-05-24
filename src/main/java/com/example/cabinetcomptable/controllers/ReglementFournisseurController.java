@@ -1,7 +1,9 @@
 package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.entities.ReglementFournisseur;
+import com.example.cabinetcomptable.entities.dto.ReglementFournisseurDto;
 import com.example.cabinetcomptable.services.ReglementFournisseurService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ReglementFournisseurController {
-    
+
+    private ModelMapper modelMapper = new ModelMapper();
+
+
     @Autowired
     private ReglementFournisseurService reglementFournisseurService;
 
@@ -33,7 +38,9 @@ public class ReglementFournisseurController {
 
     // add ReglementFournisseur :
     @PostMapping("reglementFournisseurs")
-    public ResponseEntity<ReglementFournisseur> addReglementFournisseur(@RequestBody ReglementFournisseur reglementFournisseur){
+    public ResponseEntity<ReglementFournisseur> addReglementFournisseur(@RequestBody ReglementFournisseurDto reglementFournisseurDto){
+        ReglementFournisseur reglementFournisseur = modelMapper.map(reglementFournisseurDto, ReglementFournisseur.class);
+
         return  reglementFournisseurService.addReglementFournisseur(reglementFournisseur);
     }
 
