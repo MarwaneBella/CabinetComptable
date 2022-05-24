@@ -28,5 +28,20 @@ public class StatistiqueController {
         return ResponseEntity.ok( statistiqueService.getDataDepenseAndRecettePerYear() );
     }
 
+    @GetMapping("/dataLineChart")
+    public ResponseEntity<String>  getDataLineChart(){
+        return ResponseEntity.ok( statistiqueService.getDataDepenseAndRecettePerMonth() );
+    }
+
+    @GetMapping("/dataPieChart")
+    public ResponseEntity<String>  getDataPieChart(){
+        return ResponseEntity.ok( statistiqueService.getDataTop5ProdduitByQuantiteDisponile() );
+    }
+
+    @GetMapping("/dataDoughnutChart")
+    public ResponseEntity<String>  getDataDoughnutChart(){
+        return ResponseEntity.ok( statistiqueService.getDataTop5ByOrderByQuantitieOfLignBH() );
+    }
+
 
 }

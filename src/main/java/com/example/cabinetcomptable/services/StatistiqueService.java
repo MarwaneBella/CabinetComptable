@@ -11,4 +11,10 @@ public interface StatistiqueService {
     Map<String,Long> countNumberOfAll();
 
     String getDataDepenseAndRecettePerYear();
+
+    String getDataDepenseAndRecettePerMonth();
+
+    String getDataTop5ProdduitByQuantiteDisponile();
+
+    String getDataTop5ByOrderByQuantitieOfLignBH();
 }

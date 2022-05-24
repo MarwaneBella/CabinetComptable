@@ -15,8 +15,11 @@ public interface BonAchatRepository extends JpaRepository<BonAchat,Long> {
     @Query("select b from BonAchat b  where b.idBa =( select max(c.idBa) from BonAchat c where year(c.dateBa) = year(?1) ) ")
     BonAchat selectLastBonAchat(Date date);
 
-    @Query(" select sum(b.montantPayer) from BonAchat b where year(b.dateBa) = year(?1) ")
-    Double selectSumofDepensePerYear(Date date);
+    @Query(" select sum(b.montantPayer) from BonAchat b where year(b.dateBa) = year(?1) and b.valide = true ")
+    Double selectSumOfDepensePerYear(Date date);
+
+    @Query(" select sum(b.montantPayer) from BonAchat b where month(b.dateBa) = month(?1) and b.valide = true ")
+    Double selectSumOfDepensePerMonth(Date date);
 
     @Query("select b from BonAchat b where b.fournisseur =?1 and b.status=false and b.valide =true  ORDER BY b.dateBa ASC ")
     List<BonAchat> selectListBonAchatByFournisseur(Fournisseur fournisseur);

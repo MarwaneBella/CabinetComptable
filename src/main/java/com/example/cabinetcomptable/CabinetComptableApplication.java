@@ -1,5 +1,6 @@
 package com.example.cabinetcomptable;
 
+import com.example.cabinetcomptable.repositories.LignBARepository;
 import com.example.cabinetcomptable.services.impl.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +10,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.util.Map;
+
 
 @SpringBootApplication
 @EnableJpaAuditing
 public class CabinetComptableApplication implements CommandLineRunner {
 
+    @Autowired
+    LignBARepository lignBARepository;
 
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
     @Autowired
     UserServiceImpl userServiceimpl;
 
@@ -32,6 +38,10 @@ public class CabinetComptableApplication implements CommandLineRunner {
         System.out.println("application start");
         //userServiceimpl.ReadDataFromExcel(path);
         System.out.println("application end");
+
+        System.out.println(lignBARepository.selectDesignationTop5ByOrderByQuantitieOfLignBH());
+        System.out.println(lignBARepository.selectSumQuantiteTop5ByOrderByQuantitieOfLignBH());
+
 
     }
 }

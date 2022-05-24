@@ -2,15 +2,19 @@ package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.ReglementFournisseur;
 import com.example.cabinetcomptable.repositories.ReglementFournisseurRepository;
+import com.example.cabinetcomptable.services.GenerateFormatService;
 import com.example.cabinetcomptable.services.ReglementFournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class ReglementFournisseurServiceImpl implements ReglementFournisseurService {
 
+    @Autowired
+    GenerateFormatService generateFormatService;
     @Autowired
     private ReglementFournisseurRepository reglementFournisseurRepository;
 
@@ -18,6 +22,11 @@ public class ReglementFournisseurServiceImpl implements ReglementFournisseurServ
 
     public ReglementFournisseurServiceImpl(ReglementFournisseurRepository reglementFournisseurRepository) {
         this.reglementFournisseurRepository = reglementFournisseurRepository;
+    }
+
+    @Override
+    public String getNextCodeReglementFournisseur(Date date){
+        return generateFormatService.formatNextCodeReglementFournisseur(date);
     }
 
     @Override

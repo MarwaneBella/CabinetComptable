@@ -8,5 +8,8 @@ public interface GenerateFormatService {
     String formatNextNumeroBonAchat(Date date);
     String formatCurrentNumeroBonAchat(long id,Date date);
     String formatNextNumeroBonHonoraire(Date date);
+
+    String formatNextCodeReglementFournisseur(Date date);
+
     String formatNumeroFacture(Date date);
 }

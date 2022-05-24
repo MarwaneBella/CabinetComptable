@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/api")
@@ -23,6 +24,11 @@ public class ReglementFournisseurController {
 
 
     // get ReglementFournisseur :
+
+    @PostMapping("/reglementFournisseurs/next")
+    public ResponseEntity<String> getNextCodeRF(@RequestBody Date date){
+        return ResponseEntity.ok(reglementFournisseurService.getNextCodeReglementFournisseur(date));
+    }
 
     @GetMapping("reglementFournisseurs/{id_reg_f}")
     public ResponseEntity<ReglementFournisseur> getReglementFournisseur(@PathVariable long id_reg_f){

@@ -3,10 +3,12 @@ package com.example.cabinetcomptable.services.impl;
 import com.example.cabinetcomptable.entities.BonAchat;
 import com.example.cabinetcomptable.entities.BonHonoraire;
 import com.example.cabinetcomptable.entities.Facture;
+import com.example.cabinetcomptable.entities.ReglementFournisseur;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
 import com.example.cabinetcomptable.repositories.BonAchatRepository;
 import com.example.cabinetcomptable.repositories.BonHonoraireRepository;
 import com.example.cabinetcomptable.repositories.FactureRepository;
+import com.example.cabinetcomptable.repositories.ReglementFournisseurRepository;
 import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
 
     @Autowired
     BonHonoraireRepository bonHonoraireRepository;
+
+    @Autowired
+    ReglementFournisseurRepository reglementFournisseurRepository;
 
     @Autowired
     FactureRepository factureRepository;
@@ -121,6 +126,35 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
                 return "BH-"+yearMonth+"-"+ String.format("%04d" ,1 );
             }
         }
+    }
+
+    @Override
+    public String formatNextCodeReglementFournisseur(Date date) {
+
+        LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
+        String yearMonth = newDate.format(formatYearMonth);
+        ReglementFournisseur LastReglementFournisseur = reglementFournisseurRepository.selectLasReglementFournisseur(date);
+
+
+        if (LastReglementFournisseur == null) {
+            return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+        }
+        else{
+
+            LocalDate oldDate = LocalDate.parse(LastReglementFournisseur.getDatePayment().toString());
+
+            if(newDate.getYear() == oldDate.getYear()){
+
+                String lastIdString  = LastReglementFournisseur.getCodeRF();
+                int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
+                return "BA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+            }
+            else{
+                return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+            }
+        }
+
     }
 
     @Override
