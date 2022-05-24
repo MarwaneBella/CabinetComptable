@@ -69,8 +69,8 @@ public class BonAchatServiceImpl implements BonAchatService {
     }
 
     @Override
-    public ResponseEntity<BonAchat> getBonAchat(long id_ba) {
-        currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + id_ba));
+    public ResponseEntity<BonAchat> getBonAchat(long idBa) {
+        currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + idBa));
         return ResponseEntity.ok(currentBonAchat);
     }
 
@@ -79,17 +79,18 @@ public class BonAchatServiceImpl implements BonAchatService {
         return bonAchatRepository.findAll();
     }
 
-    @Override
-    public BonAchat updateBonAchat(BonAchat bonAchat, long id_ba) {
 
-        currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_ba));
+    @Override
+    public BonAchat updateBonAchat(BonAchat bonAchat, long idBa) {
+
+        currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + idBa));
 
         currentListLignBA = currentBonAchat.getListLignBA();
 
         currentBonAchat.setListLignBA(null);
         lignBARepository.deleteAll(currentListLignBA);
 
-        bonAchat.setIdBa(id_ba);
+        bonAchat.setIdBa(idBa);
         currentListLignBA = bonAchat.getListLignBA();
         bonAchat.setListLignBA(null);
 
@@ -107,10 +108,10 @@ public class BonAchatServiceImpl implements BonAchatService {
     }
 
     @Override
-    public void deleteBonAchat(long id_ba) {
-        currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + id_ba));
+    public void deleteBonAchat(long idBa) {
+        currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + idBa));
 
-        bonAchatRepository.deleteById(id_ba);
+        bonAchatRepository.deleteById(idBa);
     }
 
 
@@ -129,6 +130,15 @@ public class BonAchatServiceImpl implements BonAchatService {
 
     public List<BonAchat> getAllBonAchatsByFournisseur(Fournisseur fournisseur){
         return bonAchatRepository.selectListBonAchatByFournisseur(fournisseur);
+    }
+
+    @Override
+    @Transactional
+    public BonAchat updateBonAchatFromReglementFournisseur(BonAchat bonAchat, long idBa) {
+        currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + idBa));
+        bonAchat.setIdBa(idBa);
+        currentBonAchat = bonAchatRepository.save(bonAchat);
+        return currentBonAchat;
     }
 
 

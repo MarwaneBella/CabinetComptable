@@ -69,5 +69,9 @@ public class BonAchatController {
         return ResponseEntity.ok(bonAchatService.getAllBonAchatsByFournisseur(fournisseur));
     }
 
+    @PutMapping("/bonAchat/regFournisseur/{id_ba}")
+    public  ResponseEntity<BonAchat> updateBonAchatFromReglementFournisseur(@RequestBody BonAchat bonAchat , @PathVariable Long id_ba){
+        return  ResponseEntity.ok( bonAchatService.updateBonAchatFromReglementFournisseur(bonAchat ,id_ba) );
+    }
 
 }
