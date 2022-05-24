@@ -11,6 +11,7 @@ public class BonAchatDto implements Serializable {
     private  String bonANum;
     private  String facBonNum;
     private  Date dateBa;
-    private  boolean valide;
-    private  float totalGeneral;
+    private  boolean status;
+    private  double montantTotal;
+    private  double montantPayer;
 }
