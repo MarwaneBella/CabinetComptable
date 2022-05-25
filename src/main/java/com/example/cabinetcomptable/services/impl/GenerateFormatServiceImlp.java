@@ -138,20 +138,21 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
 
 
         if (LastReglementFournisseur == null) {
-            return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+            System.out.println("null");
+            return "RF-"+yearMonth+"-"+ String.format("%04d" ,1 );
         }
         else{
-
+            System.out.println("Notnull");
             LocalDate oldDate = LocalDate.parse(LastReglementFournisseur.getDatePayment().toString());
 
             if(newDate.getYear() == oldDate.getYear()){
 
                 String lastIdString  = LastReglementFournisseur.getCodeRF();
                 int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
-                return "BA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+                return "RF-"+yearMonth+"-"+ String.format("%04d" , id+1 );
             }
             else{
-                return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+                return "RF-"+yearMonth+"-"+ String.format("%04d" ,1 );
             }
         }
 

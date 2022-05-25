@@ -34,7 +34,7 @@ public class BonAchat {
     @JoinColumn( name = "id_f" )
     private Fournisseur fournisseur;
 
-    @OneToMany(mappedBy = "bonAchat")
+    @OneToMany(mappedBy = "bonAchat",cascade = CascadeType.ALL)
     private Set<ReglementFournisseur> listReglementFournisseur = new HashSet<ReglementFournisseur>();
 
     @OneToMany(mappedBy = "bonAchat",cascade = CascadeType.ALL)
