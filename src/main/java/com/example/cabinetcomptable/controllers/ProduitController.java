@@ -4,6 +4,7 @@ import com.example.cabinetcomptable.entities.Produit;
 import com.example.cabinetcomptable.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,7 +13,7 @@ import javax.servlet.ServletContext;
 import java.util.List;
 
 @RequestMapping("/api")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ProduitController {
 
