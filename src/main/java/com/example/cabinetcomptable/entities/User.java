@@ -1,41 +1,67 @@
 package com.example.cabinetcomptable.entities;
 
-import lombok.Builder;
+import javax.persistence.*;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 @Entity
-@Builder(toBuilder = true)
-@Table(name = "comptable")
 public class User {
 
-
     @Id
-    private String username;
-    private String password;
+    private String userName;
 
-    public User() {
+    private String userPassword;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID")
+            }
+    )
+    private Set<Role> role;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_PAGEPERMISSION",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "PAGEPERMISSION_ID")
+            }
+    )
+    private Set<PagePermission> pagePermissions;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUsername() {
-        return username;
+
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<Role> getRole() {
+        return role;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRole(Set<Role> role) {
+        this.role = role;
+    }
+
+    public Set<PagePermission> getPagePermissions() {
+        return pagePermissions;
+    }
+
+    public void setPagePermissions(Set<PagePermission> pagePermissions) {
+        this.pagePermissions = pagePermissions;
     }
 }

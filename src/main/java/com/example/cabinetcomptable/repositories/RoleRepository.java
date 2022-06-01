@@ -1,9 +1,10 @@
 package com.example.cabinetcomptable.repositories;
 
-import com.example.cabinetcomptable.entities.User;
+import com.example.cabinetcomptable.entities.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, String> {
+public interface RoleRepository extends CrudRepository<Role, String> {
+
 }
