@@ -2,8 +2,6 @@ package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "facture")
@@ -24,8 +22,8 @@ public class Facture {
     private double totalTva;
     private double totalTtc;
 
-    @OneToMany(mappedBy = "facture")
-    private Set<BonHonoraire> ListbonHonoraire = new HashSet<BonHonoraire>();
+    @OneToOne(mappedBy = "facture")
+    private BonHonoraire bonHonoraire;
 
     public Facture() {
     }
@@ -95,11 +93,11 @@ public class Facture {
         this.totalTtc = totalTtc;
     }
 
-    public Set<BonHonoraire> getListbonHonoraire() {
-        return ListbonHonoraire;
+    public BonHonoraire getBonHonoraire() {
+        return bonHonoraire;
     }
 
-    public void setListbonHonoraire(Set<BonHonoraire> listbonHonoraire) {
-        ListbonHonoraire = listbonHonoraire;
+    public void setBonHonoraire(BonHonoraire bonHonoraire) {
+        this.bonHonoraire = bonHonoraire;
     }
 }

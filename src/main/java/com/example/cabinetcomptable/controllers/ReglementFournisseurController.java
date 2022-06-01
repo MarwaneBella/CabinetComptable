@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RestController
 public class ReglementFournisseurController {
 
@@ -38,8 +39,11 @@ public class ReglementFournisseurController {
     // get BonARegs :
 
     @GetMapping("reglementFournisseurs")
-    public List<ReglementFournisseur> getAllReglementFournisseurs(){
-        return reglementFournisseurService.getAllReglementFournisseurs();
+    public List<ReglementFournisseurDto> getAllReglementFournisseurs(){
+
+        List<ReglementFournisseurDto> ListReglementFournisseurDto = reglementFournisseurService.getAllReglementFournisseurs().stream().map(r -> modelMapper.map(r, ReglementFournisseurDto.class)).collect(Collectors.toList());
+
+        return ListReglementFournisseurDto;
     }
 
     // add ReglementFournisseur :

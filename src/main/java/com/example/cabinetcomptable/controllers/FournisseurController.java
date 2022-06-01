@@ -13,9 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
-
 @RequestMapping("/api")
+@CrossOrigin("*")
 @RestController
 public class FournisseurController {
     //@Autowired

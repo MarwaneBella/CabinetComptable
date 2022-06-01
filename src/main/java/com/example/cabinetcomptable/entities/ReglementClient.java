@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "reglement_client")
@@ -15,7 +13,7 @@ public class ReglementClient {
     private long idRegC;
 
     @Column(unique = true)
-    private String codeRF;
+    private String codeRC;
     private String modePaymant;
     private boolean status;
     private double avance;
@@ -26,15 +24,15 @@ public class ReglementClient {
     private Date datePayment;
 
     @ManyToOne
-    @JoinColumn(name = "id_reg_c")
+    @JoinColumn(name = "id_bh")
     private BonHonoraire bonHonoraire;
 
     public ReglementClient() {
     }
 
-    public ReglementClient(long idRegC, String codeRF, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
+    public ReglementClient(long idRegC, String codeRC, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
         this.idRegC = idRegC;
-        this.codeRF = codeRF;
+        this.codeRC = codeRC;
         this.modePaymant = modePaymant;
         this.status = status;
         this.avance = avance;
@@ -42,8 +40,8 @@ public class ReglementClient {
         this.datePayment = datePayment;
     }
 
-    public ReglementClient(String codeRF, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
-        this.codeRF = codeRF;
+    public ReglementClient(String codeRC, String modePaymant, boolean status, double avance, double reste, Date datePayment) {
+        this.codeRC = codeRC;
         this.modePaymant = modePaymant;
         this.status = status;
         this.avance = avance;
@@ -59,12 +57,12 @@ public class ReglementClient {
         this.idRegC = idRegC;
     }
 
-    public String getCodeRF() {
-        return codeRF;
+    public String getCodeRC() {
+        return codeRC;
     }
 
-    public void setCodeRF(String codeRF) {
-        this.codeRF = codeRF;
+    public void setCodeRC(String codeRC) {
+        this.codeRC = codeRC;
     }
 
     public String getModePaymant() {

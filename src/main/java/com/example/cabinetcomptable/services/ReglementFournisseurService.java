@@ -11,9 +11,9 @@ public interface ReglementFournisseurService {
     String getNextCodeReglementFournisseur(Date date);
 
     ResponseEntity<ReglementFournisseur> addReglementFournisseur(ReglementFournisseur reglementFournisseur) ;
-    ResponseEntity<ReglementFournisseur> getReglementFournisseur(long id_reg_f);
+    ResponseEntity<ReglementFournisseur> getReglementFournisseur(long id_reg_c);
     List<ReglementFournisseur> getAllReglementFournisseurs();
-    ResponseEntity<ReglementFournisseur> updateReglementFournisseur(long id_reg_f, ReglementFournisseur client);
-    void deleteReglementFournisseur(long id_reg_f);
+    ResponseEntity<ReglementFournisseur> updateReglementFournisseur(long id_reg_c, ReglementFournisseur reglementFournisseur);
+    void deleteReglementFournisseur(long id_reg_c);
 
 }
