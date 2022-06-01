@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,9 @@ public class LignBH {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idLignH;
     private int quantite;
-    private double montant;
+    private double montantTtc;
+    
+    private double prixUnitaire;
 
     @ManyToOne
     @JoinColumn( name = "id_bh" )
@@ -23,10 +27,10 @@ public class LignBH {
     public LignBH() {
     }
 
-    public LignBH(long idLignH, int quantite, double montant) {
+    public LignBH(long idLignH, int quantite, double montantTtc) {
         this.idLignH = idLignH;
         this.quantite = quantite;
-        this.montant = montant;
+        this.montantTtc = montantTtc;
     }
 
     public long getIdLignH() {
@@ -46,13 +50,30 @@ public class LignBH {
     }
 
     public double getMontant() {
-        return montant;
+        return montantTtc;
     }
 
-    public void setMontant(double montant) {
-        this.montant = montant;
+    public void setMontant(double montantTtc) {
+        this.montantTtc = montantTtc;
     }
 
+    public double getMontantTtc() {
+        return montantTtc;
+    }
+
+    public void setMontantTtc(double montantTtc) {
+        this.montantTtc = montantTtc;
+    }
+
+    public double getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    @JsonIgnore
     public BonHonoraire getBonHonoraire() {
         return bonHonoraire;
     }

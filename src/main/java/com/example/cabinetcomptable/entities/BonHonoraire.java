@@ -32,15 +32,15 @@ public class BonHonoraire {
     @JoinColumn( name = "id_c" )
     private Client client;
 
-    @ManyToOne
-    @JoinColumn( name = "id_fac" )
+    @OneToOne
+    @JoinColumn( name = "id_fac")
     private Facture facture;
 
-    @OneToMany(mappedBy = "bonHonoraire")
+    @OneToMany(mappedBy = "bonHonoraire",cascade = CascadeType.ALL)
     private Set<ReglementClient> listReglementClient = new HashSet<ReglementClient>();
 
-    @OneToMany(mappedBy = "bonHonoraire")
-    private Set<LignBH>  listLignBh= new HashSet<LignBH>();
+    @OneToMany(mappedBy = "bonHonoraire",cascade = CascadeType.ALL)
+    private Set<LignBH>  listLignBH= new HashSet<LignBH>();
 
 
 
@@ -146,11 +146,11 @@ public class BonHonoraire {
         this.listReglementClient = listReglementClient;
     }
 
-    public Set<LignBH> getListLignBh() {
-        return listLignBh;
+    public Set<LignBH> getListLignBH() {
+        return listLignBH;
     }
 
-    public void setListLignBh(Set<LignBH> listLignBh) {
-        this.listLignBh = listLignBh;
+    public void setListLignBH(Set<LignBH> listLignBH) {
+        this.listLignBH = listLignBH;
     }
 }

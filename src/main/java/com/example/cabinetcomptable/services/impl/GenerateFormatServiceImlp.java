@@ -1,14 +1,8 @@
 package com.example.cabinetcomptable.services.impl;
 
-import com.example.cabinetcomptable.entities.BonAchat;
-import com.example.cabinetcomptable.entities.BonHonoraire;
-import com.example.cabinetcomptable.entities.Facture;
-import com.example.cabinetcomptable.entities.ReglementFournisseur;
+import com.example.cabinetcomptable.entities.*;
 import com.example.cabinetcomptable.exception.ResourceNotFoundException;
-import com.example.cabinetcomptable.repositories.BonAchatRepository;
-import com.example.cabinetcomptable.repositories.BonHonoraireRepository;
-import com.example.cabinetcomptable.repositories.FactureRepository;
-import com.example.cabinetcomptable.repositories.ReglementFournisseurRepository;
+import com.example.cabinetcomptable.repositories.*;
 import com.example.cabinetcomptable.services.GenerateFormatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +23,8 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
 
     @Autowired
     ReglementFournisseurRepository reglementFournisseurRepository;
+    @Autowired
+    ReglementClientRepository reglementClientRepository;
 
     @Autowired
     FactureRepository factureRepository;
@@ -103,6 +99,35 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
     }
 
     @Override
+    public String formatCurrentNumeroBonHonoraire(long id_bh, Date date) {
+
+        LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
+        String yearMonth = newDate.format(formatYearMonth);
+        BonHonoraire currentBonHonoraire = bonHonoraireRepository.findById(id_bh).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_bh));
+        BonHonoraire lastBonHonoraire = bonHonoraireRepository.selectLastBonHonoraire(date);
+        LocalDate oldDate = LocalDate.parse(currentBonHonoraire.getDateBh().toString());
+
+        if(newDate.getYear() == oldDate.getYear()){
+
+            String currentIdString  = currentBonHonoraire.getBonHNum();
+            int id = Integer.parseInt(currentIdString.substring(currentIdString.lastIndexOf("-") + 1));
+            return "BA-"+yearMonth+"-"+ String.format("%04d" , id );
+        }
+        else{
+            if(lastBonHonoraire == null){
+                return "BA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+            }else{
+                String lastIdString  = lastBonHonoraire.getBonHNum();
+                int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
+                return "BA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+            }
+
+        }
+
+    }
+
+    @Override
     public String formatNextNumeroBonHonoraire(Date date) {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
@@ -127,6 +152,36 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
             }
         }
     }
+
+
+
+    @Override
+    public String formatNextNumeroFacture(Date date) {
+        LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
+        String yearMonth = newDate.format(formatYearMonth);
+        Facture lastFacture = factureRepository.findTopByOrderByIdFacDesc();
+
+        if (lastFacture == null) {
+            return "FA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+        }
+        else{
+
+            LocalDate oldDate = LocalDate.parse(lastFacture.getDateFac().toString());
+
+            if(newDate.getYear() == oldDate.getYear()){
+
+                String lastIdString  = lastFacture.getFacNum();
+                System.out.println("lastIdString"+lastIdString);
+                int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
+                return "FA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+            }
+            else{
+                return "FA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+            }
+        }
+    }
+
 
     @Override
     public String formatNextCodeReglementFournisseur(Date date) {
@@ -159,28 +214,34 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
     }
 
     @Override
-    public String formatNumeroFacture(Date date) {
+    public String formatNextCodeReglementClient(Date date){
+
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        Facture lastFacture = factureRepository.findTopByOrderByIdFacDesc();
+        ReglementClient LastReglementClient = reglementClientRepository.selectLasReglementClient(date);
 
-        if (lastFacture == null) {
-            return "FA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+
+        if (LastReglementClient == null) {
+            System.out.println("null");
+            return "RC-"+yearMonth+"-"+ String.format("%04d" ,1 );
         }
         else{
-
-            LocalDate oldDate = LocalDate.parse(lastFacture.getDateFac().toString());
+            System.out.println("Notnull");
+            LocalDate oldDate = LocalDate.parse(LastReglementClient.getDatePayment().toString());
 
             if(newDate.getYear() == oldDate.getYear()){
 
-                String lastIdString  = lastFacture.getFacNum();
+                String lastIdString  = LastReglementClient.getCodeRC();
                 int id = Integer.parseInt(lastIdString.substring(lastIdString.lastIndexOf("-") + 1));
-                return "FA-"+yearMonth+"-"+ String.format("%04d" , id+1 );
+                return "RC"+yearMonth+"-"+ String.format("%04d" , id+1 );
             }
             else{
-                return "FA-"+yearMonth+"-"+ String.format("%04d" ,1 );
+                return "RC-"+yearMonth+"-"+ String.format("%04d" ,1 );
             }
         }
+
     }
+
+
 }

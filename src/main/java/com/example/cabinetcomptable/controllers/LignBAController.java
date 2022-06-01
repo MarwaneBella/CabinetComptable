@@ -1,8 +1,6 @@
 package com.example.cabinetcomptable.controllers;
 
 import com.example.cabinetcomptable.entities.LignBA;
-import com.example.cabinetcomptable.entities.LignBA;
-import com.example.cabinetcomptable.services.LignBAService;
 import com.example.cabinetcomptable.services.LignBAService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RestController
-
 public class LignBAController {
 
     @Autowired
