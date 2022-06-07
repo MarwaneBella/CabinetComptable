@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "bon_achat")
 
 public class BonAchat {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBa;

@@ -34,9 +34,7 @@ public class BonHonoraireController {
     @PostMapping("/bonHonoraire")
     public ResponseEntity<BonHonoraire> addBonHonoraire(@RequestBody BonHonoraire bonHonoraire) {
         System.out.println("==============================");
-
         System.out.println(bonHonoraire.getListLignBH());
-
         return bonHonoraireService.addBonHonoraire(bonHonoraire);
     }
 
@@ -63,7 +61,6 @@ public class BonHonoraireController {
     public  void deleteBonHonoraire(@PathVariable Long id_bh){
         bonHonoraireService.deleteBonHonoraire(id_bh);
     }
-
 
     // test :
     // get All BonHonoraire :

@@ -9,7 +9,7 @@ import java.util.List;
 public interface FactureService {
     String getNextFactureNum(Date date);
     ResponseEntity<Facture> addFacture(Facture bonHonoraire);
-    ResponseEntity<Facture> getFacture(long idFac);
+    Facture getFacture(long idFac);
     List<Facture> getAllFactures();
     void deleteFacture(long idFac);
 }

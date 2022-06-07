@@ -1,5 +1,7 @@
 package com.example.cabinetcomptable.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -22,7 +24,8 @@ public class Facture {
     private double totalTva;
     private double totalTtc;
 
-    @OneToOne(mappedBy = "facture")
+    @OneToOne
+    @JoinColumn(name = "id_bh")
     private BonHonoraire bonHonoraire;
 
     public Facture() {
@@ -93,6 +96,7 @@ public class Facture {
         this.totalTtc = totalTtc;
     }
 
+    @JsonIgnore
     public BonHonoraire getBonHonoraire() {
         return bonHonoraire;
     }

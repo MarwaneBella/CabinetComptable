@@ -32,8 +32,7 @@ public class BonHonoraire {
     @JoinColumn( name = "id_c" )
     private Client client;
 
-    @OneToOne
-    @JoinColumn( name = "id_fac")
+    @OneToOne(mappedBy = "bonHonoraire",cascade = CascadeType.ALL)
     private Facture facture;
 
     @OneToMany(mappedBy = "bonHonoraire",cascade = CascadeType.ALL)
