@@ -186,8 +186,8 @@ public class StatistiqueServiceImpl implements StatistiqueService {
 
 
         JSONArray mainData = new JSONArray();
-        List<String> designations = lignBARepository.selectDesignationTop5ByOrderByQuantitieOfLignBH();
-        List<String> sumQuantites = lignBARepository.selectSumQuantiteTop5ByOrderByQuantitieOfLignBH();
+        List<String> designations = lignBHRepository.selectDesignationTop5ByOrderByQuantitieOfLignBH();
+        List<String> sumQuantites = lignBHRepository.selectSumQuantiteTop5ByOrderByQuantitieOfLignBH();
 
         if(designations != null || sumQuantites != null){
 

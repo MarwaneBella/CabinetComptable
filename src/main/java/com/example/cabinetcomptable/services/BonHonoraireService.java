@@ -17,7 +17,6 @@ public interface BonHonoraireService {
     ResponseEntity<BonHonoraire> getBonHonoraire(long id_bh);
     List<BonHonoraire> getAllBonHonoraires();
 
-    @Transactional
     BonHonoraire updateBonHonoraireFromReglementClient(BonHonoraire bonHonoraire, long id_bh);
 
     BonHonoraire updateBonHonoraire(BonHonoraire BonHonoraireDtails , long id_bh);

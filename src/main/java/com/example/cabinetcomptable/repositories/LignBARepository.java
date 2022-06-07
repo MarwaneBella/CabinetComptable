@@ -15,11 +15,7 @@ import java.util.Set;
 @Repository
 public interface LignBARepository extends JpaRepository<LignBA,Long> {
 
-    @Query(nativeQuery = true, value = "SELECT p.designation  FROM lign_ba l INNER JOIN bon_achat b USING(id_ba) INNER JOIN produit p  USING(reference) where b.valide = true GROUP BY l.reference ORDER BY SUM(quantite) desc LIMIT 5")
-    List <String> selectDesignationTop5ByOrderByQuantitieOfLignBH();
 
-    @Query(nativeQuery = true, value = "SELECT sum(l.quantite)  FROM lign_ba l INNER JOIN bon_achat b USING(id_ba) INNER JOIN produit p  USING(reference) where b.valide = true GROUP BY l.reference ORDER BY SUM(quantite) desc LIMIT 5")
-    List <String> selectSumQuantiteTop5ByOrderByQuantitieOfLignBH();
 
 }
 

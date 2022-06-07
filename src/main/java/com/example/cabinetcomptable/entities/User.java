@@ -1,16 +1,25 @@
 package com.example.cabinetcomptable.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(unique = true)
+    @NotNull
     private String userName;
 
     private String userPassword;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    private Boolean etat;
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
                     @JoinColumn(name = "USER_ID")
@@ -21,7 +30,7 @@ public class User {
     )
     private Set<Role> role;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_PAGEPERMISSION",
             joinColumns = {
                     @JoinColumn(name = "USER_ID")
@@ -31,6 +40,14 @@ public class User {
             }
     )
     private Set<PagePermission> pagePermissions;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -47,6 +64,14 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public Boolean getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Boolean etat) {
+        this.etat = etat;
     }
 
     public Set<Role> getRole() {

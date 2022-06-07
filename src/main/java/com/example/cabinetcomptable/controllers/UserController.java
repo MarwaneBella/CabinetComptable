@@ -25,6 +25,11 @@ public class UserController {
         userService.initRoleAndUser();
     }
 
+    @GetMapping("/ifExist/{userName}")
+    public ResponseEntity<Boolean> checkUserName(@PathVariable String userName){
+        return ResponseEntity.ok(userService.checkUserNameIfExist(userName));
+    }
+
     @PostMapping({"/add"})
     public ResponseEntity<User> addUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.addUser(user));
@@ -34,18 +39,40 @@ public class UserController {
     public ResponseEntity< List<User> > getAllUsers(){
         return ResponseEntity.ok( userService.getAllUsers() );
     }
+    @GetMapping("/getAllNoAdmin")
+    public ResponseEntity< List<User> > getAllUserNoAdmin(){
+        return ResponseEntity.ok( userService.getAllUserWithoutAdmin());
+    }
+
+    @GetMapping("/getOneNoAdmin/{id}")
+    public ResponseEntity<User> getOneUserNoAdmin(@PathVariable long id){
+        return ResponseEntity.ok(userService.getUserWithoutAdmin(id));
+    }
 
     @GetMapping("/getOne/{id}")
-    public ResponseEntity<User> getAllUsers(@PathVariable String id){
+    public ResponseEntity<User> getOneUser(@PathVariable long id){
         return ResponseEntity.ok(userService.getUser(id));
     }
 
+    @GetMapping("/getOneByUserName/{userName}")
+    public ResponseEntity<User> getOneByUserName(@PathVariable String userName){
+        return ResponseEntity.ok(userService.getByUserName(userName));
+    }
+    @GetMapping("/getAdmin/{id}")
+    public ResponseEntity<User> getAdmin(@PathVariable long id){
+        return ResponseEntity.ok(userService.getUser(id));
+    }
     @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user) {
         return  ResponseEntity.ok(userService.updateUser(id,user));
     }
+
+    @PutMapping("/updateAdmin/{id}")
+    public ResponseEntity<User> updateAdmin(@PathVariable long id, @RequestBody User user) {
+        return  ResponseEntity.ok(userService.updateAdmin(id,user));
+    }
     @DeleteMapping("delete/{id}")
-    public void deleteUser(@PathVariable String id){
+    public void deleteUser(@PathVariable long id){
        userService.deleteUser(id);
     }
 

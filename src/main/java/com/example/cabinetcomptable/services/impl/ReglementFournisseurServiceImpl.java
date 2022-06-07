@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
-
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 @Service
@@ -30,7 +30,6 @@ public class ReglementFournisseurServiceImpl implements ReglementFournisseurServ
     public String getNextCodeReglementFournisseur(Date date){
         return generateFormatService.formatNextCodeReglementFournisseur(date);
     }
-
 
     @Override
     public ResponseEntity<ReglementFournisseur> addReglementFournisseur(ReglementFournisseur reglementFournisseur) {

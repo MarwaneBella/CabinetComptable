@@ -129,17 +129,17 @@ public class BonAchatServiceImpl implements BonAchatService {
     @Override
 
     public List<BonAchat> getAllBonAchatsByFournisseur(Fournisseur fournisseur){
+
         return bonAchatRepository.selectListBonAchatByFournisseur(fournisseur);
     }
 
     @Override
     public BonAchat updateBonAchatFromReglementFournisseur(BonAchat bonAchat, long idBa) {
         currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + idBa));
-        System.out.println(bonAchat.getListLignBA());
         bonAchat.setIdBa(idBa);
-        bonAchat.setListLignBA(null);
+        bonAchat.setListLignBA(currentBonAchat.getListLignBA());
+        bonAchat.setListReglementFournisseur(currentBonAchat.getListReglementFournisseur());
         currentBonAchat = bonAchatRepository.save(bonAchat);
-        System.out.println(currentBonAchat.getListLignBA());
         return currentBonAchat;
     }
 

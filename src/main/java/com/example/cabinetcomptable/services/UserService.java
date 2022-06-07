@@ -34,43 +34,60 @@ public class UserService {
     public void initRoleAndUser() {
 
         Role adminRole = new Role();
+        adminRole.setId(1);
         adminRole.setRoleName("Admin");
         adminRole.setRoleDescription("Admin role");
-        roleRepository.save(adminRole);
+        adminRole = roleRepository.save(adminRole);
 
         Role userRole = new Role();
+        userRole.setId(2);
         userRole.setRoleName("User");
         userRole.setRoleDescription("Default role for newly created record");
         roleRepository.save(userRole);
 
         Set<PagePermission> ListPagePermissions = new HashSet<>();
-        String[] permissions = {"Dashboard","User","Fournisseur","Produit","Categorie", "BonAchat", "BonHonoraire","ReglementFournisseur","ReglementUser","Facture"};
+        String[] permissions = {"Dashboard","Client","Fournisseur","Produit", "BonAchat", "BonHonoraire","ReglementFournisseur","ReglementClient","Facture"};
 
         for(int i=0;i<permissions.length;i++){
             PagePermission pagePermission = new PagePermission();
+            pagePermission.setId(i+1);
+            System.out.println(i+1);
             pagePermission.setNamePermission(permissions[i]);
             ListPagePermissions.add(pagePermission);
-
+            pagePermissionRepository.save(pagePermission);
+            ListPagePermissions.add(pagePermission);
         }
-        pagePermissionRepository.saveAll(ListPagePermissions);
+
+
+
+
+        for (PagePermission c : pagePermissionRepository.findAll() ){
+            System.out.println(c.getId());
+            System.out.println(c.getNamePermission());
+        }
+
 
 
 
 
         User adminUser = new User();
+        adminUser.setId(1);
         adminUser.setUserName("admin");
         adminUser.setUserPassword(getEncodedPassword("123456"));
-
+        adminUser.setEtat(true);
 
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
-        adminUser.setPagePermissions(ListPagePermissions);
+        adminUser.setPagePermissions( ListPagePermissions );
         adminUser.setRole(adminRoles);
         userRepository.save(adminUser);
+
         /// user
-        User user = new User();
+
+        /*User user = new User();
         user.setUserName("marwane");
         user.setUserPassword(getEncodedPassword("1234"));
+        user.setEtat(false);
 
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(userRole);
@@ -83,11 +100,22 @@ public class UserService {
 
         user.setPagePermissions(pagePermissions);
         user.setRole(userRoles);
-        userRepository.save(user);
+        userRepository.save(user);*/
+    }
+
+    public boolean checkUserNameIfExist(String userName) {
+        if(userRepository.findByUserName(userName) != null ){
+            return true;
+        }
+        else{
+            return  false;
+        }
+
+
     }
 
     public User addUser(User user) {
-        Role role = roleRepository.findById("User").get();
+        Role role = roleRepository.findByRoleName("User");
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
@@ -97,8 +125,23 @@ public class UserService {
     
     
     
-    public User getUser(String id) {
+    public User getUser(long id) {
+
         currentUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
+
+        return currentUser;
+    }
+
+    public User getByUserName(String userName) {
+
+        currentUser = userRepository.findByUserName(userName);
+
+        return currentUser;
+    }
+
+    public User getUserWithoutAdmin(long id) {
+
+        currentUser = userRepository.selectOneWhitoutAdmin(id);
         return currentUser;
     }
 
@@ -106,19 +149,47 @@ public class UserService {
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
     }
+    public List<User> getAllUserWithoutAdmin() {
+        return  userRepository.selectAllWhitoutAdmin();
+    }
 
     
-    public User updateUser(String id, User user ) {
+    public User updateUser(long id, User user ) {
         currentUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
-        user.setUserName(id);
-        user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+        user.setId(id);
+        user.setRole(currentUser.getRole());
+        if(user.getUserPassword() != null){
+            user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+        }
+        else{
+            user.setUserPassword(currentUser.getUserPassword());
+        }
+
+        currentUser = userRepository.save(user);
+        return currentUser;
+    }
+
+    public User updateAdmin(long id, User user ) {
+        currentUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
+        user.setId(id);
+        user.setRole(currentUser.getRole());
+        user.setEtat(true);
+        System.out.println( "etat : "+ user.getEtat());
+        user.setPagePermissions(currentUser.getPagePermissions());
+        if(user.getUserPassword() != null){
+            user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+        }
+        else{
+            user.setUserPassword(currentUser.getUserPassword());
+        }
+
         currentUser = userRepository.save(user);
         return currentUser;
     }
 
 
     
-    public void deleteUser(String id) {
+    public void deleteUser(long id) {
         currentUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
         userRepository.deleteById(id);
     }
@@ -128,4 +199,6 @@ public class UserService {
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+
 }
