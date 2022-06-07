@@ -50,9 +50,9 @@ public class FactureServiceImpl implements FactureService {
     }
 
     @Override
-    public ResponseEntity<Facture> getFacture(long idFac) {
+    public Facture getFacture(long idFac) {
         currentFacture = factureRepository.findById(idFac).orElseThrow(() -> new ResourceNotFoundException("Facture not found for this reference :: " + idFac));
-        return ResponseEntity.ok(currentFacture);
+        return currentFacture;
     }
 
     @Override

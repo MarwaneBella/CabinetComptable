@@ -139,6 +139,7 @@ public class BonHonoraireServiceImpl implements BonHonoraireService {
         System.out.println(bonHonoraire.getListLignBH());
         bonHonoraire.setIdBh(idBh);
         bonHonoraire.setListLignBH(null);
+        bonHonoraire.setFacture(null);
         currentBonHonoraire = bonHonoraireRepository.save(bonHonoraire);
         System.out.println(currentBonHonoraire.getListLignBH());
         return currentBonHonoraire;
