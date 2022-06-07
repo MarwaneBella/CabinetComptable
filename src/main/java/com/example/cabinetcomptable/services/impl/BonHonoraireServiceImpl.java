@@ -136,12 +136,11 @@ public class BonHonoraireServiceImpl implements BonHonoraireService {
     @Override
     public BonHonoraire updateBonHonoraireFromReglementClient(BonHonoraire bonHonoraire, long idBh) {
         currentBonHonoraire = bonHonoraireRepository.findById(idBh).orElseThrow(() -> new ResourceNotFoundException("BonHonoraire not found for this id :: " + idBh));
-        System.out.println(bonHonoraire.getListLignBH());
         bonHonoraire.setIdBh(idBh);
-        bonHonoraire.setListLignBH(null);
-        bonHonoraire.setFacture(null);
+        bonHonoraire.setListLignBH(currentBonHonoraire.getListLignBH());
+        bonHonoraire.setListReglementClient(currentBonHonoraire.getListReglementClient());
+        bonHonoraire.setFacture(currentBonHonoraire.getFacture());
         currentBonHonoraire = bonHonoraireRepository.save(bonHonoraire);
-        System.out.println(currentBonHonoraire.getListLignBH());
         return currentBonHonoraire;
     }
 
