@@ -14,7 +14,7 @@ public interface FournisseurService {
     ResponseEntity<Fournisseur> updateFournisseur(Fournisseur fournisseur ,long id);
     String getFile();
     void addFile(MultipartFile file);
-    void deleteFournisseur(long id);
+    boolean deleteFournisseur(long id);
 
     //
     Fournisseur getFournisseurWithListBonAchat(long id);

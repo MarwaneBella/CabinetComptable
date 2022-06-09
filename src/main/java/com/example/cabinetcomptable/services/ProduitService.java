@@ -15,7 +15,7 @@ public interface ProduitService {
     ResponseEntity<Produit> getProduit(String reference);
     List<Produit> getAllProduits();
     ResponseEntity<Produit> updateProduit(Produit produitDtails , String reference);
-    void deleteProduit(String reference);
+    boolean deleteProduit(String reference);
     String getFile();
     void addFile(MultipartFile file);
 

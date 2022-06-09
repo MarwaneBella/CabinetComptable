@@ -22,7 +22,7 @@ public interface BonAchatService {
     BonAchat updateBonAchatFromReglementFournisseur(BonAchat bonAchat, long idBa);
 
     BonAchat updateBonAchat(BonAchat BonAchatDtails , long id_ba);
-    void deleteBonAchat(long id_ba);
+    boolean deleteBonAchat(long id_ba);
 
     //
     BonAchat getB(long id);

@@ -10,6 +10,6 @@ public interface CategorieService {
     ResponseEntity<Categorie> getCategorie(long id);
     List<Categorie> getAllCategories();
     Categorie updateCategorie(Categorie categorie ,long id);
-    void deleteCategorie(long id);
+    boolean deleteCategorie(long id);
 
 }

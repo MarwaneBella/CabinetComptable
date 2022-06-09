@@ -40,7 +40,7 @@ public class CategorieController {
     }
     // delete categorie :
     @DeleteMapping("categories/{id}")
-    public void  deleteCategorie(@PathVariable long id){
-        categorieService.deleteCategorie(id);
+    public boolean  deleteCategorie(@PathVariable long id){
+        return categorieService.deleteCategorie(id);
     }
 }

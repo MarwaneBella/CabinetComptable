@@ -61,10 +61,14 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public void deleteProduit(String reference) {
+    public boolean deleteProduit(String reference) {
         currentProduit = produitRepository.findById(reference).orElseThrow(() -> new ResourceNotFoundException("Produit not found for this reference :: " + reference));
-        fileStorageService.deleteFile(pathFolder+"/"+currentProduit.getImage());
-        produitRepository.deleteById(reference);
+        if(currentProduit.getListLignBA().isEmpty() && currentProduit.getListLignBH().isEmpty()){
+            fileStorageService.deleteFile(pathFolder+"/"+currentProduit.getImage());
+            produitRepository.deleteById(reference);
+            return true;
+        }
+        return false;
     }
 
     @Override

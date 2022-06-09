@@ -69,10 +69,14 @@ public class FournisseurServiceImpl implements FournisseurService {
         return ResponseEntity.ok(fournisseur);
     }
     @Override
-    public void deleteFournisseur(long id) {
+    public boolean deleteFournisseur(long id) {
         currentFournisseur = fournisseurRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("fournisseur not found for this id :: " + id));
-        fileStorageService.deleteFile(pathFolder+"/"+currentFournisseur.getImage());
-        fournisseurRepository.deleteById(id);
+        if(currentFournisseur.getListBonAchat().isEmpty()){
+            fileStorageService.deleteFile(pathFolder+"/"+currentFournisseur.getImage());
+            fournisseurRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     @Transactional

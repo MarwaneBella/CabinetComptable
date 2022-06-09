@@ -2,6 +2,7 @@ package com.example.cabinetcomptable.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -96,5 +97,14 @@ public class Client extends Personne{
 
     public void setrCnss(double rCnss) {
         this.rCnss = rCnss;
+    }
+
+    @JsonIgnore
+    public Set<BonHonoraire> getListBonHonoraire() {
+        return listBonHonoraire;
+    }
+
+    public void setListBonHonoraire(Set<BonHonoraire> listBonHonoraire) {
+        this.listBonHonoraire = listBonHonoraire;
     }
 }

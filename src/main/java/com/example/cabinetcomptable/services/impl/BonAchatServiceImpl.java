@@ -108,10 +108,14 @@ public class BonAchatServiceImpl implements BonAchatService {
     }
 
     @Override
-    public void deleteBonAchat(long idBa) {
+    public boolean deleteBonAchat(long idBa) {
         currentBonAchat = bonAchatRepository.findById(idBa).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this reference :: " + idBa));
+        if(currentBonAchat.getListReglementFournisseur().isEmpty()){
+            bonAchatRepository.deleteById(idBa);
+            return true;
+        }
+        return false;
 
-        bonAchatRepository.deleteById(idBa);
     }
 
 

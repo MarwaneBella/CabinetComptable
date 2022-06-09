@@ -1,7 +1,9 @@
 package com.example.cabinetcomptable;
 
+import com.example.cabinetcomptable.repositories.ClientRepository;
 import com.example.cabinetcomptable.repositories.LignBARepository;
 import com.example.cabinetcomptable.repositories.UserRepository;
+import com.example.cabinetcomptable.services.ClientService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +22,9 @@ public class CabinetComptableApplication implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    ClientService clientService;
+
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
@@ -33,8 +38,6 @@ public class CabinetComptableApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-
 
     }
 }

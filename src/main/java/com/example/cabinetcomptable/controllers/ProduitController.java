@@ -48,8 +48,8 @@ public class ProduitController {
 
     // delete Produit :
     @DeleteMapping("/produits/{reference}")
-    public  void deleteProduit(@PathVariable String reference){
-        produitService.deleteProduit(reference);
+    public  boolean deleteProduit(@PathVariable String reference){
+        return produitService.deleteProduit(reference);
     }
     @GetMapping("/imageproduit")
     public ResponseEntity<String> getImage(){

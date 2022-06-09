@@ -13,7 +13,7 @@ public interface ClientService {
     ResponseEntity<Client> updateClient(long id, Client client);
     String getFile();
     void addFile(MultipartFile file);
-    void deleteClient(long id);
+    boolean deleteClient(long id);
 
 
     }

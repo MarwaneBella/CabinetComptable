@@ -20,7 +20,7 @@ public interface BonHonoraireService {
     BonHonoraire updateBonHonoraireFromReglementClient(BonHonoraire bonHonoraire, long id_bh);
 
     BonHonoraire updateBonHonoraire(BonHonoraire BonHonoraireDtails , long id_bh);
-    void deleteBonHonoraire(long id_bh);
+    boolean deleteBonHonoraire(long id_bh);
 
     //
     BonHonoraire getB(long id);

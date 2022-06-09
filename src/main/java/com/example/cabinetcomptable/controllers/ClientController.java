@@ -50,8 +50,8 @@ public class ClientController {
 
     // delete client :
     @DeleteMapping("clients/{id}")
-    public void deleteClient(@PathVariable long id){
-        clientService.deleteClient(id);
+    public boolean deleteClient(@PathVariable long id){
+        return clientService.deleteClient(id);
     }
 
     @GetMapping("/imageclient")

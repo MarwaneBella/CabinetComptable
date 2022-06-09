@@ -52,8 +52,8 @@ public class FournisseurController {
 
     // delete fournisseur :
     @DeleteMapping("/fournisseurs/{id}")
-    public void  deleteFournisseur(@PathVariable long id){
-        fournisseurService.deleteFournisseur(id);
+    public boolean  deleteFournisseur(@PathVariable long id){
+        return fournisseurService.deleteFournisseur(id);
     }
 
     @GetMapping("/imagefournisseur")

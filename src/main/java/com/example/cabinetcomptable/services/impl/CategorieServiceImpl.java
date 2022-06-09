@@ -38,7 +38,14 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public void deleteCategorie(long id) {
-        categorieRepository.deleteById(id);
+    public boolean deleteCategorie(long id) {
+        Categorie categorie = categorieRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Categorie not found for this id :: " + id));
+        if(categorie.getListProduit().isEmpty()){
+            categorieRepository.deleteById(id);
+            return true;
+        }
+
+        return false;
+
     }
 }
