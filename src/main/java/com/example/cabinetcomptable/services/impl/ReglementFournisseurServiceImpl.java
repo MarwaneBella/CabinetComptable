@@ -30,7 +30,6 @@ public class ReglementFournisseurServiceImpl implements ReglementFournisseurServ
     public String getNextCodeReglementFournisseur(Date date){
         return generateFormatService.formatNextCodeReglementFournisseur(date);
     }
-
     @Override
     public ResponseEntity<ReglementFournisseur> addReglementFournisseur(ReglementFournisseur reglementFournisseur) {
 
