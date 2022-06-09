@@ -51,6 +51,11 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
+    public List<Produit> selectProduitsOrderByCategorie() {
+        return produitRepository.selectProduitsOrderByCategorie();
+    }
+
+    @Override
     public ResponseEntity<Produit> updateProduit(Produit produit, String reference) {
         currentProduit = produitRepository.findById(reference).orElseThrow(() -> new ResourceNotFoundException("Produit not found for this reference :: " + reference));
         produit.setReference(reference);
