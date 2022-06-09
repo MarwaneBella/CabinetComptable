@@ -206,5 +206,21 @@ public class Produit {
         return categorie;
     }
 
+    @JsonIgnore
+    public Set<LignBA> getListLignBA() {
+        return ListLignBA;
+    }
 
+    public void setListLignBA(Set<LignBA> listLignBA) {
+        ListLignBA = listLignBA;
+    }
+
+    @JsonIgnore
+    public Set<LignBH> getListLignBH() {
+        return ListLignBH;
+    }
+
+    public void setListLignBH(Set<LignBH> listLignBH) {
+        ListLignBH = listLignBH;
+    }
 }

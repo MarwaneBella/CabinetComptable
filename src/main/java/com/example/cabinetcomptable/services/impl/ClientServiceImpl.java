@@ -75,10 +75,14 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public void deleteClient(long id) {
+    public boolean deleteClient(long id) {
         currentClient = clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + id));
-        fileStorageService.deleteFile(pathFolder+"/"+currentClient.getImage());
-        clientRepository.deleteById(id);
+        if(currentClient.getListBonHonoraire().isEmpty()){
+            clientRepository.deleteById(id);
+            fileStorageService.deleteFile(pathFolder+"/"+currentClient.getImage());
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -109,10 +109,13 @@ public class BonHonoraireServiceImpl implements BonHonoraireService {
     }
 
     @Override
-    public void deleteBonHonoraire(long idBh) {
+    public boolean deleteBonHonoraire(long idBh) {
         currentBonHonoraire = bonHonoraireRepository.findById(idBh).orElseThrow(() -> new ResourceNotFoundException("BonHonoraire not found for this reference :: " + idBh));
-
-        bonHonoraireRepository.deleteById(idBh);
+        if(currentBonHonoraire.getFacture() == null && currentBonHonoraire.getListReglementClient().isEmpty() ){
+            bonHonoraireRepository.deleteById(idBh);
+            return true;
+        }
+        return false;
     }
 
 

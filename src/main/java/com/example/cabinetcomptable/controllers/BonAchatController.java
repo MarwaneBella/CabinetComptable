@@ -57,8 +57,8 @@ public class BonAchatController {
 
     // delete BonAchat :
     @DeleteMapping("/bonAchat/{id_ba}")
-    public  void deleteBonAchat(@PathVariable Long id_ba){
-        bonAchatService.deleteBonAchat(id_ba);
+    public  boolean deleteBonAchat(@PathVariable Long id_ba){
+        return bonAchatService.deleteBonAchat(id_ba);
     }
 
 

@@ -58,8 +58,8 @@ public class BonHonoraireController {
 
     // delete BonHonoraire :
     @DeleteMapping("/bonHonoraire/{id_bh}")
-    public  void deleteBonHonoraire(@PathVariable Long id_bh){
-        bonHonoraireService.deleteBonHonoraire(id_bh);
+    public  boolean deleteBonHonoraire(@PathVariable Long id_bh){
+        return bonHonoraireService.deleteBonHonoraire(id_bh);
     }
 
     // test :
