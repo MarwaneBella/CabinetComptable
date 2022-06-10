@@ -1,6 +1,7 @@
 package com.example.cabinetcomptable.services.impl;
 
 import com.example.cabinetcomptable.entities.ReglementClient;
+import com.example.cabinetcomptable.entities.ReglementClient;
 import com.example.cabinetcomptable.repositories.ReglementClientRepository;
 import com.example.cabinetcomptable.services.GenerateFormatService;
 import com.example.cabinetcomptable.services.ReglementClientService;
@@ -44,6 +45,16 @@ public class ReglementClientServiceImpl implements ReglementClientService {
 
         currentreglementClient = reglementClientRepository.findById(id_reg_c).orElseThrow();
         return ResponseEntity.ok(currentreglementClient);
+    }
+
+    @Override
+    public List<ReglementClient> addListReglementClient(List<ReglementClient> listReglementClient) {
+        for(ReglementClient currenValue : listReglementClient){
+            currenValue.setCodeRC(generateFormatService.formatNextCodeReglementClient( currenValue.getDatePayment() ));
+            currentreglementClient =reglementClientRepository.saveAndFlush(currenValue);
+
+        }
+        return  listReglementClient;
     }
 
     @Override

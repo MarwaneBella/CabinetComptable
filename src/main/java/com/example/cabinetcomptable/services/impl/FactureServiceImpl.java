@@ -40,11 +40,10 @@ public class FactureServiceImpl implements FactureService {
 
 
     @Override
-    @Transactional
-    public ResponseEntity<Facture> addFacture(Facture facture) {
 
+    public ResponseEntity<Facture> addFacture(Facture facture) {
+        facture.setFacNum(generateFormatService.formatNextNumeroFacture(facture.getDateFac()));
         currentFacture = factureRepository.save(facture);
-        currentFacture.setFacNum(generateFormatService.formatNextNumeroFacture(facture.getDateFac()));
         return ResponseEntity.ok(facture);
 
     }
@@ -65,7 +64,7 @@ public class FactureServiceImpl implements FactureService {
     @Override
     public void deleteFacture(long idFac) {
         currentFacture = factureRepository.findById(idFac).orElseThrow(() -> new ResourceNotFoundException("Facture not found for this reference :: " + idFac));
-
+        System.out.println(idFac);
         factureRepository.deleteById(idFac);
     }
 

@@ -54,6 +54,14 @@ public class ReglementFournisseurController {
         return  reglementFournisseurService.addReglementFournisseur(reglementFournisseur);
     }
 
+    @PostMapping("reglementFournisseurs/addList")
+    public ResponseEntity<List<ReglementFournisseur>> addListReglementFournisseur(@RequestBody List<ReglementFournisseurDto> listReglementFournisseurDto){
+
+        List<ReglementFournisseur> listReglementFournisseur = listReglementFournisseurDto.stream().map(r -> modelMapper.map(r, ReglementFournisseur.class)).collect(Collectors.toList());
+
+        return ResponseEntity.ok( reglementFournisseurService.addListReglementFournisseur(listReglementFournisseur) );
+    }
+
     // update ReglementFournisseur :
     @PutMapping("/reglementFournisseurs/{id_reg_f}")
     public void updateReglementFournisseur(@PathVariable long id_reg_f , @RequestBody ReglementFournisseur reglementFournisseur){

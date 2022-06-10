@@ -60,7 +60,6 @@ public class BonHonoraireServiceImpl implements BonHonoraireService {
         currentBonHonoraire=bonHonoraireRepository.save(bonHonoraire);
 
         for (LignBH currentvalue : currentListLignBH) {
-            System.out.println("test "+currentvalue.getIdLignH());
             currentvalue.setBonHonoraire(currentBonHonoraire);
         }
 

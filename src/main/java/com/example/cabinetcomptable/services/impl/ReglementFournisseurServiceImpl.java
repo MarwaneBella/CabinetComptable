@@ -39,6 +39,16 @@ public class ReglementFournisseurServiceImpl implements ReglementFournisseurServ
 
         return ResponseEntity.ok(currentreglementFournisseur);
     }
+    @Override
+    public List<ReglementFournisseur> addListReglementFournisseur(List<ReglementFournisseur> listReglementFournisseur) {
+        for(ReglementFournisseur currenValue : listReglementFournisseur){
+            currenValue.setCodeRF(generateFormatService.formatNextCodeReglementFournisseur( currenValue.getDatePayment() ));
+            currentreglementFournisseur =reglementFournisseurRepository.saveAndFlush(currenValue);
+        }
+
+        return  listReglementFournisseur;
+
+    }
 
     @Override
     public ResponseEntity<ReglementFournisseur> getReglementFournisseur(long id_reg_f) {

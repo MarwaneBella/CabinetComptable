@@ -53,7 +53,14 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         }
         else{
 
-            LocalDate oldDate = LocalDate.parse(lastBonAchat.getDateBa().toString());
+            LocalDate oldDate;
+            if( lastBonAchat.getDateBa().toString().contains("-") ){
+                oldDate = LocalDate.parse( lastBonAchat.getDateBa().toString());
+
+            }
+            else{
+                oldDate = lastBonAchat.getDateBa().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
 
              if(newDate.getYear() == oldDate.getYear()){
 
@@ -76,7 +83,14 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         String yearMonth = newDate.format(formatYearMonth);
         BonAchat currentBonAchat = bonAchatRepository.findById(id_ba).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_ba));
         BonAchat lastBonAchat = bonAchatRepository.selectLastBonAchat(date);
-        LocalDate oldDate = LocalDate.parse(currentBonAchat.getDateBa().toString());
+        LocalDate oldDate;
+        if( lastBonAchat.getDateBa().toString().contains("-") ){
+            oldDate = LocalDate.parse( lastBonAchat.getDateBa().toString());
+
+        }
+        else{
+            oldDate = lastBonAchat.getDateBa().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
 
         if(newDate.getYear() == oldDate.getYear()){
 
@@ -106,7 +120,15 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         String yearMonth = newDate.format(formatYearMonth);
         BonHonoraire currentBonHonoraire = bonHonoraireRepository.findById(id_bh).orElseThrow(() -> new ResourceNotFoundException("BonAchat not found for this id :: " + id_bh));
         BonHonoraire lastBonHonoraire = bonHonoraireRepository.selectLastBonHonoraire(date);
-        LocalDate oldDate = LocalDate.parse(currentBonHonoraire.getDateBh().toString());
+
+        LocalDate oldDate;
+        if( lastBonHonoraire.getDateBh().toString().contains("-") ){
+            oldDate = LocalDate.parse( lastBonHonoraire.getDateBh().toString());
+
+        }
+        else{
+            oldDate = lastBonHonoraire.getDateBh().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
 
         if(newDate.getYear() == oldDate.getYear()){
 
@@ -132,14 +154,21 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        BonHonoraire lastBonHonoraire = bonHonoraireRepository.findTopByOrderByIdBhDesc();
+        BonHonoraire lastBonHonoraire = bonHonoraireRepository.selectLastBonHonoraire(date);
 
         if (lastBonHonoraire == null) {
             return "BH-"+yearMonth+"-"+ String.format("%04d" ,1 );
         }
         else{
 
-            LocalDate oldDate = LocalDate.parse(lastBonHonoraire.getDateBh().toString());
+            LocalDate oldDate;
+            if( lastBonHonoraire.getDateBh().toString().contains("-") ){
+                oldDate = LocalDate.parse( lastBonHonoraire.getDateBh().toString());
+
+            }
+            else{
+                oldDate = lastBonHonoraire.getDateBh().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
 
             if(newDate.getYear() == oldDate.getYear()){
 
@@ -160,14 +189,22 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
-        Facture lastFacture = factureRepository.findTopByOrderByIdFacDesc();
+        Facture lastFacture = factureRepository.selectLastFacture(date);
 
         if (lastFacture == null) {
             return "FA-"+yearMonth+"-"+ String.format("%04d" ,1 );
         }
         else{
 
-            LocalDate oldDate = LocalDate.parse(lastFacture.getDateFac().toString());
+            LocalDate oldDate;
+            if( lastFacture.getDateFac().toString().contains("-") ){
+                oldDate = LocalDate.parse( lastFacture.getDateFac().toString());
+
+            }
+            else{
+                oldDate = lastFacture.getDateFac().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
+
 
             if(newDate.getYear() == oldDate.getYear()){
 
@@ -185,7 +222,6 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
 
     @Override
     public String formatNextCodeReglementFournisseur(Date date) {
-
         LocalDate newDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatYearMonth = DateTimeFormatter.ofPattern("yyMM");
         String yearMonth = newDate.format(formatYearMonth);
@@ -198,7 +234,17 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         }
         else{
             System.out.println("Notnull");
-            LocalDate oldDate = LocalDate.parse(LastReglementFournisseur.getDatePayment().toString());
+
+            LocalDate oldDate;
+            if( LastReglementFournisseur.getDatePayment().toString().contains("-") ){
+
+                oldDate = LocalDate.parse( LastReglementFournisseur.getDatePayment().toString());
+
+            }
+            else{
+                oldDate = LastReglementFournisseur.getDatePayment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
+
 
             if(newDate.getYear() == oldDate.getYear()){
 
@@ -228,7 +274,15 @@ public class GenerateFormatServiceImlp implements GenerateFormatService {
         }
         else{
             System.out.println("Notnull");
-            LocalDate oldDate = LocalDate.parse(LastReglementClient.getDatePayment().toString());
+
+            LocalDate oldDate;
+            if( LastReglementClient.getDatePayment().toString().contains("-") ){
+                oldDate = LocalDate.parse( LastReglementClient.getDatePayment().toString());
+
+            }
+            else{
+                oldDate = LastReglementClient.getDatePayment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
 
             if(newDate.getYear() == oldDate.getYear()){
 

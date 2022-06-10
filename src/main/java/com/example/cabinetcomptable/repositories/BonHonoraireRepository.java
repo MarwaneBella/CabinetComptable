@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface BonHonoraireRepository extends JpaRepository<BonHonoraire, Long> {
 
-    BonHonoraire findTopByOrderByIdBhDesc();
+
 
     @Query("select b from BonHonoraire b  where b.idBh =( select max(c.idBh) from BonHonoraire c where year(c.dateBh) = year(?1) ) ")
     BonHonoraire selectLastBonHonoraire(Date date);

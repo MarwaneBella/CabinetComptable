@@ -55,6 +55,14 @@ public class ReglementClientController {
         return  reglementClientService.addReglementClient(reglementClient);
     }
 
+    @PostMapping("reglementClients/addList")
+    public ResponseEntity<List<ReglementClient>> addListReglementClient(@RequestBody List<ReglementClientDto> listReglementClientDto){
+
+        List<ReglementClient> listReglementClient = listReglementClientDto.stream().map(r -> modelMapper.map(r, ReglementClient.class)).collect(Collectors.toList());
+
+        return ResponseEntity.ok( reglementClientService.addListReglementClient(listReglementClient) );
+    }
+
     // update ReglementClient :
     @PutMapping("/reglementClients/{id_reg_c}")
     public void updateReglementClient(@PathVariable long id_reg_c , @RequestBody ReglementClient reglementClient){
