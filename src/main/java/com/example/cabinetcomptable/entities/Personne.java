@@ -3,6 +3,8 @@ package com.example.cabinetcomptable.entities;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @MappedSuperclass
@@ -13,9 +15,11 @@ public class Personne {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
 
+    @NotBlank
+    @NotNull
     private String nom;
     private String image;
-   // @NotBlank(message = "is empty")
+
     private String email;
     private String telePortable;
     private String teleFix;
