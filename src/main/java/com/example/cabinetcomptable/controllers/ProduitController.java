@@ -22,7 +22,7 @@ public class ProduitController {
     ServletContext context;
     // add produit :
     @PostMapping("/produits")
-    public ResponseEntity<Produit> addProduit(@RequestBody Produit produit) {
+    public ResponseEntity<?> addProduit(@RequestBody Produit produit) {
         return produitService.addProduit(produit);
     }
 

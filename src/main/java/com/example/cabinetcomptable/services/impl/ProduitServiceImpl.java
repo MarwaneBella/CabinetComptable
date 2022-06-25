@@ -33,9 +33,15 @@ public class ProduitServiceImpl implements ProduitService {
         this.produitRepository=produitRepository ;
     }
     @Override
-    public ResponseEntity<Produit> addProduit(Produit produit) {
-        System.out.println(produit.getCategorie());
-        currentProduit=produitRepository.save(produit);
+    public ResponseEntity<?> addProduit(Produit produit) {
+
+        if( produitRepository.existsById(produit.getReference()) ) {
+            return ResponseEntity.ok(false);
+        }
+        else{
+            currentProduit=produitRepository.save(produit);
+        }
+
         return ResponseEntity.ok(produit);
     }
 
@@ -60,7 +66,6 @@ public class ProduitServiceImpl implements ProduitService {
         currentProduit = produitRepository.findById(reference).orElseThrow(() -> new ResourceNotFoundException("Produit not found for this reference :: " + reference));
         produit.setReference(reference);
         produit.setImage(currentProduit.getImage());
-
         currentProduit = produitRepository.save(produit);
         return ResponseEntity.ok(produit);
     }

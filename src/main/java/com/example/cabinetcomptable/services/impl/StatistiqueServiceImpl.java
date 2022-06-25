@@ -85,8 +85,8 @@ public class StatistiqueServiceImpl implements StatistiqueService {
             JSONArray series = new JSONArray();
 
 
-            Double totalDepens = bonAchatRepository.selectSumOfDepensePerYear(nextDate);
-            Double totalRecettes = bonHonoraireRepository.selectSumOfRecettePerYear(nextDate);
+            Double totalDepens = reglementFournisseurRepository.selectSumOfDepensePerYear(nextDate);
+            Double totalRecettes = reglementClientRepository.selectSumOfRecettePerYear(nextDate);
 
             if(totalDepens == null ){
                 totalDepens = (double) 0;
@@ -134,8 +134,9 @@ public class StatistiqueServiceImpl implements StatistiqueService {
 
         for (int i = 0; i < 5; i++) {
 
-            Double totalDepens = bonAchatRepository.selectSumOfDepensePerMonth(nextMonth);
-            Double totalRecettes = bonHonoraireRepository.selectSumOfRecettePerMonth(nextMonth);
+            Double totalDepens = reglementFournisseurRepository.selectSumOfDepensePerMonth(nextMonth);
+            Double totalRecettes = reglementClientRepository.selectSumOfRecettePerMonth(nextMonth);
+            System.out.println(nextMonth + " : "+ totalDepens  +" , " +totalRecettes);
 
             if (totalDepens == null) {
                 totalDepens = (double) 0;

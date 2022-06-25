@@ -51,7 +51,7 @@ public class UserService {
         for(int i=0;i<permissions.length;i++){
             PagePermission pagePermission = new PagePermission();
             pagePermission.setId(i+1);
-            System.out.println(i+1);
+
             pagePermission.setNamePermission(permissions[i]);
             ListPagePermissions.add(pagePermission);
             pagePermissionRepository.save(pagePermission);
@@ -61,10 +61,7 @@ public class UserService {
 
 
 
-        for (PagePermission c : pagePermissionRepository.findAll() ){
-            System.out.println(c.getId());
-            System.out.println(c.getNamePermission());
-        }
+
 
 
 

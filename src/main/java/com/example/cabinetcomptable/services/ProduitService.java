@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ProduitService {
 
-    ResponseEntity<Produit> addProduit(Produit produit);
+    ResponseEntity<?> addProduit(Produit produit);
     ResponseEntity<Produit> getProduit(String reference);
     List<Produit> getAllProduits();
     List<Produit> selectProduitsOrderByCategorie();
